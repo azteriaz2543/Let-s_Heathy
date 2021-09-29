@@ -16,6 +16,10 @@ public class Gameplay_UI_Manager : MonoBehaviour
     public string Step;
     public GameObject PlayerPanel;
 
+    public GameObject ChooseSet;
+
+    public Kitchen_UI kitchen_UI;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -33,6 +37,11 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
         Step = "Map";
         PlayerPanel.SetActive(true);
+
+        ChooseSet.SetActive(false);
+
+        kitchen_UI = kitchen_UI.GetComponent<Kitchen_UI>();
+
     }
 
     // Update is called once per frame
@@ -62,14 +71,19 @@ public class Gameplay_UI_Manager : MonoBehaviour
         Inventory.SetActive(true);
         Step = "House";
         PlayerPanel.SetActive(false);
+        ChooseSet.SetActive(true);
+
     }
 
     public void Back_House()
     {
+        kitchen_UI.ResetKitchen();
         HouseEvent.SetActive(false);
         Inventory.SetActive(false);
         Step = "Map";
         PlayerPanel.SetActive(true);
+        ChooseSet.SetActive(false);
+
     }
     public void Shop()
     {

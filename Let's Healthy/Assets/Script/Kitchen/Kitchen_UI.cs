@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Kitchen_UI : MonoBehaviour
 {
@@ -33,6 +34,15 @@ public class Kitchen_UI : MonoBehaviour
 
     public Cooking cooking;
 
+    public GameObject ChooseWay, MenuWay ,MenuList ,HideMenu;
+    public Text Title, Title_TH, HowTo;
+    public GameObject MaterialList;
+    public GameObject BlockImage;
+
+    bool showMenu = false;
+
+
+
     void Start()
     {
         Inventory = new List<GameObject>();
@@ -47,12 +57,19 @@ public class Kitchen_UI : MonoBehaviour
 
         cooking = cooking.GetComponent<Cooking>();
 
+        MenuList.SetActive(false);
+
+        MenuWay.SetActive(false);
+
     }
 
     
     void Update()
     {
         InventoryZone.SetActive(ShowInv);
+
+        MenuList.SetActive(showMenu);
+
     }
 
     public void AddInventory(string itemName)
@@ -109,6 +126,7 @@ public class Kitchen_UI : MonoBehaviour
     public void Reset()
     {
         Inventory = new List<GameObject>();
+        HideItem();
     }
 
     public void OnItemDrag()
@@ -254,6 +272,26 @@ public class Kitchen_UI : MonoBehaviour
 
     }
 
+    public void Custom()
+    {
+        ChooseWay.SetActive(false);
+        HideMenu.SetActive(false);
+        BlockImage.SetActive(false);
+    }
+
+    public void Menu()
+    {
+        ChooseWay.SetActive(false);
+        MenuWay.SetActive(true);
+        HideMenu.SetActive(true);
+        BlockImage.SetActive(false);
+    }
+
+    public void HideMenuButton()
+    {
+        showMenu = !showMenu;
+    }
+
     #endregion
 
     public bool CheckInventory(string ItemName)
@@ -277,6 +315,36 @@ public class Kitchen_UI : MonoBehaviour
 
     }
 
+    #region Menu
 
+    public void ChooseMenu()
+    {
+        MenuList.SetActive(true);
+        BlockImage.SetActive(false);
+        MenuWay.SetActive(false);
+        showMenu = true;
+    }
+
+    public void Omelet()
+    {
+        Title.text = "Omelet";
+        Title_TH.text = "ไข่เจียว";
+        HowTo.text ="1 หยิบไข่ และวัตถุอื่นที่ตู้เย็น\n"+"2 ไปที่เตาแกส แล้วเลือกกะทะ\n" +"3 ใส่วัตถุดิบที่มีลงไป\n"
+                    +"4 อย่าลืมใช้ตะหลิวในการทำอาหารด้วย\n"+"5 เปิดไฟ กะจังหวะให้หยุดอยู่ที่ สีส้ม\n"+"6 นำไปใส่จานพร้อมกับข้าวสวย";
+        MaterialList.SetActive(true);
+        
+    }
+
+    #endregion
+
+    public void ResetKitchen()
+    {
+        showMenu = false;
+        ChooseWay.SetActive(true);
+        DragDropManager.Reset();
+        HideMenu.SetActive(false);
+        Reset();
+        BlockImage.SetActive(true);
+    }
 
 }
