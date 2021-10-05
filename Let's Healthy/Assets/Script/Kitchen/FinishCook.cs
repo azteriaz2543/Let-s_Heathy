@@ -4,25 +4,107 @@ using UnityEngine;
 
 public class FinishCook : MonoBehaviour
 {
-    int protein, vegetable;
-    //bool spoon;
-    bool turner;
-    bool egg, carrot, porkWord;
-
     string CurrentFood;
+
+    public float Protein, Sodium, Fat, KiloCalories ,Happiness;
+    public float Normal_Health, KDP_Health;
+
+    List<FoodStatus> itemList;
+
+    #region checkItem
+    bool Spoon,
+        Turner,
+        Water,
+        Beef,
+        Carrot,
+        Chicken,
+        ChineseKale,
+        CoconutMilk,
+        Cucumber,
+        CutedBeef,
+        CutedCarrot_Step1,
+        CutedCarrot_Step2,
+        CutedChicken,
+        CutedChineseKale_Step1,
+        CutedChineseKale_Step2,
+        CutedCucumber,
+        CutedFish,
+        CutedGarlic,
+        CutedGinger_Step1,
+        CutedGinger_Step2,
+        CutedLime_Step1,
+        CutedLime_Step2,
+        CutedOnion_Step1,
+        CutedOnion_Step2,
+        CutedPork,
+        CutedPotato,
+        CutedShallot_Step1,
+        CutedShallot_Step2,
+        CutedSpringOnion_Step1,
+        CutedSpringOnion_Step2,
+        CutedTomato,
+        Egg,
+        EggBeat,
+        Fish,
+        Garlic,
+        Ginger,
+        Lime,
+        Milk,
+        MincedBeef,
+        MincedPork,
+        Onion,
+        Pork,
+        Potato,
+        Shallot,
+        SpringOnion,
+        Tomato;
+    #endregion
 
     void Start()
     {
+        itemList = new List<FoodStatus>();
 
+        /*
+        AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Spoon, amount = 1 });
+        AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Egg, amount = 1 });
+        AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Spoon, amount = 2 });
+        AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Pork, amount = 1 });
+        AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Water, amount = 1 });
+        AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Carrot, amount = 1 });
+
+        foreach (FoodStatus usedItem in itemList)
+        {
+            if (usedItem.amount > 0)
+            {
+                Debug.Log(usedItem.itemType + " ... " + usedItem.amount);
+            }
+            
+        }
+        */
     }
-
     
     void Update()
     {
-        
+
     }
 
-
+    void AddItem(FoodStatus item)
+    {
+        
+        bool itemAlreadyUsed = false;
+        foreach (FoodStatus usedItem in itemList)
+        {
+            if (usedItem.itemType == item.itemType)
+            {
+                usedItem.amount += item.amount;
+                itemAlreadyUsed = true;
+            }
+        }
+        if (!itemAlreadyUsed)
+        {
+            itemList.Add(item);
+        }
+    }
 
     public void AddItemInCook(string ItemName)
     {
@@ -30,120 +112,615 @@ public class FinishCook : MonoBehaviour
         switch (ItemName)
         {
             case "Spoon":
-                //spoon = true;
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Spoon, amount = 1 });
                 break;
             case "Turner":
-                turner = true;
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Turner, amount = 1 });
                 break;
-            #region Egg
-            case "Egg1":
-                egg = true;
-                protein++;
+            case "Water":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Water, amount = 1 });
                 break;
-            case "Egg2":
-                egg = true;
-                protein++;
+            case "Beef1":
+            case "Beef2":
+            case "Beef3":
+            case "Beef4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Beef, amount = 1 });
                 break;
-            case "Egg3":
-                egg = true;
-                protein++;
+            case "Carrot1":
+            case "Carrot2":
+            case "Carrot3":
+            case "Carrot4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Carrot, amount = 1 });
                 break;
-            case "Egg4":
-                egg = true;
-                protein++;
+            case "Chicken1":
+            case "Chicken2":
+            case "Chicken3":
+            case "Chicken4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Chicken, amount = 1 });
                 break;
-            #endregion
-            #region Carrot
+            case "ChineseKale1":
+            case "ChineseKale2":
+            case "ChineseKale3":
+            case "ChineseKale4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.ChineseKale, amount = 1 });
+                break;
+            case "CoconutMilk1":
+            case "CoconutMilk2":
+            case "CoconutMilk3":
+            case "CoconutMilk4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CoconutMilk, amount = 1 });
+                break;
+            case "Cucumber1":
+            case "Cucumber2":
+            case "Cucumber3":
+            case "Cucumber4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Cucumber, amount = 1 });
+                break;
+            case "CutedBeef1":
+            case "CutedBeef2":
+            case "CutedBeef3":
+            case "CutedBeef4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedBeef, amount = 1 });
+                break;
+            case "CutedCarrot1_Step1":
+            case "CutedCarrot2_Step1":
+            case "CutedCarrot3_Step1":
+            case "CutedCarrot4_Step1":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedCarrot_Step1, amount = 1 });
+                break;
             case "CutedCarrot1_Step2":
-                carrot = true;
-                vegetable += 2;
-                break;
             case "CutedCarrot2_Step2":
-                carrot = true;
-                vegetable += 2;
-                break;
             case "CutedCarrot3_Step2":
-                carrot = true;
-                vegetable += 2;
-                break;
             case "CutedCarrot4_Step2":
-                carrot = true;
-                vegetable += 2;
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedCarrot_Step2, amount = 1 });
                 break;
-            #endregion
-            #region PorkWord
+            case "CutedChicken1":
+            case "CutedChicken2":
+            case "CutedChicken3":
+            case "CutedChicken4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedChicken, amount = 1 });
+                break;
+            case "CutedChineseKale1_Step1":
+            case "CutedChineseKale2_Step1":
+            case "CutedChineseKale3_Step1":
+            case "CutedChineseKale4_Step1":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedChineseKale_Step1, amount = 1 });
+                break;
+            case "CutedChineseKale1_Step2":
+            case "CutedChineseKale2_Step2":
+            case "CutedChineseKale3_Step2":
+            case "CutedChineseKale4_Step2":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedChineseKale_Step2, amount = 1 });
+                break;
+            case "CutedCucumber1":
+            case "CutedCucumber2":
+            case "CutedCucumber3":
+            case "CutedCucumber4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedCucumber, amount = 1 });
+                break;
+            case "CutedFish1":
+            case "CutedFish2":
+            case "CutedFish3":
+            case "CutedFish4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedFish, amount = 1 });
+                break;
+            case "CutedGarlic1":
+            case "CutedGarlic2":
+            case "CutedGarlic3":
+            case "CutedGarlic4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedGarlic, amount = 1 });
+                break;
+            case "CutedGinger1_Step1":
+            case "CutedGinger2_Step1":
+            case "CutedGinger3_Step1":
+            case "CutedGinger4_Step1":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedGinger_Step1, amount = 1 });
+                break;
+            case "CutedGinger1_Step2":
+            case "CutedGinger2_Step2":
+            case "CutedGinger3_Step2":
+            case "CutedGinger4_Step2":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedGinger_Step2, amount = 1 });
+                break;
+            case "CutedLime1_Step1":
+            case "CutedLime2_Step1":
+            case "CutedLime3_Step1":
+            case "CutedLime4_Step1":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedLime_Step1, amount = 1 });
+                break;
+            case "CutedLime1_Step2":
+            case "CutedLime2_Step2":
+            case "CutedLime3_Step2":
+            case "CutedLime4_Step2":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedLime_Step2, amount = 1 });
+                break;
+            case "CutedOnion1_Step1":
+            case "CutedOnion2_Step1":
+            case "CutedOnion3_Step1":
+            case "CutedOnion4_Step1":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedSpringOnion_Step1, amount = 1 });
+                break;
+            case "CutedOnion1_Step2":
+            case "CutedOnion2_Step2":
+            case "CutedOnion3_Step2":
+            case "CutedOnion4_Step2":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedSpringOnion_Step2, amount = 1 });
+                break;
+            case "CutedPork1":
+            case "CutedPork2":
+            case "CutedPork3":
+            case "CutedPork4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedPork, amount = 1 });
+                break;
+            case "CutedPotato1":
+            case "CutedPotato2":
+            case "CutedPotato3":
+            case "CutedPotato4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedPotato, amount = 1 });
+                break;
+            case "CutedShallot1_Step1":
+            case "CutedShallot2_Step1":
+            case "CutedShallot3_Step1":
+            case "CutedShallot4_Step1":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedShallot_Step1, amount = 1 });
+                break;
+            case "CutedShallot1_Step2":
+            case "CutedShallot2_Step2":
+            case "CutedShallot3_Step2":
+            case "CutedShallot4_Step2":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedShallot_Step2, amount = 1 });
+                break;
+            case "CutedSpringOnion1_Step1":
+            case "CutedSpringOnion2_Step1":
+            case "CutedSpringOnion3_Step1":
+            case "CutedSpringOnion4_Step1":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedSpringOnion_Step1, amount = 1 });
+                break;
+            case "CutedSpringOnion1_Step2":
+            case "CutedSpringOnion2_Step2":
+            case "CutedSpringOnion3_Step2":
+            case "CutedSpringOnion4_Step2":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedSpringOnion_Step2, amount = 1 });
+                break;
+            case "CutedTomato1":
+            case "CutedTomato2":
+            case "CutedTomato3":
+            case "CutedTomato4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedTomato, amount = 1 });
+                break;
+            case "Egg1":
+            case "Egg2":
+            case "Egg3":
+            case "Egg4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Egg, amount = 1 });
+                break;
+            case "EggBeat1":
+            case "EggBeat2":
+            case "EggBeat3":
+            case "EggBeat4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.EggBeat, amount = 1 });
+                break;
+            case "Fish1":
+            case "Fish2":
+            case "Fish3":
+            case "Fish4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Fish, amount = 1 });
+                break;
+            case "Garlic1":
+            case "Garlic2":
+            case "Garlic3":
+            case "Garlic4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Garlic, amount = 1 });
+                break;
+            case "Ginger1":
+            case "Ginger2":
+            case "Ginger3":
+            case "Ginger4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Ginger, amount = 1 });
+                break;
+            case "Lime1":
+            case "Lime2":
+            case "Lime3":
+            case "Lime4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Lime, amount = 1 });
+                break;
+            case "Milk1":
+            case "Milk2":
+            case "Milk3":
+            case "Milk4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Milk, amount = 1 });
+                break;
+            case "MincedBeef1":
+            case "MincedBeef2":
+            case "MincedBeef3":
+            case "MincedBeef4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.MincedBeef, amount = 1 });
+                break;
             case "MincedPork1":
-                porkWord = true;
-                protein += 2;
-                break;
             case "MincedPork2":
-                porkWord = true;
-                protein += 2;
-                break;
             case "MincedPork3":
-                porkWord = true;
-                protein += 2;
-                break;
             case "MincedPork4":
-                porkWord = true;
-                protein += 2;
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.MincedPork, amount = 1 });
                 break;
-                #endregion
+            case "Onion1":
+            case "Onion2":
+            case "Onion3":
+            case "Onion4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Onion, amount = 1 });
+                break;
+            case "Pork1":
+            case "Pork2":
+            case "Pork3":
+            case "Pork4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Pork, amount = 1 });
+                break;
+            case "Potato1":
+            case "Potato2":
+            case "Potato3":
+            case "Potato4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Potato, amount = 1 });
+                break;
+            case "Shallot1":
+            case "Shallot2":
+            case "Shallot3":
+            case "Shallot4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Shallot, amount = 1 });
+                break;
+            case "SpringOnion1":
+            case "SpringOnion2":
+            case "SpringOnion3":
+            case "SpringOnion4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.SpringOnion, amount = 1 });
+                break;
+            case "Tomato1":
+            case "Tomato2":
+            case "Tomato3":
+            case "Tomato4":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Tomato, amount = 1 });
+                break;
         }
 
     }
 
     public string DiagnoseFood(bool burn,string used, bool eatable)
     {
-
-        if (egg == true && turner == true && used == "Pan" && eatable == true)
+        foreach (FoodStatus usedItem in itemList)
         {
-            if (porkWord == true && carrot == false && burn == false) //ไข่เจียวหมูสับไม่แครอท
+            switch (usedItem.itemType)
+            {
+                case FoodStatus.ItemType.Spoon:
+                    if (usedItem.amount > 0)
+                    {
+                        Spoon = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.Turner:
+                    if (usedItem.amount > 0)
+                    {
+                        Turner = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.Water:
+                    if (usedItem.amount > 0)
+                    {
+                        Water = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.Beef:
+                    if (usedItem.amount > 0)
+                    {
+                        Beef = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.Carrot:
+                    if (usedItem.amount > 0)
+                    {
+                        Carrot = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.Chicken:
+                    if (usedItem.amount > 0)
+                    {
+                        Chicken = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.ChineseKale:
+                    if (usedItem.amount > 0)
+                    {
+                        ChineseKale = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CoconutMilk:
+                    if (usedItem.amount > 0)
+                    {
+                        CoconutMilk = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.Cucumber:
+                    if (usedItem.amount > 0)
+                    {
+                        Cucumber = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedBeef:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedBeef = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedCarrot_Step1:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedCarrot_Step1 = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedCarrot_Step2:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedCarrot_Step2 = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedChicken:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedChicken = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedChineseKale_Step1:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedChineseKale_Step1 = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedChineseKale_Step2:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedChineseKale_Step2 = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedCucumber:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedCucumber = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedFish:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedFish = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedGarlic:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedGarlic = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedGinger_Step1:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedGinger_Step1 = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedGinger_Step2:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedGinger_Step2 = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedLime_Step1:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedLime_Step1 = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedLime_Step2:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedLime_Step2 = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedOnion_Step1:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedOnion_Step1 = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedOnion_Step2:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedOnion_Step2 = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedPork:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedPork = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedPotato:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedPotato = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedShallot_Step1:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedShallot_Step1 = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedShallot_Step2:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedShallot_Step2 = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedSpringOnion_Step1:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedSpringOnion_Step1 = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedSpringOnion_Step2:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedSpringOnion_Step2 = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.CutedTomato:
+                    if (usedItem.amount > 0)
+                    {
+                        CutedTomato = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.Egg:
+                    if (usedItem.amount > 0)
+                    {
+                        Egg = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.EggBeat:
+                    if (usedItem.amount > 0)
+                    {
+                        EggBeat = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.Fish:
+                    if (usedItem.amount > 0)
+                    {
+                        Fish = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.Garlic:
+                    if (usedItem.amount > 0)
+                    {
+                        Garlic = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.Ginger:
+                    if (usedItem.amount > 0)
+                    {
+                        Ginger = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.Lime:
+                    if (usedItem.amount > 0)
+                    {
+                        Lime = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.Milk:
+                    if (usedItem.amount > 0)
+                    {
+                        Milk = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.MincedBeef:
+                    if (usedItem.amount > 0)
+                    {
+                        MincedBeef = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.MincedPork:
+                    if (usedItem.amount > 0)
+                    {
+                        MincedPork = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.Onion:
+                    if (usedItem.amount > 0)
+                    {
+                        Onion = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.Pork:
+                    if (usedItem.amount > 0)
+                    {
+                        Pork = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.Potato:
+                    if (usedItem.amount > 0)
+                    {
+                        Potato = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.Shallot:
+                    if (usedItem.amount > 0)
+                    {
+                        Shallot = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.SpringOnion:
+                    if (usedItem.amount > 0)
+                    {
+                        SpringOnion = true;
+                    }
+                    break;
+                case FoodStatus.ItemType.Tomato:
+                    if (usedItem.amount > 0)
+                    {
+                        Tomato = true;
+                    }
+                    break;
+            }
+            
+
+        }
+
+
+        
+        if (EggBeat == true && Turner == true && used == "Pan" && eatable == true)
+        {
+            if (MincedPork == true && Carrot == false && burn == false) //ไข่เจียวหมูสับไม่แครอท
             {
                 CurrentFood = "Omelet_PW";
             }
-            else if (porkWord == false && carrot == true && burn == false) //ไข่เจียวแครอทไม่หมูสับ
+            else if (MincedPork == false && Carrot == true && burn == false) //ไข่เจียวแครอทไม่หมูสับ
             {
                 CurrentFood = "Omelet_C";
             }
-            else if (porkWord == true && carrot == true && burn == false) //ไข่เจียวหมูสับแครอท
+            else if (MincedPork == true && Carrot == true && burn == false) //ไข่เจียวหมูสับแครอท
             {
                 CurrentFood = "Omelet_PW_C";
             }
-            else if(porkWord == false && carrot == false && burn == false) //ไข่เจียว
+            else if(MincedPork == false && Carrot == false && burn == false) //ไข่เจียว
             {
                 CurrentFood = "OmeletOnly";
             }
-            else if (porkWord == true && carrot == false && burn == true) //ไข่เจียวหมูสับไม่แครอท ไหม้
+            else if (MincedPork == true && Carrot == false && burn == true) //ไข่เจียวหมูสับไม่แครอท ไหม้
             {
                 CurrentFood = "Omelet_PW_Burn";
             }
-            else if (porkWord == false && carrot == true && burn == true) //ไข่เจียวแครอทไม่หมูสับ ไหม้
+            else if (MincedPork == false && Carrot == true && burn == true) //ไข่เจียวแครอทไม่หมูสับ ไหม้
             {
                 CurrentFood = "Omelet_C_Burn";
             }
-            else if (porkWord == true && carrot == true && burn == true) //ไข่เจียวหมูสับแครอท ไหม้
+            else if (MincedPork == true && Carrot == true && burn == true) //ไข่เจียวหมูสับแครอท ไหม้
             {
                 CurrentFood = "Omelet_PW_C_Burn";
             }
-            else if (porkWord == false && carrot == false && burn == true)//ไข่เจียว ไหม้
+            else if (MincedPork == false && Carrot == false && burn == true)//ไข่เจียว ไหม้
             {
                 CurrentFood = "OmeletOnly_Burn";
             }
         }
-
+        
         return CurrentFood;
 
     }
 
     public void Reset()
     {
-        protein = 0;
-        vegetable = 0;
+        Protein = 0;
+        Sodium = 0;
+        Fat = 0;
+        KiloCalories = 0;
+        Happiness = 0;
+        Normal_Health = 0;
+        KDP_Health = 0;
 
-        turner = false;
-        egg = false;
-        carrot = false;
-        porkWord = false;
+        itemList = new List<FoodStatus>();
     }
 }

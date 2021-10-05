@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class Cooking : MonoBehaviour
 {
 
-    public GameObject[] Carrot;
-    public GameObject[] CutedCarrot;
+    public GameObject[] CutedItems;
 
     Kitchen_UI kitchen_UI;
 
@@ -32,6 +31,9 @@ public class Cooking : MonoBehaviour
 
     string kitchenwere;
 
+    string targetSpawn;
+
+   
     private void Awake()
     {
 
@@ -52,9 +54,9 @@ public class Cooking : MonoBehaviour
 
         kitchen_UI = GameObject.Find("Kitchen_UI_Manager").GetComponent<Kitchen_UI>();
 
-        for (int i = 0;i < CutedCarrot.Length;i++)
+        for (int i = 0;i < CutedItems.Length;i++)
         {
-            CutedCarrot[i].SetActive(false);
+            CutedItems[i].SetActive(false);
         }
 
         Pot.SetActive(false);
@@ -83,7 +85,7 @@ public class Cooking : MonoBehaviour
             eatable = true;
         }
 
-        if (time > 3.2f)
+        if (time > 5f)
         {
             burn = true;
         }
@@ -96,41 +98,276 @@ public class Cooking : MonoBehaviour
 
     public void SpawnCutedItem(string ItemName)
     {
+
         switch (ItemName)
         {
             case "Carrot1":
-                CutedCarrot[0].SetActive(true);
-                StartCoroutine(DelayHide(Carrot[0]));
+                targetSpawn = "CutedCarrot1_Step1";
                 break;
             case "Carrot2":
-                CutedCarrot[1].SetActive(true);
-                StartCoroutine(DelayHide(Carrot[1]));
+                targetSpawn = "CutedCarrot2_Step1";
                 break;
             case "Carrot3":
-                CutedCarrot[2].SetActive(true);
-                StartCoroutine(DelayHide(Carrot[2]));
+                targetSpawn = "CutedCarrot3_Step1";
                 break;
             case "Carrot4":
-                CutedCarrot[3].SetActive(true);
-                StartCoroutine(DelayHide(Carrot[3]));
+                targetSpawn = "CutedCarrot4_Step1";
                 break;
             case "CutedCarrot1_Step1":
-                CutedCarrot[4].SetActive(true);
-                StartCoroutine(DelayHide(CutedCarrot[0]));
+                targetSpawn = "CutedCarrot1_Step2";
                 break;
             case "CutedCarrot2_Step1":
-                CutedCarrot[5].SetActive(true);
-                StartCoroutine(DelayHide(CutedCarrot[1]));
+                targetSpawn = "CutedCarrot2_Step2";
                 break;
             case "CutedCarrot3_Step1":
-                CutedCarrot[6].SetActive(true);
-                StartCoroutine(DelayHide(CutedCarrot[2]));
+                targetSpawn = "CutedCarrot3_Step2";
                 break;
             case "CutedCarrot4_Step1":
-                CutedCarrot[7].SetActive(true);
-                StartCoroutine(DelayHide(CutedCarrot[3]));
+                targetSpawn = "CutedCarrot4_Step2";
+                break;
+            case "Beef1":
+                targetSpawn = "CutedBeef1";
+                break;
+            case "Beef2":
+                targetSpawn = "CutedBeef2";
+                break;
+            case "Beef3":
+                targetSpawn = "CutedBeef3";
+                break;
+            case "Beef4":
+                targetSpawn = "CutedBeef4";
+                break;
+            case "Chicken1":
+                targetSpawn = "CutedChicken1";
+                break;
+            case "Chicken2":
+                targetSpawn = "CutedChicken2";
+                break;
+            case "Chicken3":
+                targetSpawn = "CutedChicken3";
+                break;
+            case "Chicken4":
+                targetSpawn = "CutedChicken4";
+                break;
+            case "ChineseKale1":
+                targetSpawn = "CutedChineseKale1_Step1";
+                break;
+            case "ChineseKale2":
+                targetSpawn = "CutedChineseKale2_Step1";
+                break;
+            case "ChineseKale3":
+                targetSpawn = "CutedChineseKale3_Step1";
+                break;
+            case "ChineseKale4":
+                targetSpawn = "CutedChineseKale4_Step1";
+                break;
+            case "Cucumber1":
+                targetSpawn = "CutedCucumber1";
+                break;
+            case "Cucumber2":
+                targetSpawn = "CutedCucumber2";
+                break;
+            case "Cucumber3":
+                targetSpawn = "CutedCucumber3";
+                break;
+            case "Cucumber4":
+                targetSpawn = "CutedCucumber4";
+                break;
+            case "Fish1":
+                targetSpawn = "CutedFish1";
+                break;
+            case "Fish2":
+                targetSpawn = "CutedFish2";
+                break;
+            case "Fish3":
+                targetSpawn = "CutedFish3";
+                break;
+            case "Fish4":
+                targetSpawn = "CutedFish4";
+                break;
+            case "Garlic1":
+                targetSpawn = "CutedGarlic1";
+                break;
+            case "Garlic2":
+                targetSpawn = "CutedGarlic2";
+                break;
+            case "Garlic3":
+                targetSpawn = "CutedGarlic3";
+                break;
+            case "Garlic4":
+                targetSpawn = "CutedGarlic4";
+                break;
+            case "Ginger1":
+                targetSpawn = "CutedGinger1_Step1";
+                break;
+            case "Ginger2":
+                targetSpawn = "CutedGinger2_Step1";
+                break;
+            case "Ginger3":
+                targetSpawn = "CutedGinger3_Step1";
+                break;
+            case "Ginger4":
+                targetSpawn = "CutedGinger4_Step1";
+                break;
+            case "CutedGinger1_Step1":
+                targetSpawn = "CutedGinger1_Step2";
+                break;
+            case "CutedGinger2_Step1":
+                targetSpawn = "CutedGinger2_Step2";
+                break;
+            case "CutedGinger3_Step1":
+                targetSpawn = "CutedGinger3_Step2";
+                break;
+            case "CutedGinger4_Step1":
+                targetSpawn = "CutedGinger4_Step2";
+                break;
+            case "Lime1":
+                targetSpawn = "CutedLime1_Step1";
+                break;
+            case "Lime2":
+                targetSpawn = "CutedLime2_Step1";
+                break;
+            case "Lime3":
+                targetSpawn = "CutedLime3_Step1";
+                break;
+            case "Lime4":
+                targetSpawn = "CutedLime4_Step1";
+                break;
+            case "CutedLime1_Step1":
+                targetSpawn = "CutedLime1_Step2";
+                break;
+            case "CutedLime2_Step1":
+                targetSpawn = "CutedLime2_Step2";
+                break;
+            case "CutedLime3_Step1":
+                targetSpawn = "CutedLime3_Step2";
+                break;
+            case "CutedLime4_Step1":
+                targetSpawn = "CutedLime4_Step2";
+                break;
+            case "Onion1":
+                targetSpawn = "CutedOnion1_Step1";
+                break;
+            case "Onion2":
+                targetSpawn = "CutedOnion2_Step1";
+                break;
+            case "Onion3":
+                targetSpawn = "CutedOnion3_Step1";
+                break;
+            case "Onion4":
+                targetSpawn = "CutedOnion4_Step1";
+                break;
+            case "CutedOnion1_Step1":
+                targetSpawn = "CutedOnion1_Step2";
+                break;
+            case "CutedOnion2_Step1":
+                targetSpawn = "CutedOnion2_Step2";
+                break;
+            case "CutedOnion3_Step1":
+                targetSpawn = "CutedOnion3_Step2";
+                break;
+            case "CutedOnion4_Step1":
+                targetSpawn = "CutedOnion4_Step2";
+                break;
+            case "Pork1":
+                targetSpawn = "CutedPork1";
+                break;
+            case "Pork2":
+                targetSpawn = "CutedPork2";
+                break;
+            case "Pork3":
+                targetSpawn = "CutedPork3";
+                break;
+            case "Pork4":
+                targetSpawn = "CutedPork4";
+                break;
+            case "Potato1":
+                targetSpawn = "CutedPotato1";
+                break;
+            case "Potato2":
+                targetSpawn = "CutedPotato2";
+                break;
+            case "Potato3":
+                targetSpawn = "CutedPotato3";
+                break;
+            case "Potato4":
+                targetSpawn = "CutedPotato4";
+                break;
+            case "Shallot1":
+                targetSpawn = "CutedShallot1_Step1";
+                break;
+            case "Shallot2":
+                targetSpawn = "CutedShallot2_Step1";
+                break;
+            case "Shallot3":
+                targetSpawn = "CutedShallot3_Step1";
+                break;
+            case "Shallot4":
+                targetSpawn = "CutedShallot4_Step1";
+                break;
+            case "CutedShallot1_Step1":
+                targetSpawn = "CutedShallot1_Step2";
+                break;
+            case "CutedShallot2_Step1":
+                targetSpawn = "CutedShallot2_Step2";
+                break;
+            case "CutedShallot3_Step1":
+                targetSpawn = "CutedShallot3_Step2";
+                break;
+            case "CutedShallot4_Step1":
+                targetSpawn = "CutedShallot4_Step2";
+                break;
+            case "SpringOnion1":
+                targetSpawn = "CutedSpringOnion1_Step1";
+                break;
+            case "SpringOnion2":
+                targetSpawn = "CutedSpringOnion2_Step1";
+                break;
+            case "SpringOnion3":
+                targetSpawn = "CutedSpringOnion3_Step1";
+                break;
+            case "SpringOnion4":
+                targetSpawn = "CutedSpringOnion4_Step1";
+                break;
+            case "CutedSpringOnion1_Step1":
+                targetSpawn = "CutedSpringOnion1_Step2";
+                break;
+            case "CutedSpringOnion2_Step1":
+                targetSpawn = "CutedSpringOnion2_Step2";
+                break;
+            case "CutedSpringOnion3_Step1":
+                targetSpawn = "CutedSpringOnion3_Step2";
+                break;
+            case "CutedSpringOnion4_Step1":
+                targetSpawn = "CutedSpringOnion4_Step2";
+                break;
+            case "Tomato1":
+                targetSpawn = "CutedTomato1";
+                break;
+            case "Tomato2":
+                targetSpawn = "CutedTomato2";
+                break;
+            case "Tomato3":
+                targetSpawn = "CutedTomato3";
+                break;
+            case "Tomato4":
+                targetSpawn = "CutedTomato4";
                 break;
         }
+
+        kitchen_UI.HideItem();
+
+        for (int i = 0; i < CutedItems.Length;i++)
+        {
+            if (targetSpawn == CutedItems[i].name)
+            {
+                CutedItems[i].SetActive(true);
+                targetSpawn = "";
+                break;
+            }
+        }
+
+
     }
 
     IEnumerator DelayHide(GameObject HideObject)

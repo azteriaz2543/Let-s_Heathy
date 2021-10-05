@@ -41,6 +41,12 @@ public class Kitchen_UI : MonoBehaviour
 
     bool showMenu = false;
 
+    public DoingZoneControl doingZoneControl;
+
+    public GameObject[] BeatItems;
+
+    public GameObject BlockInv;
+    public Transform far;
 
 
     void Start()
@@ -61,9 +67,13 @@ public class Kitchen_UI : MonoBehaviour
 
         MenuWay.SetActive(false);
 
+        doingZoneControl = doingZoneControl.GetComponent<DoingZoneControl>();
+
+
+
     }
 
-    
+
     void Update()
     {
         InventoryZone.SetActive(ShowInv);
@@ -118,15 +128,37 @@ public class Kitchen_UI : MonoBehaviour
                 if (Inventory[i] == Item)
                 {
                     Inventory.RemoveAt(i);
+                    HideItem();
                 }
             }
         }
-        
+
     }
+
+    public void RemoveInventoryOnly(string itemName)
+    {
+        GameObject Item = GameObject.Find(itemName);
+
+        if (Inventory.Count > 0)
+        {
+            for (int i = 0; i < Inventory.Count; i++)
+            {
+                if (Inventory[i] == Item)
+                {
+                    Inventory.RemoveAt(i);
+                }
+            }
+        }
+
+    }
+
+
+
     public void Reset()
     {
         Inventory = new List<GameObject>();
         HideItem();
+
     }
 
     public void OnItemDrag()
@@ -178,7 +210,6 @@ public class Kitchen_UI : MonoBehaviour
         Map.SetActive(false);
         HouseEvent.SetActive(false);
         CounterBG.SetActive(true);
-        dropHere.Counter();
     }
 
     public void Stove()
@@ -231,18 +262,24 @@ public class Kitchen_UI : MonoBehaviour
 
         dropHere.NoDrop();
 
+        doingZoneControl.ThrownAway();
+
+        BlockInv.transform.position = far.transform.position;
     }
 
     public void HideItem()
     {
-        for (int i = 0; i < FridgeItem.Length; i++)
+        if (OpenFridge == false)
         {
-            FridgeItem[i].SetActive(false);
+            for (int i = 0; i < FridgeItem.Length; i++)
+            {
+                FridgeItem[i].SetActive(false);
+            }
         }
 
-        for (int i = 0; i < cooking.CutedCarrot.Length; i++)
+        for (int i = 0; i < cooking.CutedItems.Length; i++)
         {
-            cooking.CutedCarrot[i].SetActive(false);
+            cooking.CutedItems[i].SetActive(false);
         }
 
         for (int i = 0; i < cooking.Food.Length; i++)
@@ -253,6 +290,11 @@ public class Kitchen_UI : MonoBehaviour
         for (int i = 0; i < cooking.FinishCook.Length; i++)
         {
             cooking.FinishCook[i].SetActive(false);
+        }
+
+        for (int i = 0; i < BeatItems.Length; i++)
+        {
+            BeatItems[i].SetActive(false);
         }
 
         for (int i = 0; i < Inventory.Count; i++)
@@ -345,6 +387,42 @@ public class Kitchen_UI : MonoBehaviour
         HideMenu.SetActive(false);
         Reset();
         BlockImage.SetActive(true);
+    }
+
+    string targetBeat;
+
+    public void Beating(string ObjectId)
+    {
+        switch (ObjectId)
+        {
+            case "Egg1":
+                targetBeat = "EggBeat1";
+                break;
+            case "Egg2":
+                targetBeat = "EggBeat2";
+                break;
+            case "Egg3":
+                targetBeat = "EggBeat3";
+                break;
+            case "Egg4":
+                targetBeat = "EggBeat4";
+                break;
+        }
+
+        for (int i = 0; i < BeatItems.Length; i++)
+        {
+            if (BeatItems[i].name == targetBeat)
+            {
+                RemoveInventory(ObjectId);
+                BeatItems[i].SetActive(true);
+                Debug.Log(targetBeat);
+                targetBeat = "";
+            }
+            
+        }
+
+        
+
     }
 
 }

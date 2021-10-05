@@ -10,22 +10,40 @@ public class CutBoard : MonoBehaviour
 
     public Transform NearCutBoard, FarCutBoard;
 
+    public Kitchen_UI kitchen_UI;
 
     void Start()
     {
         CanCut = false;
+
+        kitchen_UI = kitchen_UI.GetComponent<Kitchen_UI>();
     }
 
 
     void Update()
     {
-        if (CanCut == true)
+        if (kitchen_UI.Cuting == true)
         {
-            CutCollider.transform.position = NearCutBoard.position;
+            if (CanCut == true)
+            {
+                CutCollider.transform.position = NearCutBoard.position;
+            }
+            else
+            {
+                CutCollider.transform.position = FarCutBoard.position;
+            }
         }
-        else
-        {
-            CutCollider.transform.position = FarCutBoard.position;
-        }
+        
     }
+    public void Cancut()
+    {
+            CanCut = true;
+    }
+
+    public void HideCut()
+    {
+            CanCut = false;
+
+    }
+
 }

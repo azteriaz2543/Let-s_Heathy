@@ -3,69 +3,81 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 
 public class PanelSettings : MonoBehaviour {
-	DragDropManager DDM;
-	
-	// the Id of this panel
-	public string Id;
+    DragDropManager DDM;
 
-	// Enums
-	public enum ObjectPosStates { UseObjectSettings, DroppedPosition, PanelPosition };
-	public enum ObjectLockStates { UseObjectSettings, LockObject, DoNotLockObject  };
-	public enum ObjectReplace { Allowed, NotAllowed, MultiObjectMode  };
-	//
+    // the Id of this panel
+    public string Id;
 
-	// Customization Tools
-	[Header ("Object Position")]
-	[Tooltip ("Customize the position of object when dropped on this panel")]
-	public ObjectPosStates ObjectPosition;
+    // Enums
+    public enum ObjectPosStates { UseObjectSettings, DroppedPosition, PanelPosition };
+    public enum ObjectLockStates { UseObjectSettings, LockObject, DoNotLockObject };
+    public enum ObjectReplace { Allowed, NotAllowed, MultiObjectMode };
+    //
 
-	[Header ("Lock Object")]
-	[Tooltip ("Customize Object Locking")]
-	public ObjectLockStates LockObject;
+    // Customization Tools
+    [Header("Object Position")]
+    [Tooltip("Customize the position of object when dropped on this panel")]
+    public ObjectPosStates ObjectPosition;
 
-	[Header ("Replacement & Multi Object")]
-	[Tooltip ("Allow Object to Replace & Switch or use Multi Object Mode")]
-	public ObjectReplace ObjectReplacement;
-	//
+    [Header("Lock Object")]
+    [Tooltip("Customize Object Locking")]
+    public ObjectLockStates LockObject;
 
-	[Header ("Events Management")]
-	[Tooltip ("When any object dropped on the panel, the functions that you added to this event trigger will be called")]
-	public UnityEvent OnObjectDropped;
+    [Header("Replacement & Multi Object")]
+    [Tooltip("Allow Object to Replace & Switch or use Multi Object Mode")]
+    public ObjectReplace ObjectReplacement;
+    //
 
-	[HideInInspector]
-	// using for Multi Object tool
-	public List<string> PanelIdManager;
+    [Header("Events Management")]
+    [Tooltip("When any object dropped on the panel, the functions that you added to this event trigger will be called")]
+    public UnityEvent OnObjectDropped;
+
+    [HideInInspector]
+    // using for Multi Object tool
+    public List<string> PanelIdManager;
 
     Kitchen_UI kitchen_UI;
     public string currentItem;
     Cooking cooking;
 
-    
+    GameObject BlockInv;
+    Transform near;
+    Transform far;
 
-    void Start () {
-		// Getting current DDM GameObject
-		DDM = GameObject.Find ("DDM").GetComponent<DragDropManager> ();
+
+    void Start() {
+        // Getting current DDM GameObject
+        DDM = GameObject.Find("DDM").GetComponent<DragDropManager>();
 
         kitchen_UI = GameObject.Find("Kitchen_UI_Manager").GetComponent<Kitchen_UI>();
         cooking = GameObject.Find("Cooking").GetComponent<Cooking>();
+        BlockInv = GameObject.Find("BlockInv");
+
+        near = GameObject.Find("NearInv").transform;
+        far = GameObject.Find("FarInv").transform;
+
+    }
+    void Update()
+    {
+
 
     }
 
-	public void SetupPanelEvents () {
-		// Events Management
-		if (OnObjectDropped != null) {
-			OnObjectDropped.Invoke ();
-		}
-	}
+    public void SetupPanelEvents() {
+        // Events Management
+        if (OnObjectDropped != null) {
+            OnObjectDropped.Invoke();
+        }
+    }
 
-	public void SetMultiObject (string ObjectId) {
-		// Adding new object to the list of dropped objects
-		PanelIdManager.Add (ObjectId);
+    public void SetMultiObject(string ObjectId) {
+        // Adding new object to the list of dropped objects
+        PanelIdManager.Add(ObjectId);
 
-		if (DDM.SaveStates) {
-			SaveObjectsList ();
-		}
-	}
+        if (DDM.SaveStates) {
+            SaveObjectsList();
+        }
+    }
 
     public void AddItem()
     {
@@ -73,8 +85,13 @@ public class PanelSettings : MonoBehaviour {
 
         if (currentItem != ObjectId)
         {
+            if (currentItem != "" || currentItem != "Reset")
+            {
+                kitchen_UI.RemoveInventory(currentItem);
+            }
             currentItem = ObjectId;
             kitchen_UI.AddInventory(currentItem);
+
         }
 
     }
@@ -93,8 +110,8 @@ public class PanelSettings : MonoBehaviour {
 
         if (kitchen_UI.OpenFridge == false)
         {
-            
-            if (ObjectId == "Spoon" || ObjectId == "Turner" || ObjectId == "Rice")
+
+            if (ObjectId == "Spoon" || ObjectId == "Turner" || ObjectId == "Rice" || ObjectId == "Water")
             {
                 ReturnItem.SetActive(true);
             }
@@ -102,118 +119,94 @@ public class PanelSettings : MonoBehaviour {
             {
                 ReturnItem.SetActive(false);
             }
-        }  
+        }
 
     }
 
-    public void RemoveMultiObject (string ObjectId) {
-		// Removing an object from list of dropped objects
-		if (DDM.SaveStates) {
-			PlayerPrefs.DeleteKey (Id + "&&" + (PanelIdManager.Count - 1).ToString ());
-		}
+    public void RemoveMultiObject(string ObjectId) {
+        // Removing an object from list of dropped objects
+        if (DDM.SaveStates) {
+            PlayerPrefs.DeleteKey(Id + "&&" + (PanelIdManager.Count - 1).ToString());
+        }
 
-		PanelIdManager.Remove (ObjectId);
-	}
+        PanelIdManager.Remove(ObjectId);
+    }
 
-	void SaveObjectsList () {
-		for (int i = 0; i < PanelIdManager.Count; i++) {
-			PlayerPrefs.SetString (Id + "&&" + i.ToString (), PanelIdManager [i]);
-		}
-	}
+    void SaveObjectsList() {
+        for (int i = 0; i < PanelIdManager.Count; i++) {
+            PlayerPrefs.SetString(Id + "&&" + i.ToString(), PanelIdManager[i]);
+        }
+    }
 
-	public void LoadObjectsList () {
-		// loading list of dropped objects
-		for (int i = 0; i < DragDropManager.DDM.AllObjects.Length; i++) {
-			if (PlayerPrefs.HasKey (Id + "&&" + i.ToString ())) {
-				PanelIdManager.Add (PlayerPrefs.GetString (Id + "&&" + i.ToString ()));
-			}
-		}
+    public void LoadObjectsList() {
+        // loading list of dropped objects
+        for (int i = 0; i < DragDropManager.DDM.AllObjects.Length; i++) {
+            if (PlayerPrefs.HasKey(Id + "&&" + i.ToString())) {
+                PanelIdManager.Add(PlayerPrefs.GetString(Id + "&&" + i.ToString()));
+            }
+        }
 
-		for (int i = 0; i < PanelIdManager.Count; i++) {
-			for (int j = 0; j < DragDropManager.DDM.AllObjects.Length; j++) {
-				
-				if (DragDropManager.DDM.AllObjects [j].Id == PanelIdManager [i]) {
-					DragDropManager.DDM.AllObjects [j].GetComponent <RectTransform> ().SetAsLastSibling ();
+        for (int i = 0; i < PanelIdManager.Count; i++) {
+            for (int j = 0; j < DragDropManager.DDM.AllObjects.Length; j++) {
 
-					for (int k = 0; k < DragDropManager.DDM.AllPanels.Length; k++) {
-						if (DragDropManager.DDM.AllPanels [k].Id == Id) {
-							DragDropManager.DDM.SetPanelObject (k, DragDropManager.DDM.AllObjects [j].Id);
-						}
-					}
-				}
-			}
-		}
-	}
+                if (DragDropManager.DDM.AllObjects[j].Id == PanelIdManager[i]) {
+                    DragDropManager.DDM.AllObjects[j].GetComponent<RectTransform>().SetAsLastSibling();
 
-    bool haveKnife = false;
-    bool canCut = false;
+                    for (int k = 0; k < DragDropManager.DDM.AllPanels.Length; k++) {
+                        if (DragDropManager.DDM.AllPanels[k].Id == Id) {
+                            DragDropManager.DDM.SetPanelObject(k, DragDropManager.DDM.AllObjects[j].Id);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    string ItemInCut;
 
     public void CheckForCut()
     {
-
         string ObjectId = DragDropManager.GetPanelObject(Id);
+
         if (currentItem != ObjectId)
         {
             currentItem = ObjectId;
         }
 
+        BlockInv.transform.position = near.transform.position;
+        
+
         if (currentItem == "Knife1")
         {
-            haveKnife = true;
-            DragDropManager.ResetOnlyObject("Knife1");
-        }
 
-        if (haveKnife == true)
-        {
             for (int i = 0; i < PanelIdManager.Count; i++)
             {
-                switch (PanelIdManager[i])
+                if (PanelIdManager[i] != "Knife1")
                 {
-                    default: canCut = false;
-                        break;
-                    case "Carrot1": 
-                        canCut = true;
-                        break;
-                    case "Carrot2":
-                        canCut = true;
-                        break;
-                    case "Carrot3":
-                        canCut = true;
-                        break;
-                    case "Carrot4":
-                        canCut = true;
-                        break;
-                    case "CutedCarrot1_Step1":
-                        canCut = true;
-                        break;
-                    case "CutedCarrot2_Step1":
-                        canCut = true;
-                        break;
-                    case "CutedCarrot3_Step1":
-                        canCut = true;
-                        break;
-                    case "CutedCarrot4_Step1":
-                        canCut = true;
-                        break;
-                }
-
-                if (canCut == true && kitchen_UI.Cuting == true)
-                {
-                    cooking.SpawnCutedItem(PanelIdManager[i]);
                     DragDropManager.ResetOnlyObject(PanelIdManager[i]);
+                    cooking.SpawnCutedItem(PanelIdManager[i]);
                     kitchen_UI.RemoveInventory(PanelIdManager[i]);
                     break;
                 }
             }
 
-                haveKnife = false;
-                PanelIdManager.Clear();
-                
-
+            BlockInv.transform.position = far.transform.position;
+            PanelIdManager.Clear();
+            DragDropManager.ResetOnlyObject("Knife1");
 
         }
+        else
+        {
+            ItemInCut = currentItem;
+            kitchen_UI.RemoveInventoryOnly(currentItem);
+        }
 
+    }
 
+    public void ItemInCutGoBack()
+    {
+        DragDropManager.ResetOnlyObject(ItemInCut);
+        ItemInCut = "";
     }
 
     public void SpawnItem()
@@ -222,14 +215,14 @@ public class PanelSettings : MonoBehaviour {
         kitchen_UI = GameObject.Find("Kitchen_UI_Manager").GetComponent<Kitchen_UI>();
         cooking = GameObject.Find("Cooking").GetComponent<Cooking>();
 
-        if (ObjectId == "Spoon" || ObjectId == "Turner")
+        if (ObjectId == "Spoon" || ObjectId == "Turner" || ObjectId == "Water")
         {
             cooking.Spawn(ObjectId);
         }
 
         if (kitchen_UI.CheckInventory(ObjectId) == true)
         {
-            cooking.Spawn(ObjectId);  
+            cooking.Spawn(ObjectId);
             kitchen_UI.RemoveInventory(ObjectId);
 
         }
@@ -252,7 +245,32 @@ public class PanelSettings : MonoBehaviour {
 
         Return();
 
-        
+
     }
+
+    public void IconControl (KnifeIcon knifeIcon)
+    {
+        string ObjectId = DragDropManager.GetPanelObject(Id);
+        knifeIcon = knifeIcon.GetComponent<KnifeIcon>();
+        knifeIcon.CanCutItem(currentItem);
+    }
+
+    public void Beating()
+    {
+        string ObjectId = DragDropManager.GetPanelObject(Id);
+        kitchen_UI = GameObject.Find("Kitchen_UI_Manager").GetComponent<Kitchen_UI>();
+        switch (ObjectId)
+        {
+            case "Egg1":
+            case "Egg2":
+            case "Egg3":
+            case "Egg4":
+                kitchen_UI.Beating(ObjectId);
+                break;
+        }
+        
+        Return();
+    }
+
 
 }
