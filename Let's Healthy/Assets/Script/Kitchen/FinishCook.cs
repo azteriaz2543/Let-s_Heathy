@@ -57,30 +57,34 @@ public class FinishCook : MonoBehaviour
         Potato,
         Shallot,
         SpringOnion,
-        Tomato;
-    #endregion
+        Tomato,
+        Rice,
+        Lemonade,
+        MassamanPowder,
+        Mayonnaise,
+        Mayonnaise_J,
+        Mayonnaise_LowFat,
+        Black_Soysauce,
+        White_Soysauce,
+        Fish_Sauce,
+        Oyster_Sauce,
+        Vegetable_Oil,
+        Msg,
+        Pepper,
+        Pepper_Cayenne,
+        Pink_Salt,
+        Powder_Chicken,
+        Salad_DressingJP,
+        Salt,
+        White_Sugar,
+        Tomato_Ketchup,
+        Brown_Sugar,
+        Cinnamon;
+    #endregion //àªç¤äÍà·Á
 
     void Start()
     {
         itemList = new List<FoodStatus>();
-
-        /*
-        AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Spoon, amount = 1 });
-        AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Egg, amount = 1 });
-        AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Spoon, amount = 2 });
-        AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Pork, amount = 1 });
-        AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Water, amount = 1 });
-        AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Carrot, amount = 1 });
-
-        foreach (FoodStatus usedItem in itemList)
-        {
-            if (usedItem.amount > 0)
-            {
-                Debug.Log(usedItem.itemType + " ... " + usedItem.amount);
-            }
-            
-        }
-        */
     }
     
     void Update()
@@ -454,6 +458,96 @@ public class FinishCook : MonoBehaviour
                 KiloCalories += 35.4f;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Tomato, amount = 1 });
                 break;
+            case "Lemonade":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Lemonade, amount = 1 });
+                break;
+            case "MassamanPowder":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.MassamanPowder, amount = 1 });
+                break;
+            case "Mayonnaise":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Mayonnaise, amount = 1 });
+                break;
+            case "Mayonnaise_J":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Mayonnaise_J, amount = 1 });
+                break;
+            case "Mayonnaise_LowFat":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Mayonnaise_LowFat, amount = 1 });
+                break;
+            case "Black_Soysauce":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Black_Soysauce, amount = 1 });
+                break;
+            case "White_Soysauce":
+                Happiness += 2;
+                Sodium += 400;
+                Protein += 0.9f;
+                KiloCalories += 15;
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.White_Soysauce, amount = 1 });
+                break;
+            case "Fish_Sauce":
+                Happiness += 2.5f;
+                Sodium += 490;
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Fish_Sauce, amount = 1 });
+                break;
+            case "Oyster_Sauce":
+                Happiness += 1.5f;
+                Sodium += 165;
+                Protein += 0.2f;
+                KiloCalories += 15;
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Oyster_Sauce, amount = 1 });
+                break;
+            case "Vegetable_Oil":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Vegetable_Oil, amount = 1 });
+                break;
+            case "Msg":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Msg, amount = 1 });
+                break;
+            case "Pepper":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Pepper, amount = 1 });
+                break;
+            case "Pepper_Cayenne":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Pepper_Cayenne, amount = 1 });
+                break;
+            case "Pink_Salt":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Pink_Salt, amount = 1 });
+                break;
+            case "Powder_Chicken":
+                Happiness += 5;
+                Sodium += 48;
+                Protein += 0.5f;
+                KiloCalories += 20;
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Powder_Chicken, amount = 1 });
+                break;
+            case "Salad_DressingJP":
+                Happiness += 1;
+                Sodium += 41.43f;
+                Fat += 1.57f;
+                Protein += 0.14f;
+                KiloCalories += 26;
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Salad_DressingJP, amount = 1 });
+                break;
+            case "Salt":
+                Happiness += 10;
+                Sodium += 1900;
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Salt, amount = 1 });
+                break;
+            case "White_Sugar":
+                Happiness += 1;
+                KiloCalories += 19;
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.White_Sugar, amount = 1 });
+                break;
+            case "Tomato_Ketchup":
+                Happiness += 1;
+                Sodium += 47.5f;
+                KiloCalories += 15;
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Tomato_Ketchup, amount = 1 });
+                break;
+            case "Brown_Sugar":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Brown_Sugar, amount = 1 });
+                break;
+            case "Cinnamon":
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Cinnamon, amount = 1 });
+                break;
+            
         }
 
     }

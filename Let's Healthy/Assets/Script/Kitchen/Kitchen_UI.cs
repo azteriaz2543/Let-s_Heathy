@@ -54,6 +54,12 @@ public class Kitchen_UI : MonoBehaviour
     public FinishCook finishCook;
     public Text CText2, CText3, CText4, CText5, CText6, CText7;
 
+    public GameObject[] Condiment;
+    public GameObject ShelfBG;
+    bool OpenShelf;
+
+    public GameObject HouseBackButton;
+
     void Start()
     {
         Inventory = new List<GameObject>();
@@ -203,6 +209,7 @@ public class Kitchen_UI : MonoBehaviour
         CloseButton.SetActive(true);
         ShowInv = true;
         OpenFridge = true;
+        HouseBackButton.SetActive(false);
     }
 
     public void CuttingBoard()
@@ -213,12 +220,14 @@ public class Kitchen_UI : MonoBehaviour
         Map.SetActive(false);
         Knife.SetActive(true);
         Cuting = true;
+        HouseBackButton.SetActive(false);
     }
 
     public void Incubator()
     {
         IncubatorPanel.SetActive(true);
         CloseButton.SetActive(true);
+        HouseBackButton.SetActive(false);
     }
 
     public void Main()
@@ -229,6 +238,7 @@ public class Kitchen_UI : MonoBehaviour
         Map.SetActive(false);
         HouseEvent.SetActive(false);
         CounterBG.SetActive(true);
+        HouseBackButton.SetActive(false);
     }
 
     public void Stove()
@@ -240,23 +250,36 @@ public class Kitchen_UI : MonoBehaviour
         Map.SetActive(false);
         HouseEvent.SetActive(false);
         dropHere.Stove();
+        HouseBackButton.SetActive(false);
     }
 
     public void Shelf()
     {
+        for (int i = 0; i < Condiment.Length; i++)
+        {
+            Condiment[i].SetActive(true);
+        }
+
+        HouseEvent.SetActive(false);
+        Map.SetActive(false);
+        CloseButton.SetActive(true);
         ShelfPanel.SetActive(true);
         CloseButton.SetActive(true);
+        ShelfBG.SetActive(true);
+        OpenShelf = true;
+        HouseBackButton.SetActive(false);
     }
 
     public void Microwave()
     {
         MicrowavePanel.SetActive(true);
         CloseButton.SetActive(true);
+        HouseBackButton.SetActive(false);
     }
 
     public void SetAllFalse()
     {
-        
+        HouseBackButton.SetActive(true);
         CuttingBoardPanel.SetActive(false);
         IncubatorPanel.SetActive(false);
         MainPanel.SetActive(false);
@@ -287,6 +310,9 @@ public class Kitchen_UI : MonoBehaviour
 
         ConclusionButton.SetActive(false);
         ConclusionPanel.SetActive(false);
+
+        ShelfBG.SetActive(false);
+        OpenShelf = false;
     }
 
     public void HideItem()
@@ -317,6 +343,11 @@ public class Kitchen_UI : MonoBehaviour
         for (int i = 0; i < BeatItems.Length; i++)
         {
             BeatItems[i].SetActive(false);
+        }
+
+        for (int i = 0; i < Condiment.Length; i++)
+        {
+            Condiment[i].SetActive(false);
         }
 
         for (int i = 0; i < Inventory.Count; i++)

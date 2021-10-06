@@ -56,6 +56,7 @@ public class PanelSettings : MonoBehaviour {
         near = GameObject.Find("NearInv").transform;
         far = GameObject.Find("FarInv").transform;
 
+
     }
     void Update()
     {

@@ -24,6 +24,11 @@ public class PointName : MonoBehaviour
 
         text.text = showText;
 
+        if (Input.GetMouseButtonUp(0))
+        {
+            Out();
+        }
+
     }
 
     public void Show(string pointName)
