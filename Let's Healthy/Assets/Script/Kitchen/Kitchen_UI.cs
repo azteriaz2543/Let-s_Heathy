@@ -36,7 +36,7 @@ public class Kitchen_UI : MonoBehaviour
 
     public GameObject ChooseWay, MenuWay ,MenuList ,HideMenu;
     public Text Title, Title_TH, HowTo;
-    public GameObject MaterialList;
+    public GameObject[] MaterialList;
     public GameObject BlockImage;
 
     bool showMenu = false;
@@ -48,6 +48,11 @@ public class Kitchen_UI : MonoBehaviour
     public GameObject BlockInv;
     public Transform far;
 
+    public GameObject ConclusionButton;
+    public GameObject ConclusionPanel;
+
+    public FinishCook finishCook;
+    public Text CText2, CText3, CText4, CText5, CText6, CText7;
 
     void Start()
     {
@@ -69,8 +74,7 @@ public class Kitchen_UI : MonoBehaviour
 
         doingZoneControl = doingZoneControl.GetComponent<DoingZoneControl>();
 
-
-
+        finishCook = finishCook.GetComponent<FinishCook>();
     }
 
 
@@ -80,6 +84,12 @@ public class Kitchen_UI : MonoBehaviour
 
         MenuList.SetActive(showMenu);
 
+        CText2.text = "ปริมาณโซเดียม : " + finishCook.Sodium.ToString();
+        CText3.text = "ปริมาณไขมัน : " + finishCook.Fat.ToString();
+        CText4.text = "ปริมาณโปรตีน : " + finishCook.Protein.ToString();
+        CText5.text = "ปริมาณคอลลอรี่ : " + finishCook.KiloCalories.ToString();
+        CText6.text = "ค่าความสุข : " + finishCook.Happiness.ToString();
+        CText7.text = "พลังงาน : XXX";
     }
 
     public void AddInventory(string itemName)
@@ -158,7 +168,16 @@ public class Kitchen_UI : MonoBehaviour
     {
         Inventory = new List<GameObject>();
         HideItem();
-
+        GameObject.Find("IconControl1").GetComponent<KnifeIcon>().Show = false;
+        GameObject.Find("IconControl2").GetComponent<KnifeIcon>().Show = false;
+        GameObject.Find("IconControl3").GetComponent<KnifeIcon>().Show = false;
+        GameObject.Find("IconControl4").GetComponent<KnifeIcon>().Show = false;
+        GameObject.Find("IconControl5").GetComponent<KnifeIcon>().Show = false;
+        GameObject.Find("IconControl6").GetComponent<KnifeIcon>().Show = false;
+        GameObject.Find("IconControl7").GetComponent<KnifeIcon>().Show = false;
+        GameObject.Find("IconControl8").GetComponent<KnifeIcon>().Show = false;
+        GameObject.Find("IconControl9").GetComponent<KnifeIcon>().Show = false;
+        GameObject.Find("IconControl10").GetComponent<KnifeIcon>().Show = false;
     }
 
     public void OnItemDrag()
@@ -265,6 +284,9 @@ public class Kitchen_UI : MonoBehaviour
         doingZoneControl.ThrownAway();
 
         BlockInv.transform.position = far.transform.position;
+
+        ConclusionButton.SetActive(false);
+        ConclusionPanel.SetActive(false);
     }
 
     public void HideItem()
@@ -334,6 +356,15 @@ public class Kitchen_UI : MonoBehaviour
         showMenu = !showMenu;
     }
 
+    public void Conclusion()
+    {
+        ConclusionPanel.SetActive(true);
+    }
+
+    public void Next()
+    {
+        //Active Food Status
+    }
     #endregion
 
     public bool CheckInventory(string ItemName)
@@ -373,7 +404,7 @@ public class Kitchen_UI : MonoBehaviour
         Title_TH.text = "ไข่เจียว";
         HowTo.text ="1 หยิบไข่ และวัตถุอื่นที่ตู้เย็น\n"+"2 ไปที่เตาแกส แล้วเลือกกะทะ\n" +"3 ใส่วัตถุดิบที่มีลงไป\n"
                     +"4 อย่าลืมใช้ตะหลิวในการทำอาหารด้วย\n"+"5 เปิดไฟ กะจังหวะให้หยุดอยู่ที่ สีส้ม\n"+"6 นำไปใส่จานพร้อมกับข้าวสวย";
-        MaterialList.SetActive(true);
+        MaterialList[0].SetActive(true);
         
     }
 
@@ -383,10 +414,12 @@ public class Kitchen_UI : MonoBehaviour
     {
         showMenu = false;
         ChooseWay.SetActive(true);
-        DragDropManager.Reset();
         HideMenu.SetActive(false);
-        Reset();
+        Inventory = new List<GameObject>();
+        HideItem();
         BlockImage.SetActive(true);
+        ConclusionButton.SetActive(false);
+        finishCook.Reset();
     }
 
     string targetBeat;
@@ -415,7 +448,6 @@ public class Kitchen_UI : MonoBehaviour
             {
                 RemoveInventory(ObjectId);
                 BeatItems[i].SetActive(true);
-                Debug.Log(targetBeat);
                 targetBeat = "";
             }
             

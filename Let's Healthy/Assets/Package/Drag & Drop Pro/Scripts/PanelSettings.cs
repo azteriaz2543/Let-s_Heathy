@@ -111,7 +111,7 @@ public class PanelSettings : MonoBehaviour {
         if (kitchen_UI.OpenFridge == false)
         {
 
-            if (ObjectId == "Spoon" || ObjectId == "Turner" || ObjectId == "Rice" || ObjectId == "Water")
+            if (ObjectId == "Spoon" || ObjectId == "Turner" || ObjectId == "Rice" || ObjectId == "Water" || ObjectId == "RiceC")
             {
                 ReturnItem.SetActive(true);
             }
@@ -215,7 +215,7 @@ public class PanelSettings : MonoBehaviour {
         kitchen_UI = GameObject.Find("Kitchen_UI_Manager").GetComponent<Kitchen_UI>();
         cooking = GameObject.Find("Cooking").GetComponent<Cooking>();
 
-        if (ObjectId == "Spoon" || ObjectId == "Turner" || ObjectId == "Water")
+        if (ObjectId == "Spoon" || ObjectId == "Turner" || ObjectId == "Water" || ObjectId == "RiceC")
         {
             cooking.Spawn(ObjectId);
         }
@@ -240,7 +240,7 @@ public class PanelSettings : MonoBehaviour {
 
         if (kitchen_UI.CheckInventory(ObjectId) == true)
         {
-            kitchen_UI.RemoveInventory(ObjectId);
+            kitchen_UI.RemoveInventoryOnly(ObjectId);
         }
 
         Return();

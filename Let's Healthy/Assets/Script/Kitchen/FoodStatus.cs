@@ -53,6 +53,7 @@ public class FoodStatus
         Shallot,
         SpringOnion,
         Tomato,
+        Rice,
     }
 
     public ItemType itemType;

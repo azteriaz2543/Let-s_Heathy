@@ -27,7 +27,6 @@ public class Cooking : MonoBehaviour
 
     public FinishCook finishCook;
     public GameObject[] Food;
-    public GameObject FoodStatus;
 
     string kitchenwere;
 
@@ -442,7 +441,7 @@ public class Cooking : MonoBehaviour
             
         }
 
-        finishCook.Reset();
+        
         Fire.SetActive(false);
         SmokeFire.SetActive(false);
         time = 0;
@@ -467,6 +466,7 @@ public class Cooking : MonoBehaviour
             if (FinishCook[i].gameObject.name == ItemName)
             {
                 FinishCook[i].SetActive(true);
+                
                 break;
             }
         }
@@ -479,6 +479,19 @@ public class Cooking : MonoBehaviour
         {
             if (ItemName == Food[i].gameObject.name)
             {
+                if (ItemName != "Rice")
+                {
+                    kitchen_UI.ConclusionButton.SetActive(true);
+                }
+                else
+                {
+                    finishCook.Happiness += 15;
+                    finishCook.Sodium += 1;
+                    finishCook.Fat += 0.3f;
+                    finishCook.Protein += 2.7f;
+                    finishCook.KiloCalories += 130;
+                }
+                
                 Food[i].SetActive(true);
                 break;
             }
