@@ -11,77 +11,6 @@ public class FinishCook : MonoBehaviour
 
     List<FoodStatus> itemList;
 
-    #region checkItem
-    bool Spoon,
-        Turner,
-        Water,
-        Beef,
-        Carrot,
-        Chicken,
-        ChineseKale,
-        CoconutMilk,
-        Cucumber,
-        CutedBeef,
-        CutedCarrot_Step1,
-        CutedCarrot_Step2,
-        CutedChicken,
-        CutedChineseKale_Step1,
-        CutedChineseKale_Step2,
-        CutedCucumber,
-        CutedFish,
-        CutedGarlic,
-        CutedGinger_Step1,
-        CutedGinger_Step2,
-        CutedLime_Step1,
-        CutedLime_Step2,
-        CutedOnion_Step1,
-        CutedOnion_Step2,
-        CutedPork,
-        CutedPotato,
-        CutedShallot_Step1,
-        CutedShallot_Step2,
-        CutedSpringOnion_Step1,
-        CutedSpringOnion_Step2,
-        CutedTomato,
-        Egg,
-        EggBeat,
-        Fish,
-        Garlic,
-        Ginger,
-        Lime,
-        Milk,
-        MincedBeef,
-        MincedPork,
-        Onion,
-        Pork,
-        Potato,
-        Shallot,
-        SpringOnion,
-        Tomato,
-        Rice,
-        Lemonade,
-        MassamanPowder,
-        Mayonnaise,
-        Mayonnaise_J,
-        Mayonnaise_LowFat,
-        Black_Soysauce,
-        White_Soysauce,
-        Fish_Sauce,
-        Oyster_Sauce,
-        Vegetable_Oil,
-        Msg,
-        Pepper,
-        Pepper_Cayenne,
-        Pink_Salt,
-        Powder_Chicken,
-        Salad_DressingJP,
-        Salt,
-        White_Sugar,
-        Tomato_Ketchup,
-        Brown_Sugar,
-        Cinnamon;
-    #endregion //เช็คไอเทม
-
     void Start()
     {
         itemList = new List<FoodStatus>();
@@ -100,6 +29,7 @@ public class FinishCook : MonoBehaviour
         {
             if (usedItem.itemType == item.itemType)
             {
+                usedItem.used = true;
                 usedItem.amount += item.amount;
                 itemAlreadyUsed = true;
             }
@@ -183,13 +113,13 @@ public class FinishCook : MonoBehaviour
             case "CutedCarrot2_Step1":
             case "CutedCarrot3_Step1":
             case "CutedCarrot4_Step1":
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedCarrot_Step1, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Carrot, amount = 1 });
                 break;
             case "CutedCarrot1_Step2":
             case "CutedCarrot2_Step2":
             case "CutedCarrot3_Step2":
             case "CutedCarrot4_Step2":
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedCarrot_Step2, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Carrot, amount = 1 });
                 break;
             case "CutedChicken1":
             case "CutedChicken2":
@@ -200,19 +130,19 @@ public class FinishCook : MonoBehaviour
                 Fat += 2.6f;
                 Protein += 23f;
                 KiloCalories += 79;
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedChicken, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Chicken, amount = 1 });
                 break;
             case "CutedChineseKale1_Step1":
             case "CutedChineseKale2_Step1":
             case "CutedChineseKale3_Step1":
             case "CutedChineseKale4_Step1":
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedChineseKale_Step1, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.ChineseKale, amount = 1 });
                 break;
             case "CutedChineseKale1_Step2":
             case "CutedChineseKale2_Step2":
             case "CutedChineseKale3_Step2":
             case "CutedChineseKale4_Step2":
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedChineseKale_Step2, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.ChineseKale, amount = 1 });
                 break;
             case "CutedCucumber1":
             case "CutedCucumber2":
@@ -223,13 +153,13 @@ public class FinishCook : MonoBehaviour
                 Fat += 0.11f;
                 Protein += .56f;
                 KiloCalories += 18;
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedCucumber, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Cucumber, amount = 1 });
                 break;
             case "CutedFish1":
             case "CutedFish2":
             case "CutedFish3":
             case "CutedFish4":
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedFish, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Fish, amount = 1 });
                 break;
             case "CutedGarlic1":
             case "CutedGarlic2":
@@ -240,19 +170,19 @@ public class FinishCook : MonoBehaviour
                 Fat += 0.2f;
                 Protein += 1.7f;
                 KiloCalories += 33;
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedGarlic, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Garlic, amount = 1 });
                 break;
             case "CutedGinger1_Step1":
             case "CutedGinger2_Step1":
             case "CutedGinger3_Step1":
             case "CutedGinger4_Step1":
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedGinger_Step1, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Ginger, amount = 1 });
                 break;
             case "CutedGinger1_Step2":
             case "CutedGinger2_Step2":
             case "CutedGinger3_Step2":
             case "CutedGinger4_Step2":
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedGinger_Step2, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Ginger, amount = 1 });
                 break;
             case "CutedLime1_Step1":
             case "CutedLime2_Step1":
@@ -262,7 +192,7 @@ public class FinishCook : MonoBehaviour
                 Sodium += 4;
                 Protein += 2;
                 KiloCalories += 88;
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedLime_Step1, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Lime, amount = 1 });
                 break;
             case "CutedLime1_Step2":
             case "CutedLime2_Step2":
@@ -272,19 +202,19 @@ public class FinishCook : MonoBehaviour
                 Sodium += 2;
                 Protein += 1;
                 KiloCalories += 44;
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedLime_Step2, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Lime, amount = 1 });
                 break;
             case "CutedOnion1_Step1":
             case "CutedOnion2_Step1":
             case "CutedOnion3_Step1":
             case "CutedOnion4_Step1":
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedSpringOnion_Step1, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Onion, amount = 1 });
                 break;
             case "CutedOnion1_Step2":
             case "CutedOnion2_Step2":
             case "CutedOnion3_Step2":
             case "CutedOnion4_Step2":
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedSpringOnion_Step2, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Onion, amount = 1 });
                 break;
             case "CutedPork1":
             case "CutedPork2":
@@ -295,37 +225,37 @@ public class FinishCook : MonoBehaviour
                 Fat += 32.9f;
                 Protein += 22.8f;
                 KiloCalories += 171;
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedPork, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Pork, amount = 1 });
                 break;
             case "CutedPotato1":
             case "CutedPotato2":
             case "CutedPotato3":
             case "CutedPotato4":
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedPotato, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Potato, amount = 1 });
                 break;
             case "CutedShallot1_Step1":
             case "CutedShallot2_Step1":
             case "CutedShallot3_Step1":
             case "CutedShallot4_Step1":
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedShallot_Step1, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Shallot, amount = 1 });
                 break;
             case "CutedShallot1_Step2":
             case "CutedShallot2_Step2":
             case "CutedShallot3_Step2":
             case "CutedShallot4_Step2":
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedShallot_Step2, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Shallot, amount = 1 });
                 break;
             case "CutedSpringOnion1_Step1":
             case "CutedSpringOnion2_Step1":
             case "CutedSpringOnion3_Step1":
             case "CutedSpringOnion4_Step1":
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedSpringOnion_Step1, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.SpringOnion, amount = 1 });
                 break;
             case "CutedSpringOnion1_Step2":
             case "CutedSpringOnion2_Step2":
             case "CutedSpringOnion3_Step2":
             case "CutedSpringOnion4_Step2":
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedSpringOnion_Step2, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.SpringOnion, amount = 1 });
                 break;
             case "CutedTomato1":
             case "CutedTomato2":
@@ -334,7 +264,7 @@ public class FinishCook : MonoBehaviour
                 Happiness += 6;
                 Sodium += 10;
                 KiloCalories += 17.7f;
-                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedTomato, amount = 1 });
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Tomato, amount = 1 });
                 break;
             case "Egg1":
             case "Egg2":
@@ -554,331 +484,56 @@ public class FinishCook : MonoBehaviour
 
     public string DiagnoseFood(bool burn,string used, bool eatable)
     {
-        foreach (FoodStatus usedItem in itemList)
-        {
-            switch (usedItem.itemType)
-            {
-                case FoodStatus.ItemType.Spoon:
-                    if (usedItem.amount > 0)
-                    {
-                        Spoon = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.Turner:
-                    if (usedItem.amount > 0)
-                    {
-                        Turner = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.Water:
-                    if (usedItem.amount > 0)
-                    {
-                        Water = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.Beef:
-                    if (usedItem.amount > 0)
-                    {
-                        Beef = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.Carrot:
-                    if (usedItem.amount > 0)
-                    {
-                        Carrot = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.Chicken:
-                    if (usedItem.amount > 0)
-                    {
-                        Chicken = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.ChineseKale:
-                    if (usedItem.amount > 0)
-                    {
-                        ChineseKale = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CoconutMilk:
-                    if (usedItem.amount > 0)
-                    {
-                        CoconutMilk = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.Cucumber:
-                    if (usedItem.amount > 0)
-                    {
-                        Cucumber = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedBeef:
-                    if (usedItem.amount > 0)
-                    {
-                        Beef = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedCarrot_Step1:
-                    if (usedItem.amount > 0)
-                    {
-                        Carrot = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedCarrot_Step2:
-                    if (usedItem.amount > 0)
-                    {
-                        Carrot = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedChicken:
-                    if (usedItem.amount > 0)
-                    {
-                        Chicken = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedChineseKale_Step1:
-                    if (usedItem.amount > 0)
-                    {
-                        ChineseKale = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedChineseKale_Step2:
-                    if (usedItem.amount > 0)
-                    {
-                        ChineseKale = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedCucumber:
-                    if (usedItem.amount > 0)
-                    {
-                        Cucumber = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedFish:
-                    if (usedItem.amount > 0)
-                    {
-                        Fish = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedGarlic:
-                    if (usedItem.amount > 0)
-                    {
-                        Garlic = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedGinger_Step1:
-                    if (usedItem.amount > 0)
-                    {
-                        Ginger = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedGinger_Step2:
-                    if (usedItem.amount > 0)
-                    {
-                        Ginger = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedLime_Step1:
-                    if (usedItem.amount > 0)
-                    {
-                        Lime = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedLime_Step2:
-                    if (usedItem.amount > 0)
-                    {
-                        Lime = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedOnion_Step1:
-                    if (usedItem.amount > 0)
-                    {
-                        Onion = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedOnion_Step2:
-                    if (usedItem.amount > 0)
-                    {
-                        Onion = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedPork:
-                    if (usedItem.amount > 0)
-                    {
-                        Pork = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedPotato:
-                    if (usedItem.amount > 0)
-                    {
-                        Potato = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedShallot_Step1:
-                    if (usedItem.amount > 0)
-                    {
-                        Shallot = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedShallot_Step2:
-                    if (usedItem.amount > 0)
-                    {
-                        Shallot = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedSpringOnion_Step1:
-                    if (usedItem.amount > 0)
-                    {
-                        SpringOnion = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedSpringOnion_Step2:
-                    if (usedItem.amount > 0)
-                    {
-                        SpringOnion = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.CutedTomato:
-                    if (usedItem.amount > 0)
-                    {
-                        Tomato = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.Egg:
-                    if (usedItem.amount > 0)
-                    {
-                        Egg = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.EggBeat:
-                    if (usedItem.amount > 0)
-                    {
-                        EggBeat = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.Fish:
-                    if (usedItem.amount > 0)
-                    {
-                        Fish = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.Garlic:
-                    if (usedItem.amount > 0)
-                    {
-                        Garlic = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.Ginger:
-                    if (usedItem.amount > 0)
-                    {
-                        Ginger = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.Lime:
-                    if (usedItem.amount > 0)
-                    {
-                        Lime = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.Milk:
-                    if (usedItem.amount > 0)
-                    {
-                        Milk = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.MincedBeef:
-                    if (usedItem.amount > 0)
-                    {
-                        MincedBeef = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.MincedPork:
-                    if (usedItem.amount > 0)
-                    {
-                        MincedPork = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.Onion:
-                    if (usedItem.amount > 0)
-                    {
-                        Onion = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.Pork:
-                    if (usedItem.amount > 0)
-                    {
-                        Pork = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.Potato:
-                    if (usedItem.amount > 0)
-                    {
-                        Potato = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.Shallot:
-                    if (usedItem.amount > 0)
-                    {
-                        Shallot = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.SpringOnion:
-                    if (usedItem.amount > 0)
-                    {
-                        SpringOnion = true;
-                    }
-                    break;
-                case FoodStatus.ItemType.Tomato:
-                    if (usedItem.amount > 0)
-                    {
-                        Tomato = true;
-                    }
-                    break;
-            }
-            
-
-        }
-
-
+        /*
         
-        if (EggBeat == true && Turner == true && used == "Pan" && eatable == true)
+        if (itemList[32].used == true && itemList[1].used == true && used == "Pan" && eatable == true)
         {
-            if (MincedPork == true && Carrot == false && burn == false) //ไข่เจียวหมูสับไม่แครอท
+            if (itemList[39].used == true && itemList[4].used == false && burn == false) //ไข่เจียวหมูสับไม่แครอท
             {
                 CurrentFood = "Omelet_PW";
             }
-            else if (MincedPork == false && Carrot == true && burn == false) //ไข่เจียวแครอทไม่หมูสับ
+            else if (itemList[39].used == false && itemList[4].used == true && burn == false) //ไข่เจียวแครอทไม่หมูสับ
             {
                 CurrentFood = "Omelet_C";
             }
-            else if (MincedPork == true && Carrot == true && burn == false) //ไข่เจียวหมูสับแครอท
+            else if (itemList[39].used == true && itemList[4].used == true && burn == false) //ไข่เจียวหมูสับแครอท
             {
                 CurrentFood = "Omelet_PW_C";
             }
-            else if(MincedPork == false && Carrot == false && burn == false) //ไข่เจียว
+            else if(itemList[39].used == false && itemList[4].used == false && burn == false) //ไข่เจียว
             {
                 CurrentFood = "OmeletOnly";
             }
-            else if (MincedPork == true && Carrot == false && burn == true) //ไข่เจียวหมูสับไม่แครอท ไหม้
+            else if (itemList[39].used == true && itemList[4].used == false && burn == true) //ไข่เจียวหมูสับไม่แครอท ไหม้
             {
                 CurrentFood = "Omelet_PW_Burn";
             }
-            else if (MincedPork == false && Carrot == true && burn == true) //ไข่เจียวแครอทไม่หมูสับ ไหม้
+            else if (itemList[39].used == false && itemList[4].used == true && burn == true) //ไข่เจียวแครอทไม่หมูสับ ไหม้
             {
                 CurrentFood = "Omelet_C_Burn";
             }
-            else if (MincedPork == true && Carrot == true && burn == true) //ไข่เจียวหมูสับแครอท ไหม้
+            else if (itemList[39].used == true && itemList[4].used == true && burn == true) //ไข่เจียวหมูสับแครอท ไหม้
             {
                 CurrentFood = "Omelet_PW_C_Burn";
             }
-            else if (MincedPork == false && Carrot == false && burn == true)//ไข่เจียว ไหม้
+            else if (itemList[39].used == false && itemList[4].used == false && burn == true)//ไข่เจียว ไหม้
             {
                 CurrentFood = "OmeletOnly_Burn";
             }
         }
-        
-        return CurrentFood;
+        */
 
+        if (burn == false)
+        {
+            CurrentFood = "OmeletOnly";
+        }
+        else
+        {
+            CurrentFood = "OmeletOnly_Burn";
+        }
+
+        return CurrentFood;
+        
     }
 
     public void Reset()

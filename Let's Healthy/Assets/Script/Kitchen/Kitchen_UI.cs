@@ -345,9 +345,12 @@ public class Kitchen_UI : MonoBehaviour
             BeatItems[i].SetActive(false);
         }
 
-        for (int i = 0; i < Condiment.Length; i++)
+        if (OpenShelf == false)
         {
-            Condiment[i].SetActive(false);
+            for (int i = 0; i < Condiment.Length; i++)
+            {
+                Condiment[i].SetActive(false);
+            }
         }
 
         for (int i = 0; i < Inventory.Count; i++)
