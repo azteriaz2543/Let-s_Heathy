@@ -35,7 +35,7 @@ public class Kitchen_UI : MonoBehaviour
     public Cooking cooking;
 
     public GameObject ChooseWay, MenuWay ,MenuList ,HideMenu;
-    public Text Title, Title_TH, HowTo;
+    public Text Title, Title_TH;
     public GameObject[] MaterialList;
     public GameObject BlockImage;
 
@@ -294,6 +294,7 @@ public class Kitchen_UI : MonoBehaviour
         StoveBG.SetActive(false);
         StoveDD.SetActive(false);
         Cuting = false;
+        OpenShelf = false;
 
         CounterZone.SetActive(false);
         CounterBG.SetActive(false);
@@ -312,7 +313,7 @@ public class Kitchen_UI : MonoBehaviour
         ConclusionPanel.SetActive(false);
 
         ShelfBG.SetActive(false);
-        OpenShelf = false;
+        
     }
 
     public void HideItem()
@@ -357,6 +358,12 @@ public class Kitchen_UI : MonoBehaviour
         {
             Inventory[i].SetActive(true);
         }
+
+        for (int i = 0; i < MaterialList.Length; i++)
+        {
+            MaterialList[i].SetActive(false);
+        }
+
     }
 
     public void InventoryButton()
@@ -436,10 +443,111 @@ public class Kitchen_UI : MonoBehaviour
     {
         Title.text = "Omelet";
         Title_TH.text = "ไข่เจียว";
-        HowTo.text ="1 หยิบไข่ และวัตถุอื่นที่ตู้เย็น\n"+"2 ไปที่เตาแกส แล้วเลือกกะทะ\n" +"3 ใส่วัตถุดิบที่มีลงไป\n"
-                    +"4 อย่าลืมใช้ตะหลิวในการทำอาหารด้วย\n"+"5 เปิดไฟ กะจังหวะให้หยุดอยู่ที่ สีส้ม\n"+"6 นำไปใส่จานพร้อมกับข้าวสวย";
+        for (int i = 0; i < MaterialList.Length; i++)
+        {
+            MaterialList[i].SetActive(false);
+        }
         MaterialList[0].SetActive(true);
         
+    }
+    public void BoiledRice()
+    {
+        Title.text = "BoiledRice";
+        Title_TH.text = "ข้าวต้ม";
+        for (int i = 0; i < MaterialList.Length; i++)
+        {
+            MaterialList[i].SetActive(false);
+        }
+        MaterialList[1].SetActive(true);
+
+    }
+    public void ChickenbreastLemonSause()
+    {
+        Title.text = "Chickenbreast";
+        Title_TH.text = "อกไก่ซอสมะนาว"; 
+        for (int i = 0; i < MaterialList.Length; i++)
+        {
+            MaterialList[i].SetActive(false);
+        }
+        MaterialList[2].SetActive(true);
+
+    }
+    public void FriedbasilMincedpork()
+    {
+        Title.text = "FriedbasilMincedPork";
+        Title_TH.text = "ผัดกระเพราหมูสับ";
+        for (int i = 0; i < MaterialList.Length; i++)
+        {
+            MaterialList[i].SetActive(false);
+        }
+        MaterialList[3].SetActive(true);
+
+    }
+    public void FriedriceGinger()
+    {
+        Title.text = "Friedrice Ginger";
+        Title_TH.text = "ข้าวผัดขิง";
+        for (int i = 0; i < MaterialList.Length; i++)
+        {
+            MaterialList[i].SetActive(false);
+        }
+        MaterialList[4].SetActive(true);
+
+    }
+    public void FriedricePork()
+    {
+        Title.text = "Friedrice Pork";
+        Title_TH.text = "ข้าวผัดหมู";
+        for (int i = 0; i < MaterialList.Length; i++)
+        {
+            MaterialList[i].SetActive(false);
+        }
+        MaterialList[5].SetActive(true);
+
+    }
+    public void HainaneseChickenRice()
+    {
+        Title.text = "HainaneseChicken";
+        Title_TH.text = "ข้าวมันไก่";
+        for (int i = 0; i < MaterialList.Length; i++)
+        {
+            MaterialList[i].SetActive(false);
+        }
+        MaterialList[6].SetActive(true);
+
+    }
+    public void Massaman()
+    {
+        Title.text = "Massaman";
+        Title_TH.text = "มัสมั่น";
+        for (int i = 0; i < MaterialList.Length; i++)
+        {
+            MaterialList[i].SetActive(false);
+        }
+        MaterialList[7].SetActive(true);
+
+    }
+    public void PoachedEggs()
+    {
+        Title.text = "PoachedEggs";
+        Title_TH.text = "ไข่ดาวน้ำ";
+        for (int i = 0; i < MaterialList.Length; i++)
+        {
+            MaterialList[i].SetActive(false);
+        }
+        MaterialList[8].SetActive(true);
+
+    }
+    public void RainbowSoup()
+    {
+        Title.text = "RainbowSoup";
+        Title_TH.text = "";
+        for (int i = 0; i < MaterialList.Length; i++)
+        {
+            MaterialList[i].SetActive(false);
+        }
+        MaterialList[9].SetActive(true);
+
     }
 
     #endregion

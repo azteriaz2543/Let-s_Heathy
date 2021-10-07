@@ -79,6 +79,5 @@ public class FoodStatus
 
     public ItemType itemType;
     public int amount;
-    public bool used;
 
 }
