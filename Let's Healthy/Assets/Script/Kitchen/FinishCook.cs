@@ -79,7 +79,8 @@ public class FinishCook : MonoBehaviour
         White_Sugar, //64
         Tomato_Ketchup, //65
         Brown_Sugar, //66
-        Cinnamon; //67
+        Cinnamon,
+        Basil; //67
     #endregion
 
     void Start()
@@ -615,15 +616,21 @@ public class FinishCook : MonoBehaviour
                 Cinnamon = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Cinnamon, amount = 1 });
                 break;
-            
+            case "Basil":
+                Basil = true;
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Basil, amount = 1 });
+                break;
+
         }
 
     }
 
+    int a, b; //ใช้เปรียบเทียบ แต่ ใส่ในฟังชั่นแล้วขีดเส้น :V
+
     public string DiagnoseFood(bool burn,string used, bool eatable)
     {
 
-        if (EggBeat == true && Turner == true && used == "Pan" && eatable == true)
+        if (EggBeat == true && Turner == true && used == "Pan" && eatable == true && CurrentFood == "")
         {
             if (MincedPork == true && Carrot == false && burn == false) //ไข่เจียวหมูสับไม่แครอท
             {
@@ -657,11 +664,79 @@ public class FinishCook : MonoBehaviour
             {
                 CurrentFood = "OmeletOnly_Burn";
             }
-        }
+        } //ไข่เจียว
 
-        if (CurrentFood == "")
+        if (Water == true && Rice == true && Spoon == true && used == "Pot" && eatable == true && CurrentFood == "" && burn == false)
         {
-            CurrentFood = "OmeletOnly";
+            CurrentFood = "BoiledRice";
+        } //ข้าวต้ม
+
+        if (Chicken == true && Lemonade == true && Spoon == true && used == "Pot" && eatable == true && CurrentFood == "" && burn == false)
+        {
+            CurrentFood = "ChickenBreast";
+        } //อกไก่ซอสมะนาว
+
+        if (Basil == true && MincedPork == true && Turner == true && used == "Pan" && eatable == true && CurrentFood == "" && burn == false)
+        {
+            CurrentFood = "BasilMP";
+        } //ผัดกระเพรา
+
+        if (Rice == true && Egg == true && Turner == true && used == "Pan" && eatable == true && CurrentFood == "" && burn == false)
+        {
+            if (Ginger == true || Pork == true)
+            {
+               
+                foreach (FoodStatus usedItem in itemList)
+                {
+                    
+                    if (usedItem.itemType == FoodStatus.ItemType.Ginger)
+                    {
+                        a = usedItem.amount;
+                    }
+                    else if (usedItem.itemType == FoodStatus.ItemType.Pork)
+                    {
+                        b = usedItem.amount;
+                    }
+                }
+
+                if (a > b)
+                {
+                    CurrentFood = "FriedriceGinger";
+                    a = 0;
+                    b = 0;
+                }
+                else
+                {
+                    CurrentFood = "FriedricePork";
+                    a = 0;
+                    b = 0;
+                }
+            }  
+        } //ข้าวผัด
+
+        if (Chicken == true && Rice == true && Spoon == true && used == "Pot" && eatable == true && CurrentFood == "" && burn == false)
+        {
+            CurrentFood = "HainaneseChicken";
+        } //ข้าวมันไก่
+
+        if (Chicken == true && MassamanPowder == true && Spoon == true && used == "Pot" && eatable == true && CurrentFood == "" && burn == false)
+        {
+            CurrentFood = "Massaman";
+        } //มัสมั่น
+
+        if (Egg == true && Water == true && Spoon == true && used == "Pot" && eatable == true && CurrentFood == "" && burn == false)
+        {
+            CurrentFood = "PoachedEgg";
+        } //ไข่ดาวน้พ
+
+        if (Msg == true && Pepper == true && CoconutMilk == true && SpringOnion == true && Ginger == true && Carrot == true && Spoon == true && used == "Pot" && eatable == true && CurrentFood == "" && burn == false)
+        {
+            CurrentFood = "RainbowSoup";
+        } //...
+
+        if (eatable == true && CurrentFood == "" && burn == true)
+        {
+            CurrentFood = "BurnThing";
         }
 
         return CurrentFood;
@@ -679,6 +754,7 @@ public class FinishCook : MonoBehaviour
         KDP_Health = 0;
         CurrentFood = "";
         itemList = new List<FoodStatus>();
+        setCheckFalse();
     }
 
     void setCheckFalse()

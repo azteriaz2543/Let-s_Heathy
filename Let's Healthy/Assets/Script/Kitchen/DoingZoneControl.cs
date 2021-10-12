@@ -9,7 +9,7 @@ public class DoingZoneControl : MonoBehaviour
 
     bool isBeat;
 
-    public GameObject PlateGO;
+    public GameObject FoodZone;
     bool isPlate;
     public GameObject DropZone;
 
@@ -31,7 +31,7 @@ public class DoingZoneControl : MonoBehaviour
             BeatZone.transform.position = Far.transform.position;
         }
 
-        PlateGO.SetActive(isPlate);
+        FoodZone.SetActive(isPlate);
 
         if (isPlate == true)
         {

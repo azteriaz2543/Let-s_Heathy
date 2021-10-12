@@ -59,6 +59,7 @@ public class Kitchen_UI : MonoBehaviour
     bool OpenShelf;
 
     public GameObject HouseBackButton;
+    int menuNo;
 
     void Start()
     {
@@ -81,6 +82,12 @@ public class Kitchen_UI : MonoBehaviour
         doingZoneControl = doingZoneControl.GetComponent<DoingZoneControl>();
 
         finishCook = finishCook.GetComponent<FinishCook>();
+
+        for (int i = 0; i < MaterialList.Length; i++)
+        {
+            MaterialList[i].SetActive(false);
+        }
+
     }
 
 
@@ -359,10 +366,7 @@ public class Kitchen_UI : MonoBehaviour
             Inventory[i].SetActive(true);
         }
 
-        for (int i = 0; i < MaterialList.Length; i++)
-        {
-            MaterialList[i].SetActive(false);
-        }
+
 
     }
 
@@ -395,6 +399,7 @@ public class Kitchen_UI : MonoBehaviour
     public void HideMenuButton()
     {
         showMenu = !showMenu;
+        MaterialList[menuNo].SetActive(true);
     }
 
     public void Conclusion()
@@ -430,6 +435,7 @@ public class Kitchen_UI : MonoBehaviour
     }
 
     #region Menu
+    
 
     public void ChooseMenu()
     {
@@ -448,7 +454,7 @@ public class Kitchen_UI : MonoBehaviour
             MaterialList[i].SetActive(false);
         }
         MaterialList[0].SetActive(true);
-        
+        menuNo = 0;
     }
     public void BoiledRice()
     {
@@ -459,7 +465,7 @@ public class Kitchen_UI : MonoBehaviour
             MaterialList[i].SetActive(false);
         }
         MaterialList[1].SetActive(true);
-
+        menuNo = 1;
     }
     public void ChickenbreastLemonSause()
     {
@@ -470,7 +476,7 @@ public class Kitchen_UI : MonoBehaviour
             MaterialList[i].SetActive(false);
         }
         MaterialList[2].SetActive(true);
-
+        menuNo = 2;
     }
     public void FriedbasilMincedpork()
     {
@@ -481,7 +487,7 @@ public class Kitchen_UI : MonoBehaviour
             MaterialList[i].SetActive(false);
         }
         MaterialList[3].SetActive(true);
-
+        menuNo = 3;
     }
     public void FriedriceGinger()
     {
@@ -492,7 +498,7 @@ public class Kitchen_UI : MonoBehaviour
             MaterialList[i].SetActive(false);
         }
         MaterialList[4].SetActive(true);
-
+        menuNo = 4;
     }
     public void FriedricePork()
     {
@@ -503,7 +509,7 @@ public class Kitchen_UI : MonoBehaviour
             MaterialList[i].SetActive(false);
         }
         MaterialList[5].SetActive(true);
-
+        menuNo = 5;
     }
     public void HainaneseChickenRice()
     {
@@ -514,7 +520,7 @@ public class Kitchen_UI : MonoBehaviour
             MaterialList[i].SetActive(false);
         }
         MaterialList[6].SetActive(true);
-
+        menuNo = 6;
     }
     public void Massaman()
     {
@@ -525,7 +531,7 @@ public class Kitchen_UI : MonoBehaviour
             MaterialList[i].SetActive(false);
         }
         MaterialList[7].SetActive(true);
-
+        menuNo = 7;
     }
     public void PoachedEggs()
     {
@@ -536,7 +542,7 @@ public class Kitchen_UI : MonoBehaviour
             MaterialList[i].SetActive(false);
         }
         MaterialList[8].SetActive(true);
-
+        menuNo = 8;
     }
     public void RainbowSoup()
     {
@@ -547,7 +553,7 @@ public class Kitchen_UI : MonoBehaviour
             MaterialList[i].SetActive(false);
         }
         MaterialList[9].SetActive(true);
-
+        menuNo = 9;
     }
 
     #endregion

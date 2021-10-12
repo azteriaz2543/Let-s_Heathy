@@ -32,7 +32,8 @@ public class Cooking : MonoBehaviour
 
     string targetSpawn;
 
-   
+    public GameObject PlateGO;
+
     private void Awake()
     {
 
@@ -68,6 +69,7 @@ public class Cooking : MonoBehaviour
 
         finishCook = finishCook.GetComponent<FinishCook>();
 
+        PlateGO.SetActive(false);
     }
 
     void Update()
@@ -482,6 +484,7 @@ public class Cooking : MonoBehaviour
                 if (ItemName != "Rice")
                 {
                     kitchen_UI.ConclusionButton.SetActive(true);
+                    PlateGO.SetActive(false);
                 }
                 else
                 {
@@ -490,6 +493,7 @@ public class Cooking : MonoBehaviour
                     finishCook.Fat += 0.3f;
                     finishCook.Protein += 2.7f;
                     finishCook.KiloCalories += 130;
+                    PlateGO.SetActive(true);
                 }
                 
                 Food[i].SetActive(true);

@@ -75,6 +75,7 @@ public class FoodStatus
         Tomato_Ketchup, //65
         Brown_Sugar, //66
         Cinnamon, //67
+        Basil,
     }
 
     public ItemType itemType;
