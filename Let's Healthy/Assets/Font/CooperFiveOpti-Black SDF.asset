@@ -2488,7 +2488,8 @@ MonoBehaviour:
   m_FontFeatureTable:
     m_GlyphPairAdjustmentRecords: []
   fallbackFontAssets: []
-  m_FallbackFontAssetTable: []
+  m_FallbackFontAssetTable:
+  - {fileID: 11400000, guid: cc4affb297ad4ff4abc24a6d069bfd26, type: 2}
   m_CreationSettings:
     sourceFontFileName: 
     sourceFontFileGUID: 284781f728f003e4eb127ed4e4ea781f
@@ -2646,7 +2647,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.511
+    - _OutlineWidth: 0.412
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333

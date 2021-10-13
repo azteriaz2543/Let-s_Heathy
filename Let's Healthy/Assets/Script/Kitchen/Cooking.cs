@@ -481,19 +481,18 @@ public class Cooking : MonoBehaviour
         {
             if (ItemName == Food[i].gameObject.name)
             {
-                if (ItemName != "Rice")
+                if (ItemName == "Rice")
                 {
-                    kitchen_UI.ConclusionButton.SetActive(true);
-                    PlateGO.SetActive(false);
-                }
-                else
-                {
-                    finishCook.Happiness += 15;
+                    finishCook.Happiness += 5;
                     finishCook.Sodium += 1;
                     finishCook.Fat += 0.3f;
                     finishCook.Protein += 2.7f;
                     finishCook.KiloCalories += 130;
                     PlateGO.SetActive(true);
+                }
+                else
+                {
+                    kitchen_UI.ConclusionButton.SetActive(true);
                 }
                 
                 Food[i].SetActive(true);

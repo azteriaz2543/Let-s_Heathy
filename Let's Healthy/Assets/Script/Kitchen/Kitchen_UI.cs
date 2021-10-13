@@ -97,12 +97,24 @@ public class Kitchen_UI : MonoBehaviour
 
         MenuList.SetActive(showMenu);
 
-        CText2.text = "ปริมาณโซเดียม : " + finishCook.Sodium.ToString();
-        CText3.text = "ปริมาณไขมัน : " + finishCook.Fat.ToString();
-        CText4.text = "ปริมาณโปรตีน : " + finishCook.Protein.ToString();
-        CText5.text = "ปริมาณคอลลอรี่ : " + finishCook.KiloCalories.ToString();
-        CText6.text = "ค่าความสุข : " + finishCook.Happiness.ToString();
-        CText7.text = "พลังงาน : XXX";
+        CText2.text = "ปริมาณโซเดียม : " + finishCook.Sodium.ToString() + " กรัม";
+        CText3.text = "ปริมาณไขมัน : " + finishCook.Fat.ToString() + " กรัม";
+        CText4.text = "ปริมาณโปรตีน : " + finishCook.Protein.ToString() + " กรัม";
+        CText5.text = "ปริมาณคอลลอรี่ : " + finishCook.KiloCalories.ToString() + " กิโลแคลอรี่";
+        CText6.text = "ค่าความสุข : " + finishCook.Happiness.ToString() + " หน่วย";
+        //CText7.text = "พลังงาน : XXX";
+
+        CText7.text = "";
+
+        if (finishCook.Happiness <= 12)
+        {
+            CText7.text = "ดูเหมือนจะขาดรสชาติอะไรไปหน่อยนะ";
+        }
+        else if (finishCook.Happiness >= 24)
+        {
+            CText7.text = "มื้อนี้อร่อยมาก ^^";
+        }
+
     }
 
     public void AddInventory(string itemName)

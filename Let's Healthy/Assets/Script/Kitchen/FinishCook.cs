@@ -141,6 +141,11 @@ public class FinishCook : MonoBehaviour
             case "Beef2":
             case "Beef3":
             case "Beef4":
+                Happiness += 15;
+                Sodium += 75.6f;
+                Fat += 12.4f;
+                Protein += 38.9f;
+                KiloCalories += 199;
                 Beef = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Beef, amount = 1 });
                 break;
@@ -148,6 +153,11 @@ public class FinishCook : MonoBehaviour
             case "Carrot2":
             case "Carrot3":
             case "Carrot4":
+                Happiness += 8;
+                Sodium += 42.1f;
+                Fat += 0.1f;
+                Protein += 0.5f;
+                KiloCalories += 28.1f;
                 Carrot = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Carrot, amount = 1 });
                 break;
@@ -155,6 +165,11 @@ public class FinishCook : MonoBehaviour
             case "Chicken2":
             case "Chicken3":
             case "Chicken4":
+                Happiness += 15;
+                Sodium += 45;
+                Fat += 2.6f;
+                Protein += 22.5f;
+                KiloCalories += 120;
                 Chicken = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Chicken, amount = 1 });
                 break;
@@ -162,6 +177,11 @@ public class FinishCook : MonoBehaviour
             case "ChineseKale2":
             case "ChineseKale3":
             case "ChineseKale4":
+                Happiness += 5;
+                Sodium += 6.2f;
+                Fat += 0.6f;
+                Protein += 1f;
+                KiloCalories += 19.4f;
                 ChineseKale = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.ChineseKale, amount = 1 });
                 break;
@@ -169,6 +189,11 @@ public class FinishCook : MonoBehaviour
             case "CoconutMilk2":
             case "CoconutMilk3":
             case "CoconutMilk4":
+                Happiness += 8;
+                Sodium += 36;
+                Fat += 57.6f;
+                Protein += 5.52f;
+                KiloCalories += 813.6f;
                 CoconutMilk = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CoconutMilk, amount = 1 });
                 break;
@@ -188,6 +213,11 @@ public class FinishCook : MonoBehaviour
             case "CutedBeef2":
             case "CutedBeef3":
             case "CutedBeef4":
+                Happiness += 15;
+                Sodium += 75.6f;
+                Fat += 12.4f;
+                Protein += 38.9f;
+                KiloCalories += 199;
                 Beef = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CutedBeef, amount = 1 });
                 break;
@@ -195,6 +225,11 @@ public class FinishCook : MonoBehaviour
             case "CutedCarrot2_Step1":
             case "CutedCarrot3_Step1":
             case "CutedCarrot4_Step1":
+                Happiness += 8;
+                Sodium += 42.1f;
+                Fat += 0.1f;
+                Protein += 0.5f;
+                KiloCalories += 28.1f;
                 Carrot = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Carrot, amount = 1 });
                 break;
@@ -202,6 +237,11 @@ public class FinishCook : MonoBehaviour
             case "CutedCarrot2_Step2":
             case "CutedCarrot3_Step2":
             case "CutedCarrot4_Step2":
+                Happiness += 8;
+                Sodium += 42.1f;
+                Fat += 0.1f;
+                Protein += 0.5f;
+                KiloCalories += 28.1f;
                 Carrot = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Carrot, amount = 1 });
                 break;
@@ -212,8 +252,8 @@ public class FinishCook : MonoBehaviour
                 Happiness += 15;
                 Sodium += 45;
                 Fat += 2.6f;
-                Protein += 23f;
-                KiloCalories += 79;
+                Protein += 22.5f;
+                KiloCalories += 120;
                 Chicken = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Chicken, amount = 1 });
                 break;
@@ -221,6 +261,11 @@ public class FinishCook : MonoBehaviour
             case "CutedChineseKale2_Step1":
             case "CutedChineseKale3_Step1":
             case "CutedChineseKale4_Step1":
+                Happiness += 5;
+                Sodium += 6.2f;
+                Fat += 0.6f;
+                Protein += 1f;
+                KiloCalories += 19.4f;
                 ChineseKale = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.ChineseKale, amount = 1 });
                 break;
@@ -228,6 +273,11 @@ public class FinishCook : MonoBehaviour
             case "CutedChineseKale2_Step2":
             case "CutedChineseKale3_Step2":
             case "CutedChineseKale4_Step2":
+                Happiness += 5;
+                Sodium += 6.2f;
+                Fat += 0.6f;
+                Protein += 1f;
+                KiloCalories += 19.4f;
                 ChineseKale = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.ChineseKale, amount = 1 });
                 break;
@@ -247,6 +297,11 @@ public class FinishCook : MonoBehaviour
             case "CutedFish2":
             case "CutedFish3":
             case "CutedFish4":
+                Happiness += 15;
+                Sodium += 7;
+                Fat += 0.7f;
+                Protein += 1.1f;
+                KiloCalories += 22f;
                 Fish = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Fish, amount = 1 });
                 break;
@@ -266,6 +321,11 @@ public class FinishCook : MonoBehaviour
             case "CutedGinger2_Step1":
             case "CutedGinger3_Step1":
             case "CutedGinger4_Step1":
+                Happiness += 5;
+                Sodium += 1.3f;
+                Fat += 0.08f;
+                Protein += 0.18f;
+                KiloCalories += 7.9f;
                 Ginger = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Ginger, amount = 1 });
                 break;
@@ -273,6 +333,11 @@ public class FinishCook : MonoBehaviour
             case "CutedGinger2_Step2":
             case "CutedGinger3_Step2":
             case "CutedGinger4_Step2":
+                Happiness += 5;
+                Sodium += 1.3f;
+                Fat += 0.08f;
+                Protein += 0.18f;
+                KiloCalories += 7.9f;
                 Ginger = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Ginger, amount = 1 });
                 break;
@@ -302,6 +367,11 @@ public class FinishCook : MonoBehaviour
             case "CutedOnion2_Step1":
             case "CutedOnion3_Step1":
             case "CutedOnion4_Step1":
+                Happiness += 3;
+                Sodium += 4.4f;
+                Fat += 0.1f;
+                Protein += 1.2f;
+                KiloCalories += 44f;
                 Onion = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Onion, amount = 1 });
                 break;
@@ -309,6 +379,11 @@ public class FinishCook : MonoBehaviour
             case "CutedOnion2_Step2":
             case "CutedOnion3_Step2":
             case "CutedOnion4_Step2":
+                Happiness += 3;
+                Sodium += 4.4f;
+                Fat += 0.1f;
+                Protein += 1.2f;
+                KiloCalories += 44f;
                 Onion = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Onion, amount = 1 });
                 break;
@@ -328,6 +403,11 @@ public class FinishCook : MonoBehaviour
             case "CutedPotato2":
             case "CutedPotato3":
             case "CutedPotato4":
+                Happiness += 8;
+                Sodium += 421f;
+                Fat += 0.1f;
+                Protein += 2f;
+                KiloCalories += 77f;
                 Potato = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Potato, amount = 1 });
                 break;
@@ -335,6 +415,10 @@ public class FinishCook : MonoBehaviour
             case "CutedShallot2_Step1":
             case "CutedShallot3_Step1":
             case "CutedShallot4_Step1":
+                Happiness += 5;
+                Sodium += 2.4f;
+                Protein += 0.6f;
+                KiloCalories += 14.4f;
                 Shallot = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Shallot, amount = 1 });
                 break;
@@ -342,6 +426,10 @@ public class FinishCook : MonoBehaviour
             case "CutedShallot2_Step2":
             case "CutedShallot3_Step2":
             case "CutedShallot4_Step2":
+                Happiness += 5;
+                Sodium += 2.4f;
+                Protein += 0.6f;
+                KiloCalories += 14.4f;
                 Shallot = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Shallot, amount = 1 });
                 break;
@@ -349,6 +437,11 @@ public class FinishCook : MonoBehaviour
             case "CutedSpringOnion2_Step1":
             case "CutedSpringOnion3_Step1":
             case "CutedSpringOnion4_Step1":
+                Happiness += 5;
+                Sodium += 16f;
+                Fat += 0.1f;
+                Protein += 1.8f;
+                KiloCalories += 16f;
                 SpringOnion = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.SpringOnion, amount = 1 });
                 break;
@@ -356,6 +449,11 @@ public class FinishCook : MonoBehaviour
             case "CutedSpringOnion2_Step2":
             case "CutedSpringOnion3_Step2":
             case "CutedSpringOnion4_Step2":
+                Happiness += 5;
+                Sodium += 16f;
+                Fat += 0.1f;
+                Protein += 1.8f;
+                KiloCalories += 16f;
                 SpringOnion = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.SpringOnion, amount = 1 });
                 break;
@@ -397,6 +495,11 @@ public class FinishCook : MonoBehaviour
             case "Fish2":
             case "Fish3":
             case "Fish4":
+                Happiness += 15;
+                Sodium += 7;
+                Fat += 0.7f;
+                Protein += 1.1f;
+                KiloCalories += 22f;
                 Fish = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Fish, amount = 1 });
                 break;
@@ -416,6 +519,11 @@ public class FinishCook : MonoBehaviour
             case "Ginger2":
             case "Ginger3":
             case "Ginger4":
+                Happiness += 5;
+                Sodium += 1.3f;
+                Fat += 0.08f;
+                Protein += 0.18f;
+                KiloCalories += 7.9f;
                 Ginger = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Ginger, amount = 1 });
                 break;
@@ -434,6 +542,11 @@ public class FinishCook : MonoBehaviour
             case "Milk2":
             case "Milk3":
             case "Milk4":
+                Happiness += 8;
+                Sodium += 105.6f;
+                Fat += 2.4f;
+                Protein += 8.16f;
+                KiloCalories += 100.8f;
                 Milk = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Milk, amount = 1 });
                 break;
@@ -441,6 +554,11 @@ public class FinishCook : MonoBehaviour
             case "MincedBeef2":
             case "MincedBeef3":
             case "MincedBeef4":
+                Happiness += 10;
+                Sodium += 32.3f;
+                Fat += 8.2f;
+                Protein += 19.3f;
+                KiloCalories += 199;
                 MincedBeef = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.MincedBeef, amount = 1 });
                 break;
@@ -460,6 +578,11 @@ public class FinishCook : MonoBehaviour
             case "Onion2":
             case "Onion3":
             case "Onion4":
+                Happiness += 3;
+                Sodium += 4.4f;
+                Fat += 0.1f;
+                Protein += 1.2f;
+                KiloCalories += 44f;
                 Onion = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Onion, amount = 1 });
                 break;
@@ -479,6 +602,11 @@ public class FinishCook : MonoBehaviour
             case "Potato2":
             case "Potato3":
             case "Potato4":
+                Happiness += 8;
+                Sodium += 421f;
+                Fat += 0.1f;
+                Protein += 2f;
+                KiloCalories += 77f;
                 Potato = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Potato, amount = 1 });
                 break;
@@ -486,6 +614,10 @@ public class FinishCook : MonoBehaviour
             case "Shallot2":
             case "Shallot3":
             case "Shallot4":
+                Happiness += 5;
+                Sodium += 2.4f;
+                Protein += 0.6f;
+                KiloCalories += 14.4f;
                 Shallot = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Shallot, amount = 1 });
                 break;
@@ -493,6 +625,11 @@ public class FinishCook : MonoBehaviour
             case "SpringOnion2":
             case "SpringOnion3":
             case "SpringOnion4":
+                Happiness += 5;
+                Sodium += 16f;
+                Fat += 0.1f;
+                Protein += 1.8f;
+                KiloCalories += 16f;
                 SpringOnion = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.SpringOnion, amount = 1 });
                 break;
@@ -507,31 +644,59 @@ public class FinishCook : MonoBehaviour
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Tomato, amount = 1 });
                 break;
             case "Lemonade":
+                Happiness += Random.Range(8,17);
+                Sodium += 0.1f;
+                Fat += 0.02f;
+                Protein += 0.04f;
+                KiloCalories += 2.1f;
                 Lemonade = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Lemonade, amount = 1 });
                 break;
             case "MassamanPowder":
+                Happiness += Random.Range(8, 17);
+                Sodium += 580f;
+                Fat += 3f;
+                Protein += 1f;
+                KiloCalories += 45f;
                 MassamanPowder = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.MassamanPowder, amount = 1 });
                 break;
             case "Mayonnaise":
+                Happiness += Random.Range(8, 17);
+                Sodium += 95.25f;
+                Fat += 11.25f;
+                Protein += 0.15f;
+                KiloCalories += 101.85f;
                 Mayonnaise = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Mayonnaise, amount = 1 });
                 break;
             case "Mayonnaise_J":
+                Happiness += Random.Range(8, 17);
+                Sodium += 70.1f;
+                Fat += 2.71f;
+                Protein += 0.04f;
+                KiloCalories += 32.7f;
                 Mayonnaise_J = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Mayonnaise_J, amount = 1 });
                 break;
             case "Mayonnaise_LowFat":
+                Happiness += Random.Range(8, 12);
+                Sodium += 120;
+                Protein += 0.03f;
+                KiloCalories += 10.2f;
                 Mayonnaise_LowFat = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Mayonnaise_LowFat, amount = 1 });
                 break;
             case "Black_Soysauce":
+                Happiness += Random.Range(8, 17);
+                Sodium += 560;
+                Protein += 0.5f;
+                KiloCalories += 5f;
                 Black_Soysauce = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Black_Soysauce, amount = 1 });
                 break;
             case "White_Soysauce":
-                Happiness += 2;
+                Happiness += Random.Range(8, 17);
                 Sodium += 400;
                 Protein += 0.9f;
                 KiloCalories += 15;
@@ -539,13 +704,13 @@ public class FinishCook : MonoBehaviour
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.White_Soysauce, amount = 1 });
                 break;
             case "Fish_Sauce":
-                Happiness += 2.5f;
+                Happiness += Random.Range(8, 17);
                 Sodium += 490;
                 Fish_Sauce = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Fish_Sauce, amount = 1 });
                 break;
             case "Oyster_Sauce":
-                Happiness += 1.5f;
+                Happiness += Random.Range(8, 17);
                 Sodium += 165;
                 Protein += 0.2f;
                 KiloCalories += 15;
@@ -553,27 +718,47 @@ public class FinishCook : MonoBehaviour
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Oyster_Sauce, amount = 1 });
                 break;
             case "Vegetable_Oil":
+                Happiness += Random.Range(8, 12);
+                Fat += 13.5f;
+                KiloCalories += 120;
+                Mayonnaise_LowFat = true;
                 Vegetable_Oil = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Vegetable_Oil, amount = 1 });
                 break;
             case "Msg":
+                Happiness += Random.Range(8, 12);
+                Sodium += 484.1f;
+                KiloCalories += 12;
+                Mayonnaise_LowFat = true;
                 Msg = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Msg, amount = 1 });
                 break;
             case "Pepper":
+                Happiness += Random.Range(8, 17);
+                Sodium += 0.5f;
+                Fat += 0.1f;
+                Protein += 0.2f;
+                KiloCalories += 7.5f;
                 Pepper = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Pepper, amount = 1 });
                 break;
             case "Pepper_Cayenne":
+                Happiness += Random.Range(8, 17);
+                Sodium += 98.4f;
+                Fat += 0.85f;
+                Protein += 0.81f;
+                KiloCalories += 16.92f;
                 Pepper_Cayenne = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Pepper_Cayenne, amount = 1 });
                 break;
             case "Pink_Salt":
+                Happiness += Random.Range(8, 17);
+                Sodium += 1900;
                 Pink_Salt = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Pink_Salt, amount = 1 });
                 break;
             case "Powder_Chicken":
-                Happiness += 5;
+                Happiness += Random.Range(8, 17);
                 Sodium += 48;
                 Protein += 0.5f;
                 KiloCalories += 20;
@@ -581,7 +766,7 @@ public class FinishCook : MonoBehaviour
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Powder_Chicken, amount = 1 });
                 break;
             case "Salad_DressingJP":
-                Happiness += 1;
+                Happiness += Random.Range(8, 17);
                 Sodium += 41.43f;
                 Fat += 1.57f;
                 Protein += 0.14f;
@@ -590,29 +775,37 @@ public class FinishCook : MonoBehaviour
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Salad_DressingJP, amount = 1 });
                 break;
             case "Salt":
-                Happiness += 10;
+                Happiness += Random.Range(8, 17);
                 Sodium += 1900;
                 Salt = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Salt, amount = 1 });
                 break;
             case "White_Sugar":
-                Happiness += 1;
+                Happiness += Random.Range(8, 17);
                 KiloCalories += 19;
                 White_Sugar = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.White_Sugar, amount = 1 });
                 break;
             case "Tomato_Ketchup":
-                Happiness += 1;
+                Happiness += Random.Range(8, 17);
                 Sodium += 47.5f;
                 KiloCalories += 15;
                 Tomato_Ketchup = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Tomato_Ketchup, amount = 1 });
                 break;
             case "Brown_Sugar":
+                Happiness += Random.Range(8, 17);
+                Sodium += 1;
+                KiloCalories += 18f;
                 Brown_Sugar = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Brown_Sugar, amount = 1 });
                 break;
             case "Cinnamon":
+                Happiness += Random.Range(8, 17);
+                Sodium += 30.4f;
+                Fat += 0.12f;
+                Protein += 0.4f;
+                KiloCalories += 24.7f;
                 Cinnamon = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Cinnamon, amount = 1 });
                 break;
@@ -629,6 +822,11 @@ public class FinishCook : MonoBehaviour
 
     public string DiagnoseFood(bool burn,string used, bool eatable)
     {
+
+        if (burn == true)
+        {
+            Happiness -= 15;
+        }
 
         if (EggBeat == true && Turner == true && used == "Pan" && eatable == true && CurrentFood == "")
         {
