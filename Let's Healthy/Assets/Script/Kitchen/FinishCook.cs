@@ -285,11 +285,11 @@ public class FinishCook : MonoBehaviour
             case "CutedCucumber2":
             case "CutedCucumber3":
             case "CutedCucumber4":
-                Happiness += 4;
-                Sodium += 2;
-                Fat += 0.11f;
-                Protein += .56f;
-                KiloCalories += 18;
+                Happiness += 6;
+                Sodium += 4;
+                Fat += 0.22f;
+                Protein += 1.12f;
+                KiloCalories += 36;
                 Cucumber = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Cucumber, amount = 1 });
                 break;
@@ -345,10 +345,10 @@ public class FinishCook : MonoBehaviour
             case "CutedLime2_Step1":
             case "CutedLime3_Step1":
             case "CutedLime4_Step1":
-                Happiness += 3;
-                Sodium += 4;
-                Protein += 2;
-                KiloCalories += 88;
+                Happiness += 4;
+                Sodium += 8;
+                Protein += 4;
+                KiloCalories += 176;
                 Lime = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Lime, amount = 1 });
                 break;
@@ -356,10 +356,10 @@ public class FinishCook : MonoBehaviour
             case "CutedLime2_Step2":
             case "CutedLime3_Step2":
             case "CutedLime4_Step2":
-                Happiness += 2;
-                Sodium += 2;
-                Protein += 1;
-                KiloCalories += 44;
+                Happiness += 4;
+                Sodium += 8;
+                Protein += 4;
+                KiloCalories += 176;
                 Lime = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Lime, amount = 1 });
                 break;
@@ -391,11 +391,11 @@ public class FinishCook : MonoBehaviour
             case "CutedPork2":
             case "CutedPork3":
             case "CutedPork4":
-                Happiness += 10;
-                Sodium += 94;
-                Fat += 32.9f;
-                Protein += 22.8f;
-                KiloCalories += 171;
+                Happiness += 15;
+                Sodium += 188;
+                Fat += 65.8f;
+                Protein += 45.6f;
+                KiloCalories += 342;
                 Pork = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Pork, amount = 1 });
                 break;
@@ -461,9 +461,9 @@ public class FinishCook : MonoBehaviour
             case "CutedTomato2":
             case "CutedTomato3":
             case "CutedTomato4":
-                Happiness += 6;
-                Sodium += 10;
-                KiloCalories += 17.7f;
+                Happiness += 9;
+                Sodium += 20;
+                KiloCalories += 35.4f;
                 Tomato = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Tomato, amount = 1 });
                 break;

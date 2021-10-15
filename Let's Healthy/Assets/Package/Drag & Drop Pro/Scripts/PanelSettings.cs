@@ -44,6 +44,8 @@ public class PanelSettings : MonoBehaviour {
     Transform near;
     Transform far;
 
+    CutBoard cutBoard;
+
 
     void Start() {
         // Getting current DDM GameObject
@@ -56,7 +58,7 @@ public class PanelSettings : MonoBehaviour {
         near = GameObject.Find("NearInv").transform;
         far = GameObject.Find("FarInv").transform;
 
-
+        cutBoard = GameObject.Find("CutBoardSc").GetComponent<CutBoard>();
     }
     void Update()
     {
@@ -194,7 +196,7 @@ public class PanelSettings : MonoBehaviour {
             BlockInv.transform.position = far.transform.position;
             PanelIdManager.Clear();
             DragDropManager.ResetOnlyObject("Knife1");
-
+            cutBoard.HideCut();
         }
         else
         {

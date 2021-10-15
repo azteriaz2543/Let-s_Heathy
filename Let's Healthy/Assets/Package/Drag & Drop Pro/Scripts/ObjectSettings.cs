@@ -134,6 +134,15 @@ public class ObjectSettings : MonoBehaviour
     void Update()
     {
         DragObject();
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            for (int i = 0; i < DDM.AllObjects.Length; i++)
+            {
+                DDM.AllObjects[i].GetComponent<RectTransform>().localScale = DDM.AllObjects[i].FirstScale;
+            }
+        }
+
     }
 
     void DragObject()

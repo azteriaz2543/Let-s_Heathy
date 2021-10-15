@@ -115,6 +115,11 @@ public class Kitchen_UI : MonoBehaviour
             CText7.text = "มื้อนี้อร่อยมาก ^^";
         }
 
+        if(Input.GetMouseButtonUp(0))
+        {
+            RemoveZone.SetActive(false);
+        }
+
     }
 
     public void AddInventory(string itemName)
