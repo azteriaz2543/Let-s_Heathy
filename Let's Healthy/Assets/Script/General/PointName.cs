@@ -342,6 +342,18 @@ public class PointName : MonoBehaviour
                 protein = 0.4f;
                 kiloCalories = 24.7f;
                 break;
+            case "ใบกระเพรา":
+                sodium = 0.1f;
+                fat = 0;
+                protein = 0.1f;
+                kiloCalories = 0.6f;
+                break;
+            case "พริก":
+                sodium = 0f;
+                fat = 0f;
+                protein = 0f;
+                kiloCalories = 14.1f;
+                break;
 
 
         }

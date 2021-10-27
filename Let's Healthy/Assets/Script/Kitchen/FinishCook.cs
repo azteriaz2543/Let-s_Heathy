@@ -80,7 +80,8 @@ public class FinishCook : MonoBehaviour
         Tomato_Ketchup, //65
         Brown_Sugar, //66
         Cinnamon,
-        Basil; //67
+        Basil, //67
+        CPepper;
     #endregion
 
     void Start()
@@ -810,8 +811,16 @@ public class FinishCook : MonoBehaviour
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Cinnamon, amount = 1 });
                 break;
             case "Basil":
+                Sodium += 0.1f;
+                Protein += 0.1f;
+                KiloCalories += 0.6f;
                 Basil = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Basil, amount = 1 });
+                break;
+            case "CPepper":
+                KiloCalories += 14.1f;
+                CPepper = true;
+                AddItem(new FoodStatus { itemType = FoodStatus.ItemType.CPepper, amount = 1 });
                 break;
 
         }

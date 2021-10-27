@@ -76,6 +76,7 @@ public class FoodStatus
         Brown_Sugar, //66
         Cinnamon, //67
         Basil,
+        CPepper,
     }
 
     public ItemType itemType;

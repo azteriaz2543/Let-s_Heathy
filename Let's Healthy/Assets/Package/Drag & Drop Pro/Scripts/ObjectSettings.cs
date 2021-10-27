@@ -796,6 +796,10 @@ public class ObjectSettings : MonoBehaviour
             case "Tomato2":
             case "Tomato3":
             case "Tomato4":
+            case "CPepper1":
+            case "CPepper2":
+            case "CPepper3":
+            case "CPepper4":
                 SetToShow();
                 break;
         }

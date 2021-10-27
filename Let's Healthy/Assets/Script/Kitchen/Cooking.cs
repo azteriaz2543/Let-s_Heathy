@@ -354,6 +354,18 @@ public class Cooking : MonoBehaviour
             case "Tomato4":
                 targetSpawn = "CutedTomato4";
                 break;
+            case "CPepper1":
+                targetSpawn = "CutedCPepper1";
+                break;
+            case "CPepper2":
+                targetSpawn = "CutedCPepper2";
+                break;
+            case "CPepper3":
+                targetSpawn = "CutedCPepper3";
+                break;
+            case "CPepper4":
+                targetSpawn = "CutedCPepper4";
+                break;
         }
 
         kitchen_UI.HideItem();
