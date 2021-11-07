@@ -19,6 +19,8 @@ public class Gameplay_UI_Manager : MonoBehaviour
     public GameObject ChooseSet;
 
     public Kitchen_UI kitchen_UI;
+    
+    public GameObject DayPanel; 
 
     void Start()
     {
@@ -62,6 +64,8 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
     public void QuitNoSave()
     {
+        player.ResetGameplayData();
+        player.SavePlayer();
         SceneManager.LoadScene("Menu");
     }
 
@@ -72,7 +76,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
         Step = "House";
         PlayerPanel.SetActive(false);
         ChooseSet.SetActive(true);
-
+        DayPanel.SetActive(false);
     }
 
     public void Back_House()
@@ -83,62 +87,72 @@ public class Gameplay_UI_Manager : MonoBehaviour
         Step = "Map";
         PlayerPanel.SetActive(true);
         ChooseSet.SetActive(false);
-
+        DayPanel.SetActive(true);
     }
     public void Shop()
     {
         ShopEvent.SetActive(true);
         Step = "Shop";
+        DayPanel.SetActive(false);
     }
 
     public void Back_Shop()
     {
         ShopEvent.SetActive(false);
         Step = "Map";
+        DayPanel.SetActive(true);
     }
     public void Fitness()
     {
         FitnessEvent.SetActive(true);
         Step = "Fitness";
+        DayPanel.SetActive(false);
     }
 
     public void Back_Fitness()
     {
         FitnessEvent.SetActive(false);
         Step = "Map";
+        DayPanel.SetActive(true);
     }
     public void Office()
     {
         OfficeEvent.SetActive(true);
         Step = "Office";
+        DayPanel.SetActive(false);
     }
 
     public void Back_Office()
     {
         OfficeEvent.SetActive(false);
         Step = "Map";
+        DayPanel.SetActive(true);
     }
     public void Hospital()
     {
         HospitalEvent.SetActive(true);
         Step = "Hospital";
+        DayPanel.SetActive(false);
     }
 
     public void Back_Hospital()
     {
         HospitalEvent.SetActive(false);
         Step = "Map";
+        DayPanel.SetActive(true);
     }
     public void School()
     {
         SchoolEvent.SetActive(true);
         Step = "Hospital";
+        DayPanel.SetActive(false);
     }
 
     public void Back_School()
     {
         SchoolEvent.SetActive(false);
         Step = "Map";
+        DayPanel.SetActive(true);
     }
     #endregion
 }

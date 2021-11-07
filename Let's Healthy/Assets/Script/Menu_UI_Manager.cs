@@ -9,9 +9,12 @@ public class Menu_UI_Manager : MonoBehaviour
 
     Player player;
 
+    public int testday;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
     }
 
 
@@ -23,6 +26,7 @@ public class Menu_UI_Manager : MonoBehaviour
     #region Button
     public void Start_Button()
     {
+        player.SavePlayer();
         SceneManager.LoadScene("GamePlay");
     }
 

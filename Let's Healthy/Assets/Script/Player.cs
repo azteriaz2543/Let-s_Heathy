@@ -25,6 +25,15 @@ public class Player : MonoBehaviour
     public int gamePlay;
     #endregion
 
+    #region GamePlay
+    public bool newDay;
+    public int day;
+    public float enegry, happy;
+    public float protein, sodium, fat, kiloCaloriesl;
+    #endregion
+
+
+
     public void SavePlayer()
     {
         SaveSystem.SavePlayer(this);
@@ -40,6 +49,14 @@ public class Player : MonoBehaviour
             mode = data.mode;
             character = data.character;
             gamePlay = data.gamePlay;
+            newDay = data.newDay;
+            day = data.day;
+            enegry = data.enegry;
+            happy = data.happy;
+            protein = data.protein;
+            sodium = data.sodium;
+            fat = data.fat;
+            kiloCaloriesl = data.kiloCaloriesl;
         }
         else
         {
@@ -132,4 +149,17 @@ public class Player : MonoBehaviour
     {
         LoadPlayer();
     }
+
+    public void ResetGameplayData()
+    {
+        newDay = true;
+        day = 0;
+        enegry = 0;
+        happy = 0;
+        protein = 0;
+        sodium = 0;
+        fat = 0;
+        kiloCaloriesl = 0;
+    }
+    
 }

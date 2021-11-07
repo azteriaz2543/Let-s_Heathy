@@ -11,6 +11,10 @@ public class PlayerData
     public int character;
     public int gamePlay;
 
+    public bool newDay;
+    public int day;
+    public float enegry, happy;
+    public float protein, sodium, fat, kiloCaloriesl;
 
     public PlayerData (Player player)
     {
@@ -18,6 +22,14 @@ public class PlayerData
         mode = player.mode;
         character = player.character;
         gamePlay = player.gamePlay;
+        newDay = player.newDay;
+        day = player.day;
+        enegry = player.enegry;
+        happy = player.happy;
+        protein = player.protein;
+        sodium = player.sodium;
+        fat = player.fat;
+        kiloCaloriesl = player.kiloCaloriesl;
     }
 
 }
