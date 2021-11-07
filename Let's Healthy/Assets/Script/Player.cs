@@ -30,6 +30,9 @@ public class Player : MonoBehaviour
     public int day;
     public float enegry, happy;
     public float protein, sodium, fat, kiloCaloriesl;
+    public int timeHour,timeMinute;
+
+    public bool save;
     #endregion
 
 
@@ -57,6 +60,9 @@ public class Player : MonoBehaviour
             sodium = data.sodium;
             fat = data.fat;
             kiloCaloriesl = data.kiloCaloriesl;
+            timeHour = data.timeHour;
+            timeMinute = data.timeMinute;
+            save = data.save;
         }
         else
         {
@@ -160,6 +166,9 @@ public class Player : MonoBehaviour
         sodium = 0;
         fat = 0;
         kiloCaloriesl = 0;
+        timeHour = 0;
+        timeMinute = 0;
+        save = false;
     }
     
 }

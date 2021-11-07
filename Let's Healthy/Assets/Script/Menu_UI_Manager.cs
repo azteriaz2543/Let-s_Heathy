@@ -26,6 +26,11 @@ public class Menu_UI_Manager : MonoBehaviour
     #region Button
     public void Start_Button()
     {
+        if (player.save == false)
+        {
+            player.newDay = true;
+            player.day = 1;
+        }
         player.SavePlayer();
         SceneManager.LoadScene("GamePlay");
     }

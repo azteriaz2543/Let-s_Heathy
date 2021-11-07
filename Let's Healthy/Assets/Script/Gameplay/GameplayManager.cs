@@ -6,32 +6,38 @@ using UnityEngine;
 public class GameplayManager : MonoBehaviour
 {
     public GameObject NewDayObj;
-    bool newDay;
 
     Player player;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-
-        if (player.newDay == true)
-        {
-            StartDay();
-            player.newDay = false;
-        }
+        StartCoroutine(DelayStart());
+        StartDay();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Instantiate(NewDayObj);
+        }
     }
 
     public void StartDay()
     {
-        if (newDay == true)
+        Instantiate(NewDayObj);
+    }
+
+    IEnumerator DelayStart()
+    {
+        yield return new WaitForSeconds(0.01f);
+        if (player.newDay == true)
         {
-            Instantiate(NewDayObj);
+            player.timeHour = 6;
+            player.timeMinute = 0;
+            player.newDay = false;
         }
     }
 

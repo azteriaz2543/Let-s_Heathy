@@ -15,6 +15,9 @@ public class PlayerData
     public int day;
     public float enegry, happy;
     public float protein, sodium, fat, kiloCaloriesl;
+    public int timeHour, timeMinute;
+
+    public bool save;
 
     public PlayerData (Player player)
     {
@@ -30,6 +33,9 @@ public class PlayerData
         sodium = player.sodium;
         fat = player.fat;
         kiloCaloriesl = player.kiloCaloriesl;
+        timeHour = player.timeHour;
+        timeMinute = player.timeMinute;
+        save = player.save;
     }
 
 }

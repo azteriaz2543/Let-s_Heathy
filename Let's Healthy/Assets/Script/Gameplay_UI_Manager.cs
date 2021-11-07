@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Gameplay_UI_Manager : MonoBehaviour
 {
@@ -20,7 +21,13 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
     public Kitchen_UI kitchen_UI;
     
-    public GameObject DayPanel; 
+    public GameObject DayPanel;
+
+    public GameObject AddTime, NextDay;
+    public TMP_Text Daytext;
+    public TMP_Text Timetext;
+
+    public GameplayManager gameplayManager;
 
     void Start()
     {
@@ -44,12 +51,34 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
         kitchen_UI = kitchen_UI.GetComponent<Kitchen_UI>();
 
+        gameplayManager = GetComponent<GameplayManager>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        DayTextUpdate();
+
+        if (player.timeHour >= 18)
+        {
+            NextDay.SetActive(true);
+        }
+        else
+        {
+            NextDay.SetActive(false);
+        }
+
+        if (player.timeHour >= 24)
+        {
+            AddTime.SetActive(false);
+        }
+        else
+        {
+            AddTime.SetActive(true);
+        }
+
+
     }
     #region Button
     public void Menu()
@@ -60,6 +89,13 @@ public class Gameplay_UI_Manager : MonoBehaviour
     public void Resume()
     {
         AreYouSurePanel.SetActive(false);
+    }
+
+    public void QuitWithSave()
+    {
+        player.save = true;
+        player.SavePlayer();
+        SceneManager.LoadScene("Menu");
     }
 
     public void QuitNoSave()
@@ -155,4 +191,39 @@ public class Gameplay_UI_Manager : MonoBehaviour
         DayPanel.SetActive(true);
     }
     #endregion
+
+    public void AddTimeBotton()
+    {
+        player.timeMinute += 30;
+
+        if (player.timeMinute >= 60)
+        {
+            player.timeHour++;
+            player.timeMinute = 0;
+        }
+
+    }
+
+    public void NextDayBotton()
+    {
+        player.timeHour = 6;
+        player.timeMinute = 0;
+        player.day++;
+        gameplayManager.StartDay();
+    }
+
+    void DayTextUpdate()
+    {
+        Daytext.text = "วันที่ " + player.day;
+
+        if (player.timeMinute < 10)
+        {
+            Timetext.text = player.timeHour + ".0" + player.timeMinute + " น.";
+        }
+        else
+        {
+            Timetext.text = player.timeHour + "." + player.timeMinute + " น.";
+        }
+    }
+
 }
