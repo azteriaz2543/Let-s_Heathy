@@ -226,4 +226,9 @@ public class Gameplay_UI_Manager : MonoBehaviour
         }
     }
 
+    public void EventReward()
+    {
+        player.SavePlayer();
+        SceneManager.LoadScene("EventReward");
+    } 
 }

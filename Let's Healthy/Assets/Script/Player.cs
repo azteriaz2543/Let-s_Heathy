@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public bool inStartScene;
     public bool inMenuScene;
     public bool inGameScene;
+    public bool inMiniGameScene;
     #endregion
 
     #region StartScene
@@ -87,18 +88,28 @@ public class Player : MonoBehaviour
             inStartScene = true;
             inMenuScene = false;
             inGameScene = false;
+            inMiniGameScene = false;
         }
         else if (scenechecker.name == "MenuScene")
         {
             inStartScene = false;
             inMenuScene = true;
             inGameScene = false;
+            inMiniGameScene = false;
         }
         else if (scenechecker.name == "GameScene")
         {
             inStartScene = false;
             inMenuScene = false;
             inGameScene = true;
+            inMiniGameScene = false;
+        }
+        else if (scenechecker.name == "MiniGameScene")
+        {
+            inStartScene = false;
+            inMenuScene = false;
+            inGameScene = false;
+            inMiniGameScene = true;
         }
     }
 
@@ -120,7 +131,11 @@ public class Player : MonoBehaviour
         {
             Start_GameScene();
         }
-            
+
+        if (inMiniGameScene == true)
+        {
+            Start_MiniGameScene();
+        }
     }
   
     void Update()
@@ -129,6 +144,13 @@ public class Player : MonoBehaviour
         {
             Debug.Log(playerName + " ," +mode + " ," +character + " ," +gamePlay);
         }
+
+        if (timeMinute >= 60)
+        {
+            timeHour += 1;
+            timeMinute -= 60;
+        }
+
     }
 
     void Start_StartScene()
@@ -171,5 +193,10 @@ public class Player : MonoBehaviour
         timeMinute = 0;
         save = false;
     }
-    
+
+    void Start_MiniGameScene()
+    {
+        LoadPlayer();
+    }
+
 }
