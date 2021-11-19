@@ -16,7 +16,7 @@ public class PlayerData
     public float enegry, happy;
     public float protein, sodium, fat, kiloCaloriesl;
     public int timeHour, timeMinute;
-
+    public int money;
     public bool save;
 
     public PlayerData (Player player)
@@ -36,6 +36,7 @@ public class PlayerData
         timeHour = player.timeHour;
         timeMinute = player.timeMinute;
         save = player.save;
+        money = player.money;
     }
 
 }

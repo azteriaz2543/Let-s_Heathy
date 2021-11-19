@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     public float enegry, happy;
     public float protein, sodium, fat, kiloCaloriesl;
     public int timeHour,timeMinute;
-
+    public int money;
     public bool save;
     #endregion
 
@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
             timeHour = data.timeHour;
             timeMinute = data.timeMinute;
             save = data.save;
+            money = data.money;
         }
         else
         {
