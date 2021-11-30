@@ -19,6 +19,9 @@ public class PlayerData
     public int money;
     public bool save;
 
+    public int quest1, quest2, quest3, quest4, quest5, quest6;
+    public bool cleal1, cleal2, cleal3, cleal4, cleal5, cleal6;
+
     public PlayerData (Player player)
     {
         playerName = player.playerName;
@@ -37,6 +40,18 @@ public class PlayerData
         timeMinute = player.timeMinute;
         save = player.save;
         money = player.money;
+        quest1 = player.quest1;
+        quest2 = player.quest2;
+        quest3 = player.quest3;
+        quest4 = player.quest4;
+        quest5 = player.quest5;
+        quest6 = player.quest6;
+        cleal1 = player.cleal1;
+        cleal2 = player.cleal2;
+        cleal3 = player.cleal3;
+        cleal4 = player.cleal4;
+        cleal5 = player.cleal5;
+        cleal6 = player.cleal6;
     }
 
 }

@@ -8,6 +8,7 @@ TagManager:
   - Cooking
   - Cut
   - Drop
+  - GetQuest
   layers:
   - Default
   - TransparentFX

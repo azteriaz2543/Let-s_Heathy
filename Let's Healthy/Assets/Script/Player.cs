@@ -36,7 +36,10 @@ public class Player : MonoBehaviour
     public bool save;
     #endregion
 
-
+    #region Quest
+    public int quest1, quest2, quest3, quest4, quest5, quest6;
+    public bool cleal1, cleal2, cleal3, cleal4, cleal5, cleal6;
+    #endregion
 
     public void SavePlayer()
     {
@@ -65,6 +68,18 @@ public class Player : MonoBehaviour
             timeMinute = data.timeMinute;
             save = data.save;
             money = data.money;
+            quest1 = data.quest1;
+            quest2 = data.quest2;
+            quest3 = data.quest3;
+            quest4 = data.quest4;
+            quest5 = data.quest5;
+            quest6 = data.quest6;
+            cleal1 = data.cleal1;
+            cleal2 = data.cleal2;
+            cleal3 = data.cleal3;
+            cleal4 = data.cleal4;
+            cleal5 = data.cleal5;
+            cleal6 = data.cleal6;
         }
         else
         {
@@ -192,11 +207,24 @@ public class Player : MonoBehaviour
         timeHour = 0;
         timeMinute = 0;
         save = false;
+        quest1 = 0;
+        quest2 = 0;
+        quest3 = 0;
+        quest4 = 0;
+        quest5 = 0;
+        quest6 = 0;
+        cleal1 = false;
+        cleal2 = false;
+        cleal3 = false;
+        cleal4 = false;
+        cleal5 = false;
+        cleal6 = false;
     }
 
     void Start_MiniGameScene()
     {
         LoadPlayer();
     }
+
 
 }

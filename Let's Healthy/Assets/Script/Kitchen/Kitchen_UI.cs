@@ -61,6 +61,8 @@ public class Kitchen_UI : MonoBehaviour
     public GameObject HouseBackButton;
     int menuNo;
 
+    Player player;
+
     void Start()
     {
         Inventory = new List<GameObject>();
@@ -87,6 +89,8 @@ public class Kitchen_UI : MonoBehaviour
         {
             MaterialList[i].SetActive(false);
         }
+
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
     }
 
@@ -426,7 +430,25 @@ public class Kitchen_UI : MonoBehaviour
 
     public void Next()
     {
-        //Active Food Status
+        player.sodium += finishCook.Sodium;
+        player.fat += finishCook.Fat;
+        player.protein += finishCook.Protein;
+        player.kiloCaloriesl += finishCook.KiloCalories;
+        player.happy += finishCook.Happiness;
+
+        if (player.timeHour > 5 && player.timeHour <= 8)
+        {
+            player.cleal1 = true;
+        }
+        else if (player.timeHour > 8 && player.timeHour <= 14)
+        {
+            player.cleal2 = true;
+        }
+        else if (player.timeHour > 14 && player.timeHour <= 20)
+        {
+            player.cleal3 = true;
+        }
+
     }
     #endregion
 

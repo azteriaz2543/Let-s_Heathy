@@ -30,6 +30,12 @@ public class Menu_UI_Manager : MonoBehaviour
         {
             player.newDay = true;
             player.day = 1;
+            player.quest1 = 1; 
+            player.quest2 = 2; 
+            player.quest3 = 3;
+            player.cleal1 = false;
+            player.cleal2 = false;
+            player.cleal3 = false;
         }
         player.SavePlayer();
         SceneManager.LoadScene("GamePlay");

@@ -29,6 +29,18 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
     public GameplayManager gameplayManager;
 
+    public GetQuest getQuest;
+    public GameObject Quest_Panel;
+    bool showQuest;
+    public Text[] Quest;
+    public GameObject[] Clear;
+    public GameObject[] Fail;
+    public Text test;
+
+    bool endGame;
+    public GameObject EndGame_Panel;
+    public Text EndL1, EndL2, EndL3, EndL4, EndL5;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -52,6 +64,25 @@ public class Gameplay_UI_Manager : MonoBehaviour
         kitchen_UI = kitchen_UI.GetComponent<Kitchen_UI>();
 
         gameplayManager = GetComponent<GameplayManager>();
+
+        getQuest = GameObject.FindGameObjectWithTag("GetQuest").GetComponent<GetQuest>();
+
+        showQuest = true;
+
+        for (int i = 0;i<Clear.Length;i++)
+        {
+            Clear[i].SetActive(false);
+            Fail[i].SetActive(false);
+        }
+
+        Quest[0].text = getQuest.GetQuestInfo(1);
+        Quest[1].text = getQuest.GetQuestInfo(2);
+        Quest[2].text = getQuest.GetQuestInfo(3);
+        Quest[3].text = getQuest.GetQuestInfo(0);
+        Quest[4].text = getQuest.GetQuestInfo(0);
+        Quest[5].text = getQuest.GetQuestInfo(0);
+
+        endGame = false;
 
     }
 
@@ -78,8 +109,11 @@ public class Gameplay_UI_Manager : MonoBehaviour
             AddTime.SetActive(true);
         }
 
+        QuestUpdate();
 
+        EndGameUpdate();
     }
+
     #region Button
     public void Menu()
     {
@@ -209,6 +243,11 @@ public class Gameplay_UI_Manager : MonoBehaviour
         player.timeHour = 6;
         player.timeMinute = 0;
         player.day++;
+        for (int i = 0; i < Clear.Length; i++)
+        {
+            Clear[i].SetActive(false);
+            Fail[i].SetActive(false);
+        }
         gameplayManager.StartDay();
     }
 
@@ -231,4 +270,90 @@ public class Gameplay_UI_Manager : MonoBehaviour
         player.SavePlayer();
         SceneManager.LoadScene("EventReward");
     } 
+
+    void QuestUpdate()
+    {
+        Quest_Panel.SetActive(showQuest);
+
+       
+
+        if (player.cleal1 == false && player.timeHour >= 8)
+        {
+            Fail[0].SetActive(true);
+            Clear[0].SetActive(false);
+        }
+        else if (player.cleal1 == true)
+        {
+            Clear[0].SetActive(true);
+            Fail[0].SetActive(false);
+        }
+
+        if (player.cleal2 == false && player.timeHour >= 14)
+        {
+            Fail[1].SetActive(true);
+            Clear[1].SetActive(false);
+        }
+        else if (player.cleal2 == true)
+        {
+            Clear[1].SetActive(true);
+            Fail[1].SetActive(false);
+        }
+
+        if (player.cleal3 == false && player.timeHour >= 20)
+        {
+            Fail[2].SetActive(true);
+            Clear[2].SetActive(false);
+        }
+        else if (player.cleal3 == true)
+        {
+            Clear[2].SetActive(true);
+            Fail[2].SetActive(false);
+        }
+
+        if (player.cleal4 == true)
+        {
+            Clear[3].SetActive(true);
+            Fail[3].SetActive(false);
+        }
+
+        if (player.cleal5 == true)
+        {
+            Clear[4].SetActive(true);
+            Fail[4].SetActive(false);
+        }
+
+        if (player.cleal6 == true)
+        {
+            Clear[5].SetActive(true);
+            Fail[5].SetActive(false);
+        }
+
+    }
+
+    public void QuestBotton()
+    {
+        showQuest = !showQuest;
+    }
+
+    void EndGameUpdate()
+    {
+        if (player.day >= 7)
+        {
+            endGame = true;
+        }
+
+        EndGame_Panel.SetActive(endGame);
+
+        EndL1.text = "ปริมาณโซเดียม : " + player.sodium.ToString() + " กรัม";
+        EndL2.text = "ปริมาณไขมัน : " + player.fat.ToString() + " กรัม";
+        EndL3.text = "ปริมาณโปรตีน : " + player.protein.ToString() + " กรัม";
+        EndL4.text = "ปริมาณคอลลอรี่ : " + player.kiloCaloriesl.ToString() + " กิโลแคลอรี่";
+        EndL5.text = "ค่าความสุข : " + player.happy.ToString() + " หน่วย";
+    }
+
+    public void NextEndGame()
+    {
+        QuitNoSave();
+    }
+
 }
