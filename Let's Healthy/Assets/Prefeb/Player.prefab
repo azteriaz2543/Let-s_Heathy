@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5593151891114256094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5593151891114256088}
+  - component: {fileID: 5593151891114256095}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5593151891114256088
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5593151891114256094}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1000.5445, y: 534.5716, z: -4424.4243}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5593151891114256095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5593151891114256094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1920b14823ffc4084f75fa9ec30120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inStartScene: 0
+  inMenuScene: 0
+  inGameScene: 0
+  inMiniGameScene: 0
+  firstStart: 0
+  playerName: 
+  mode: 0
+  character: 0
+  gamePlay: 0
+  newDay: 0
+  day: 0
+  enegry: 0
+  happy: 0
+  protein: 0
+  sodium: 0
+  fat: 0
+  kiloCaloriesl: 0
+  timeHour: 0
+  timeMinute: 0
+  money: 0
+  save: 0
+  quest1: 0
+  quest2: 0
+  quest3: 0
+  quest4: 0
+  quest5: 0
+  quest6: 0
+  cleal1: 0
+  cleal2: 0
+  cleal3: 0
+  cleal4: 0
+  cleal5: 0
+  cleal6: 0

@@ -226,7 +226,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 827.5, y: -466.9}
+  m_AnchoredPosition: {x: 843, y: -444.95}
   m_SizeDelta: {x: 202.09317, y: 79.847664}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &131930308
@@ -542,7 +542,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015259, y: -123.99999}
+  m_AnchoredPosition: {x: -0.000015259, y: -234}
   m_SizeDelta: {x: 540.0614, y: 201.5037}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &296395158
@@ -701,11 +701,36 @@ MonoBehaviour:
   inStartScene: 0
   inMenuScene: 0
   inGameScene: 0
+  inMiniGameScene: 0
   firstStart: 0
   playerName: 
   mode: 0
   character: 0
   gamePlay: 0
+  newDay: 0
+  day: 0
+  enegry: 0
+  happy: 0
+  protein: 0
+  sodium: 0
+  fat: 0
+  kiloCaloriesl: 0
+  timeHour: 0
+  timeMinute: 0
+  money: 0
+  save: 0
+  quest1: 0
+  quest2: 0
+  quest3: 0
+  quest4: 0
+  quest5: 0
+  quest6: 0
+  cleal1: 0
+  cleal2: 0
+  cleal3: 0
+  cleal4: 0
+  cleal5: 0
+  cleal6: 0
 --- !u!4 &427879230
 Transform:
   m_ObjectHideFlags: 0
@@ -1067,6 +1092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d7951b2f778124b80db5518f5c8a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testday: 0
 --- !u!4 &904328248
 Transform:
   m_ObjectHideFlags: 0
@@ -1275,7 +1301,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000024557, y: -313}
+  m_AnchoredPosition: {x: -0.000024557, y: -395.67}
   m_SizeDelta: {x: 321.2274, y: 121.840416}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1157209402
@@ -1406,8 +1432,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 213.99997}
-  m_SizeDelta: {x: 1476, y: 428}
+  m_AnchoredPosition: {x: -0.000015259, y: 116}
+  m_SizeDelta: {x: 1229.5706, y: 665.2167}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1274543262
 MonoBehaviour:
@@ -1429,7 +1455,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 705d5de9a8073b54a851b576b732937c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7b004664222ceca4a83088758ffe12af, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

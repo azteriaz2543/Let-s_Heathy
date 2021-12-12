@@ -2,22 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EX : MonoBehaviour
 {
-    [SerializeField] GameObject[] a;
+    [SerializeField] GameObject[] a,trueIC,failIC;
     [SerializeField] int[] answer, problem;
     [SerializeField] Sprite[] numBer;
     [SerializeField] Sprite tRueS;
-    [SerializeField] Image[] imageNumber, iconTrue;
+    [SerializeField] Image[] imageNumber;
     [SerializeField] InputField[] inputField;
+    Player player;
+    int addTimeMinute, addTimeHour;
+    float addEnegry, addHappy;
+    int addMoney;
+    int checkTrue,checkFals;
     // Start is called before the first frame update
     void Start()
     {
-        //problem[0] = Random.Range(1, 101);
-        //problem[1]= Random.Range(1, 101);
-        //answer[0] = problem[0] + problem[1];
-        //print(answer[0]);
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
+        trueIC[0].SetActive(false);
+        trueIC[1].SetActive(false);
+        trueIC[2].SetActive(false);
+        trueIC[3].SetActive(false);
+        trueIC[4].SetActive(false);
+        failIC[0].SetActive(false);
+        failIC[1].SetActive(false);
+        failIC[2].SetActive(false);
+        failIC[3].SetActive(false);
+        failIC[4].SetActive(false);
 
         for (int i=0; i <= 9; i++)
         {
@@ -129,31 +143,157 @@ public class EX : MonoBehaviour
             answer[2] = problem[4] + problem[5];
             answer[3] = problem[6] + problem[7];
             answer[4] = problem[8] + problem[9];
+
+          
         }
+        EjectBotton();
     }
 
     // Update is called once per frame
     void Update()
     {
+       
+    }
+    public void Check2()
+    {
+        print(answer[0]);
+        print(answer[1]);
+        print(answer[2]);
+        print(answer[3]);
+        print(answer[4]);
+    }
+    public void Check()
+    {
         if (int.Parse(inputField[0].text) == answer[0])
         {
-            iconTrue[0].GetComponent<Image>().sprite = tRueS;
+
+                trueIC[0].SetActive(true);
+            checkTrue++;
+ 
+        }
+        if (int.Parse(inputField[1].text) != answer[1])
+        {
+            
+             failIC[0].SetActive(true);
+            checkFals++;
         }
         if (int.Parse(inputField[1].text) == answer[1])
-        {         iconTrue[1].GetComponent<Image>().sprite = tRueS;
+        {
+           
+             trueIC[1].SetActive(true);
+            checkTrue++;
+        }
+        if (int.Parse(inputField[1].text) != answer[1])
+        {
+            
+             failIC[1].SetActive(true);
+            checkFals++;
         }
         if (int.Parse(inputField[2].text) == answer[2])
         {
-            iconTrue[2].GetComponent<Image>().sprite = tRueS;
+           
+             trueIC[2].SetActive(true);
+            checkTrue++;
+        }
+        if (int.Parse(inputField[2].text) != answer[2])
+        {
+           
+            failIC[2].SetActive(true);
+            checkFals++;
         }
         if (int.Parse(inputField[3].text) == answer[3])
         {
-            iconTrue[3].GetComponent<Image>().sprite = tRueS;
+           
+            trueIC[3].SetActive(true);
+            checkTrue++;
+        }
+        if (int.Parse(inputField[3].text) != answer[3])
+        {
+            
+             failIC[3].SetActive(true);
+            checkFals++;
         }
         if (int.Parse(inputField[4].text) == answer[4])
         {
-            iconTrue[4].GetComponent<Image>().sprite = tRueS;
+           
+             trueIC[4].SetActive(true);
+            checkTrue++;
         }
+        if (int.Parse(inputField[4].text) != answer[4])
+        {
+            
+             failIC[4].SetActive(true);
+            checkFals++;
+        }
+        if(checkFals>checkTrue)
+        {
+            addMoney = Random.Range(0, 10);
+
+            player.enegry += addEnegry;
+            player.happy += addHappy;
+            player.money += addMoney;
+            player.timeHour += addTimeHour;
+            player.timeMinute += addTimeMinute;
+            player.SavePlayer();
+            SceneManager.LoadScene("Gameplay");
+        }
+        if(checkFals<checkTrue)
+        {
+            addMoney = Random.Range(15, 26);
+
+            player.enegry += addEnegry;
+            player.happy += addHappy;
+            player.money += addMoney;
+            player.timeHour += addTimeHour;
+            player.timeMinute += addTimeMinute;
+            player.SavePlayer();
+            SceneManager.LoadScene("Gameplay");
+        }
+        else
+        {
+            addMoney = Random.Range(0, 0);
+
+            player.enegry += addEnegry;
+            player.happy += addHappy;
+            player.money += addMoney;
+            player.timeHour += addTimeHour;
+            player.timeMinute += addTimeMinute;
+            player.SavePlayer();
+            SceneManager.LoadScene("Gameplay");
+        }
+    
+    }
+    public void EjectBotton()
+    {
+        addEnegry = Random.Range(-11, 11);
+        addHappy = Random.Range(-11, 11);
+        
+
+        int randomTime = Random.Range(1, 6);
+        switch (randomTime)
+        {
+            case 1:
+                addTimeHour = 0;
+                addTimeMinute = 15;
+                break;
+            case 2:
+                addTimeHour = 0;
+                addTimeMinute = 30;
+                break;
+            case 3:
+                addTimeHour = 0;
+                addTimeMinute = 45;
+                break;
+            case 4:
+                addTimeHour = 1;
+                addTimeMinute = 0;
+                break;
+            case 5:
+                addTimeHour = 1;
+                addTimeMinute = 30;
+                break;
+        }
+
     }
 
 }

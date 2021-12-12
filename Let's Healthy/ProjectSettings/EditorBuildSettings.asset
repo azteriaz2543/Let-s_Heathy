@@ -17,4 +17,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EventReward.unity
     guid: 809c86051615d814ab9689bae1125d3b
+  - enabled: 1
+    path: Assets/Import/Minioff/MiniOffi.unity
+    guid: 950ea87554cb3884abb92815c156ca73
+  - enabled: 1
+    path: Assets/Scenes/MInigame/MinigameX.unity
+    guid: 455c6f814b4f467498729aebcffef86e
+  - enabled: 1
+    path: Assets/Scenes/MInigame/HPTscancard.unity
+    guid: 547dd02d6af81124787c26481d1b3253
+  - enabled: 1
+    path: Assets/Scenes/MInigame/MiniHPT.unity
+    guid: 03d0f367ac4ba34419a2d33233b5411a
+  - enabled: 1
+    path: Assets/Scenes/MInigame/MIniOffiSpeeddrawn.unity
+    guid: 34dcaf4d735dbc94bbcb692c270f57db
+  - enabled: 1
+    path: Assets/Scenes/MInigame/MiniSCH.unity
+    guid: 99624f40faa31f64ab3557ff0f9c3019
+  - enabled: 1
+    path: Assets/Scenes/MInigame/School1.unity
+    guid: 1a5da3409839a3d4aa2f672f6f7c8623
   m_configObjects: {}

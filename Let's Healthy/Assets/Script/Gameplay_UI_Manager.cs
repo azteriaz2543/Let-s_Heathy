@@ -41,6 +41,10 @@ public class Gameplay_UI_Manager : MonoBehaviour
     public GameObject EndGame_Panel;
     public Text EndL1, EndL2, EndL3, EndL4, EndL5;
 
+    int portal;
+
+    int randomQuest;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -78,7 +82,25 @@ public class Gameplay_UI_Manager : MonoBehaviour
         Quest[0].text = getQuest.GetQuestInfo(1);
         Quest[1].text = getQuest.GetQuestInfo(2);
         Quest[2].text = getQuest.GetQuestInfo(3);
-        Quest[3].text = getQuest.GetQuestInfo(0);
+
+        randomQuest = Random.Range(1,3);
+        switch (randomQuest)
+        {
+            case 1:
+                Quest[3].text = "เล่นมินิเกมที่ โรงพยาบาล";
+                break;
+            case 2:
+                Quest[3].text = "เล่นมินิเกมที่ โรงเรียน";
+                break;
+            case 3:
+                Quest[3].text = "เล่นมินิเกมที่ ออฟฟิช";
+                break;
+            case 4:
+                Quest[3].text = "เล่นมินิเกมที่ ฟิตเนต";
+                break;
+        }
+
+        //Quest[3].text = getQuest.GetQuestInfo(0);
         Quest[4].text = getQuest.GetQuestInfo(0);
         Quest[5].text = getQuest.GetQuestInfo(0);
 
@@ -174,55 +196,92 @@ public class Gameplay_UI_Manager : MonoBehaviour
     }
     public void Fitness()
     {
+        /*
         FitnessEvent.SetActive(true);
         Step = "Fitness";
         DayPanel.SetActive(false);
+        */
+        player.SavePlayer();
+        SceneManager.LoadScene("MinigameX");
     }
 
     public void Back_Fitness()
     {
+        /*
         FitnessEvent.SetActive(false);
         Step = "Map";
         DayPanel.SetActive(true);
+        */
     }
     public void Office()
     {
+        /*
         OfficeEvent.SetActive(true);
         Step = "Office";
         DayPanel.SetActive(false);
+        */
+
+        player.SavePlayer();    
+        SceneManager.LoadScene("MiniOffi");
+
     }
 
     public void Back_Office()
     {
+        /*
         OfficeEvent.SetActive(false);
         Step = "Map";
         DayPanel.SetActive(true);
+        */
     }
     public void Hospital()
     {
+        /*
         HospitalEvent.SetActive(true);
         Step = "Hospital";
         DayPanel.SetActive(false);
+        */
+
+        player.SavePlayer();
+        portal = Random.Range(1, 3);
+        switch (portal)
+        {
+            case 1:
+                SceneManager.LoadScene("HPTscancard");
+                break;
+            case 2:
+                SceneManager.LoadScene("MiniHPT");
+                break;
+        }
     }
 
     public void Back_Hospital()
     {
+        /*
         HospitalEvent.SetActive(false);
         Step = "Map";
         DayPanel.SetActive(true);
+        */
     }
     public void School()
     {
+        /*
         SchoolEvent.SetActive(true);
         Step = "Hospital";
         DayPanel.SetActive(false);
+        */
+
+        player.SavePlayer();
+        SceneManager.LoadScene("MiniSCH");
     }
 
     public void Back_School()
     {
+        /*
         SchoolEvent.SetActive(false);
         Step = "Map";
         DayPanel.SetActive(true);
+        */
     }
     #endregion
 

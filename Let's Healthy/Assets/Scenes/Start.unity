@@ -765,11 +765,36 @@ MonoBehaviour:
   inStartScene: 0
   inMenuScene: 0
   inGameScene: 0
+  inMiniGameScene: 0
   firstStart: 0
   playerName: 
   mode: 0
   character: 0
   gamePlay: 0
+  newDay: 0
+  day: 0
+  enegry: 0
+  happy: 0
+  protein: 0
+  sodium: 0
+  fat: 0
+  kiloCaloriesl: 0
+  timeHour: 0
+  timeMinute: 0
+  money: 0
+  save: 0
+  quest1: 0
+  quest2: 0
+  quest3: 0
+  quest4: 0
+  quest5: 0
+  quest6: 0
+  cleal1: 0
+  cleal2: 0
+  cleal3: 0
+  cleal4: 0
+  cleal5: 0
+  cleal6: 0
 --- !u!4 &924995373
 Transform:
   m_ObjectHideFlags: 0
@@ -1030,7 +1055,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -291.7189, y: -367.0217}
+  m_AnchoredPosition: {x: -217, y: -367.0217}
   m_SizeDelta: {x: 98.7938, y: 128.898}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1011304293
@@ -1588,14 +1613,8 @@ MonoBehaviour:
   PlayerName: {fileID: 1054582735}
   charImage: {fileID: 1563234853}
   charImageSouce:
-  - {fileID: 21300000, guid: 5baba4dbf3709f14aa1ee4228c9de62d, type: 3}
-  - {fileID: 21300000, guid: e4ad64ce62354904d9a5ea35888786d2, type: 3}
-  - {fileID: 21300000, guid: 72648e8d53f393f4b8a9acaa61768fd2, type: 3}
-  - {fileID: 21300000, guid: 10989d104cc546e4ab8def21a9e69aba, type: 3}
-  - {fileID: 21300000, guid: 56c6546943751ff4880294e083eb69fe, type: 3}
-  - {fileID: 21300000, guid: 4490df93c9c120842bc286a2e61435b3, type: 3}
-  - {fileID: 21300000, guid: cea712406ea57d24581e5178563d3291, type: 3}
-  - {fileID: 21300000, guid: 1f5838398c4d25c44ba9ab5f264d82ea, type: 3}
+  - {fileID: 21300000, guid: 5071602117efef44cb4ee587a81ab577, type: 3}
+  - {fileID: 21300000, guid: 54812c2887240894a957d9b7a40f3a82, type: 3}
 --- !u!4 &1261641486
 Transform:
   m_ObjectHideFlags: 0
@@ -1880,8 +1899,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8, y: -381}
-  m_SizeDelta: {x: 450.6096, y: 640.8983}
+  m_AnchoredPosition: {x: 0, y: -381}
+  m_SizeDelta: {x: 262.3528, y: 651.907}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1563234853
 MonoBehaviour:
@@ -1903,7 +1922,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5baba4dbf3709f14aa1ee4228c9de62d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5071602117efef44cb4ee587a81ab577, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2132,7 +2151,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 276.7214, y: -367.0217}
+  m_AnchoredPosition: {x: 215, y: -367.0217}
   m_SizeDelta: {x: 98.7938, y: 128.898}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1648085780
