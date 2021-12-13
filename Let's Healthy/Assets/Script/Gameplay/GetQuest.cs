@@ -35,6 +35,18 @@ public class GetQuest : MonoBehaviour
             case 3:
                 QuestText = "รับประทานอาหารเย็น ก่อนเวลา 20.00 น.";
                 break;
+            case 4:
+                QuestText = "เล่นมินิเกมที่ โรงพยาบาล";
+                break;
+            case 5:
+                QuestText = "เล่นมินิเกมที่ โรงเรียน";
+                break;
+            case 6:
+                QuestText = "เล่นมินิเกมที่ ออฟฟิช";
+                break;
+            case 7:
+                QuestText = "เล่นมินิเกมที่ ฟิตเนต";
+                break;
         }
 
         return QuestText;

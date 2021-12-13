@@ -9,6 +9,7 @@ TagManager:
   - Cut
   - Drop
   - GetQuest
+  - QPanel
   layers:
   - Default
   - TransparentFX

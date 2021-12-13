@@ -20,7 +20,8 @@ public class PlayerData
     public bool save;
 
     public int quest1, quest2, quest3, quest4, quest5, quest6;
-    public bool cleal1, cleal2, cleal3, cleal4, cleal5, cleal6;
+    public bool clear1, clear2, clear3, clear4, clear5, clear6;
+    public int questSet;
 
     public PlayerData (Player player)
     {
@@ -46,12 +47,13 @@ public class PlayerData
         quest4 = player.quest4;
         quest5 = player.quest5;
         quest6 = player.quest6;
-        cleal1 = player.cleal1;
-        cleal2 = player.cleal2;
-        cleal3 = player.cleal3;
-        cleal4 = player.cleal4;
-        cleal5 = player.cleal5;
-        cleal6 = player.cleal6;
+        clear1 = player.clear1;
+        clear2 = player.clear2;
+        clear3 = player.clear3;
+        clear4 = player.clear4;
+        clear5 = player.clear5;
+        clear6 = player.clear6;
+        questSet = player.questSet;
     }
 
 }

@@ -38,7 +38,9 @@ public class Player : MonoBehaviour
 
     #region Quest
     public int quest1, quest2, quest3, quest4, quest5, quest6;
-    public bool cleal1, cleal2, cleal3, cleal4, cleal5, cleal6;
+    public bool clear1, clear2, clear3, clear4, clear5, clear6;
+    public int questSet;
+    int questRandom;
     #endregion
 
     public void SavePlayer()
@@ -74,12 +76,13 @@ public class Player : MonoBehaviour
             quest4 = data.quest4;
             quest5 = data.quest5;
             quest6 = data.quest6;
-            cleal1 = data.cleal1;
-            cleal2 = data.cleal2;
-            cleal3 = data.cleal3;
-            cleal4 = data.cleal4;
-            cleal5 = data.cleal5;
-            cleal6 = data.cleal6;
+            clear1 = data.clear1;
+            clear2 = data.clear2;
+            clear3 = data.clear3;
+            clear4 = data.clear4;
+            clear5 = data.clear5;
+            clear6 = data.clear6;
+            questSet = data.questSet;
         }
         else
         {
@@ -213,12 +216,12 @@ public class Player : MonoBehaviour
         quest4 = 0;
         quest5 = 0;
         quest6 = 0;
-        cleal1 = false;
-        cleal2 = false;
-        cleal3 = false;
-        cleal4 = false;
-        cleal5 = false;
-        cleal6 = false;
+        clear1 = false;
+        clear2 = false;
+        clear3 = false;
+        clear4 = false;
+        clear5 = false;
+        clear6 = false;
     }
 
     void Start_MiniGameScene()
@@ -226,5 +229,40 @@ public class Player : MonoBehaviour
         LoadPlayer();
     }
 
+    public void ResetQuest()
+    {
+        questRandom = Random.Range(1, 5);
+        questSet = questRandom;
 
+        switch (questRandom)
+        {
+            case 1:
+                quest4 = 4;
+                quest5 = 5;
+                quest6 = 6;
+                break;
+            case 2:
+                quest4 = 4;
+                quest5 = 5;
+                quest6 = 7;
+                break;
+            case 3:
+                quest4 = 4;
+                quest5 = 6;
+                quest6 = 7;
+                break;
+            case 4:
+                quest4 = 5;
+                quest5 = 6;
+                quest6 = 7;
+                break;
+        }
+
+        clear1 = false;
+        clear2 = false;
+        clear3 = false;
+        clear4 = false;
+        clear5 = false;
+        clear6 = false;
+    }
 }

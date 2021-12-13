@@ -30,7 +30,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
     public GameplayManager gameplayManager;
 
     public GetQuest getQuest;
-    public GameObject Quest_Panel;
+    GameObject Quest_Panel;
     bool showQuest;
     public Text[] Quest;
     public GameObject[] Clear;
@@ -42,8 +42,6 @@ public class Gameplay_UI_Manager : MonoBehaviour
     public Text EndL1, EndL2, EndL3, EndL4, EndL5;
 
     int portal;
-
-    int randomQuest;
 
     void Start()
     {
@@ -79,33 +77,17 @@ public class Gameplay_UI_Manager : MonoBehaviour
             Fail[i].SetActive(false);
         }
 
-        Quest[0].text = getQuest.GetQuestInfo(1);
-        Quest[1].text = getQuest.GetQuestInfo(2);
-        Quest[2].text = getQuest.GetQuestInfo(3);
-
-        randomQuest = Random.Range(1,3);
-        switch (randomQuest)
-        {
-            case 1:
-                Quest[3].text = "เล่นมินิเกมที่ โรงพยาบาล";
-                break;
-            case 2:
-                Quest[3].text = "เล่นมินิเกมที่ โรงเรียน";
-                break;
-            case 3:
-                Quest[3].text = "เล่นมินิเกมที่ ออฟฟิช";
-                break;
-            case 4:
-                Quest[3].text = "เล่นมินิเกมที่ ฟิตเนต";
-                break;
-        }
-
-        //Quest[3].text = getQuest.GetQuestInfo(0);
-        Quest[4].text = getQuest.GetQuestInfo(0);
-        Quest[5].text = getQuest.GetQuestInfo(0);
+        Quest[0].text = getQuest.GetQuestInfo(player.quest1);
+        Quest[1].text = getQuest.GetQuestInfo(player.quest2);
+        Quest[2].text = getQuest.GetQuestInfo(player.quest3);
+        Quest[3].text = getQuest.GetQuestInfo(player.quest4);
+        Quest[4].text = getQuest.GetQuestInfo(player.quest5);
+        Quest[5].text = getQuest.GetQuestInfo(player.quest6);
 
         endGame = false;
+        NextDay.SetActive(false);
 
+        Quest_Panel = GameObject.FindGameObjectWithTag("QPanel");
     }
 
     // Update is called once per frame
@@ -113,7 +95,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
     {
         DayTextUpdate();
 
-        if (player.timeHour >= 18)
+        if (player.clear4 == true && player.clear5 == true && player.clear6 == true)
         {
             NextDay.SetActive(true);
         }
@@ -169,6 +151,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
         PlayerPanel.SetActive(false);
         ChooseSet.SetActive(true);
         DayPanel.SetActive(false);
+        Quest_Panel.SetActive(false);
     }
 
     public void Back_House()
@@ -180,6 +163,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
         PlayerPanel.SetActive(true);
         ChooseSet.SetActive(false);
         DayPanel.SetActive(true);
+        Quest_Panel.SetActive(true);
     }
     public void Shop()
     {
@@ -201,6 +185,22 @@ public class Gameplay_UI_Manager : MonoBehaviour
         Step = "Fitness";
         DayPanel.SetActive(false);
         */
+
+        switch (player.questSet)
+        {
+            case 1:
+                break;
+            case 2:
+                player.clear6 = true;
+                break;
+            case 3:
+                player.clear6 = true;
+                break;
+            case 4:
+                player.clear6 = true;
+                break;
+        }
+
         player.SavePlayer();
         SceneManager.LoadScene("MinigameX");
     }
@@ -220,6 +220,21 @@ public class Gameplay_UI_Manager : MonoBehaviour
         Step = "Office";
         DayPanel.SetActive(false);
         */
+
+        switch (player.questSet)
+        {
+            case 1:
+                player.clear6 = true;
+                break;
+            case 2:
+                break;
+            case 3:
+                player.clear5 = true;
+                break;
+            case 4:
+                player.clear5 = true;
+                break;
+        }
 
         player.SavePlayer();    
         SceneManager.LoadScene("MiniOffi");
@@ -241,6 +256,21 @@ public class Gameplay_UI_Manager : MonoBehaviour
         Step = "Hospital";
         DayPanel.SetActive(false);
         */
+
+        switch (player.questSet)
+        {
+            case 1:
+                player.clear4 = true;
+                break;
+            case 2:
+                player.clear4 = true;
+                break;
+            case 3:
+                player.clear4 = true;
+                break;
+            case 4:
+                break;
+        }
 
         player.SavePlayer();
         portal = Random.Range(1, 3);
@@ -271,6 +301,21 @@ public class Gameplay_UI_Manager : MonoBehaviour
         DayPanel.SetActive(false);
         */
 
+        switch (player.questSet)
+        {
+            case 1:
+                player.clear5 = true;
+                break;
+            case 2:
+                player.clear5 = true;
+                break;
+            case 3:
+                break;
+            case 4:
+                player.clear4 = true;
+                break;
+        }
+
         player.SavePlayer();
         SceneManager.LoadScene("MiniSCH");
     }
@@ -299,6 +344,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
     public void NextDayBotton()
     {
+        player.ResetQuest();
         player.timeHour = 6;
         player.timeMinute = 0;
         player.day++;
@@ -332,56 +378,56 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
     void QuestUpdate()
     {
-        Quest_Panel.SetActive(showQuest);
+        //Quest_Panel.SetActive(showQuest);
 
        
 
-        if (player.cleal1 == false && player.timeHour >= 8)
+        if (player.clear1 == false && player.timeHour >= 8)
         {
             Fail[0].SetActive(true);
             Clear[0].SetActive(false);
         }
-        else if (player.cleal1 == true)
+        else if (player.clear1 == true)
         {
             Clear[0].SetActive(true);
             Fail[0].SetActive(false);
         }
 
-        if (player.cleal2 == false && player.timeHour >= 14)
+        if (player.clear2 == false && player.timeHour >= 14)
         {
             Fail[1].SetActive(true);
             Clear[1].SetActive(false);
         }
-        else if (player.cleal2 == true)
+        else if (player.clear2 == true)
         {
             Clear[1].SetActive(true);
             Fail[1].SetActive(false);
         }
 
-        if (player.cleal3 == false && player.timeHour >= 20)
+        if (player.clear3 == false && player.timeHour >= 20)
         {
             Fail[2].SetActive(true);
             Clear[2].SetActive(false);
         }
-        else if (player.cleal3 == true)
+        else if (player.clear3 == true)
         {
             Clear[2].SetActive(true);
             Fail[2].SetActive(false);
         }
 
-        if (player.cleal4 == true)
+        if (player.clear4 == true)
         {
             Clear[3].SetActive(true);
             Fail[3].SetActive(false);
         }
 
-        if (player.cleal5 == true)
+        if (player.clear5 == true)
         {
             Clear[4].SetActive(true);
             Fail[4].SetActive(false);
         }
 
-        if (player.cleal6 == true)
+        if (player.clear6 == true)
         {
             Clear[5].SetActive(true);
             Fail[5].SetActive(false);

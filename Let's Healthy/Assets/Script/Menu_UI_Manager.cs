@@ -10,6 +10,7 @@ public class Menu_UI_Manager : MonoBehaviour
     Player player;
 
     public int testday;
+    
 
     void Start()
     {
@@ -33,9 +34,9 @@ public class Menu_UI_Manager : MonoBehaviour
             player.quest1 = 1; 
             player.quest2 = 2; 
             player.quest3 = 3;
-            player.cleal1 = false;
-            player.cleal2 = false;
-            player.cleal3 = false;
+
+            player.ResetQuest();
+
         }
         player.SavePlayer();
         SceneManager.LoadScene("GamePlay");

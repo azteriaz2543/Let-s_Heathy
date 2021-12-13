@@ -438,15 +438,15 @@ public class Kitchen_UI : MonoBehaviour
 
         if (player.timeHour > 5 && player.timeHour <= 8)
         {
-            player.cleal1 = true;
+            player.clear1 = true;
         }
         else if (player.timeHour > 8 && player.timeHour <= 14)
         {
-            player.cleal2 = true;
+            player.clear2 = true;
         }
         else if (player.timeHour > 14 && player.timeHour <= 20)
         {
-            player.cleal3 = true;
+            player.clear3 = true;
         }
 
     }
