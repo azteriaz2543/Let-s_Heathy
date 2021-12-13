@@ -22,6 +22,8 @@ public class PlayerData
     public int quest1, quest2, quest3, quest4, quest5, quest6;
     public bool clear1, clear2, clear3, clear4, clear5, clear6;
     public int questSet;
+    public int questClear;
+    public bool startGame;
 
     public PlayerData (Player player)
     {
@@ -54,6 +56,8 @@ public class PlayerData
         clear5 = player.clear5;
         clear6 = player.clear6;
         questSet = player.questSet;
+        questClear = player.questClear;
+        startGame = player.startGame;
     }
 
 }

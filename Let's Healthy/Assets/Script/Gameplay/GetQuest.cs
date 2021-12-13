@@ -8,7 +8,7 @@ public class GetQuest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        QuestText = "ะำหะ";
+        QuestText = "";
     }
 
     // Update is called once per frame
@@ -27,13 +27,13 @@ public class GetQuest : MonoBehaviour
                 QuestText = "";
                 break;
             case 1:
-                QuestText = "รับประทานอาหารเช้า ก่อนเวลา 8.00 น.";
+                QuestText = "รับประทานอาหารเช้า 5.00 - 8.00 น.";
                 break;
             case 2:
-                QuestText = "รับประทานอาหารกลางวัน ก่อนเวลา 14.00 น.";
+                QuestText = "รับประทานอาหารกลางวัน 11.00 - 14.00 น.";
                 break;
             case 3:
-                QuestText = "รับประทานอาหารเย็น ก่อนเวลา 20.00 น.";
+                QuestText = "รับประทานอาหารเย็น 17.00 - 20.00 น.";
                 break;
             case 4:
                 QuestText = "เล่นมินิเกมที่ โรงพยาบาล";

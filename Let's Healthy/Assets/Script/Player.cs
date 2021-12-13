@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
 
     #region Data
     public int gamePlay;
+    public bool startGame;
     #endregion
 
     #region GamePlay
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour
     public bool clear1, clear2, clear3, clear4, clear5, clear6;
     public int questSet;
     int questRandom;
+    public int questClear;
     #endregion
 
     public void SavePlayer()
@@ -83,6 +85,8 @@ public class Player : MonoBehaviour
             clear5 = data.clear5;
             clear6 = data.clear6;
             questSet = data.questSet;
+            questClear = data.questClear;
+            startGame = data.startGame;
         }
         else
         {
@@ -222,6 +226,7 @@ public class Player : MonoBehaviour
         clear4 = false;
         clear5 = false;
         clear6 = false;
+        questClear = 0;
     }
 
     void Start_MiniGameScene()
@@ -264,5 +269,6 @@ public class Player : MonoBehaviour
         clear4 = false;
         clear5 = false;
         clear6 = false;
+        questClear = 0;
     }
 }

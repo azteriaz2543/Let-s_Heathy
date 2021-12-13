@@ -42,6 +42,14 @@ public class Gameplay_UI_Manager : MonoBehaviour
     public Text EndL1, EndL2, EndL3, EndL4, EndL5;
 
     int portal;
+    float timer;
+    bool inKitchen;
+
+    public GameObject HowToPlay;
+    public Image HowToPlayImage;
+    public Sprite [] HowToPlayStep;
+    int nowHTPI;
+    public GameObject HowToPlayBackB;
 
     void Start()
     {
@@ -88,6 +96,21 @@ public class Gameplay_UI_Manager : MonoBehaviour
         NextDay.SetActive(false);
 
         Quest_Panel = GameObject.FindGameObjectWithTag("QPanel");
+
+        inKitchen = false;
+
+        nowHTPI = 0;
+
+        if (player.startGame == true)
+        {
+            HowToPlay.SetActive(true); 
+            player.startGame = false;
+        }
+        else
+        {
+            HowToPlay.SetActive(false);
+        }
+
     }
 
     // Update is called once per frame
@@ -95,7 +118,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
     {
         DayTextUpdate();
 
-        if (player.clear4 == true && player.clear5 == true && player.clear6 == true)
+        if (player.questClear >= 2 || player.timeHour >= 18)
         {
             NextDay.SetActive(true);
         }
@@ -106,16 +129,37 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
         if (player.timeHour >= 24)
         {
-            AddTime.SetActive(false);
-        }
-        else
-        {
-            AddTime.SetActive(true);
+            NextDayBotton();
         }
 
         QuestUpdate();
 
         EndGameUpdate();
+
+        HowToPlayImage.sprite = HowToPlayStep[nowHTPI];
+        
+        if (nowHTPI <= 0)
+        {
+            HowToPlayBackB.SetActive(false);
+        }
+        else
+        {
+            HowToPlayBackB.SetActive(true);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (inKitchen == false)
+        {
+            timer += Time.deltaTime;
+            if (timer > 5.0f)
+            {
+                player.timeMinute += 10;
+                timer = 0;
+            }
+        }
+        
     }
 
     #region Button
@@ -152,10 +196,15 @@ public class Gameplay_UI_Manager : MonoBehaviour
         ChooseSet.SetActive(true);
         DayPanel.SetActive(false);
         Quest_Panel.SetActive(false);
+        inKitchen = true;
     }
 
     public void Back_House()
     {
+        player.SavePlayer();
+        SceneManager.LoadScene("Gameplay");
+
+        /*
         kitchen_UI.ResetKitchen();
         HouseEvent.SetActive(false);
         Inventory.SetActive(false);
@@ -164,6 +213,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
         ChooseSet.SetActive(false);
         DayPanel.SetActive(true);
         Quest_Panel.SetActive(true);
+        */
     }
     public void Shop()
     {
@@ -191,13 +241,25 @@ public class Gameplay_UI_Manager : MonoBehaviour
             case 1:
                 break;
             case 2:
-                player.clear6 = true;
+                if (player.clear6 == false)
+                {
+                    player.clear6 = true;
+                    player.questClear += 1;
+                }
                 break;
             case 3:
-                player.clear6 = true;
+                if (player.clear6 == false)
+                {
+                    player.clear6 = true;
+                    player.questClear += 1;
+                }
                 break;
             case 4:
-                player.clear6 = true;
+                if (player.clear6 == false)
+                {
+                    player.clear6 = true;
+                    player.questClear += 1;
+                }
                 break;
         }
 
@@ -224,15 +286,27 @@ public class Gameplay_UI_Manager : MonoBehaviour
         switch (player.questSet)
         {
             case 1:
-                player.clear6 = true;
+                if (player.clear6 == false)
+                {
+                    player.clear6 = true;
+                    player.questClear += 1;
+                }
                 break;
             case 2:
                 break;
             case 3:
-                player.clear5 = true;
+                if (player.clear5 == false)
+                {
+                    player.clear5 = true;
+                    player.questClear += 1;
+                }
                 break;
             case 4:
-                player.clear5 = true;
+                if (player.clear5 == false)
+                {
+                    player.clear5 = true;
+                    player.questClear += 1;
+                }
                 break;
         }
 
@@ -260,13 +334,25 @@ public class Gameplay_UI_Manager : MonoBehaviour
         switch (player.questSet)
         {
             case 1:
-                player.clear4 = true;
+                if (player.clear4 == false)
+                {
+                    player.clear4 = true;
+                    player.questClear += 1;
+                }
                 break;
             case 2:
-                player.clear4 = true;
+                if (player.clear4 == false)
+                {
+                    player.clear4 = true;
+                    player.questClear += 1;
+                }
                 break;
             case 3:
-                player.clear4 = true;
+                if (player.clear4 == false)
+                {
+                    player.clear4 = true;
+                    player.questClear += 1;
+                }
                 break;
             case 4:
                 break;
@@ -304,15 +390,27 @@ public class Gameplay_UI_Manager : MonoBehaviour
         switch (player.questSet)
         {
             case 1:
-                player.clear5 = true;
+                if (player.clear5 == false)
+                {
+                    player.clear5 = true;
+                    player.questClear += 1;
+                }
                 break;
             case 2:
-                player.clear5 = true;
+                if (player.clear5 == false)
+                {
+                    player.clear5 = true;
+                    player.questClear += 1;
+                }
                 break;
             case 3:
                 break;
             case 4:
-                player.clear4 = true;
+                if (player.clear4 == false)
+                {
+                    player.clear4 = true;
+                    player.questClear += 1;
+                }
                 break;
         }
 
@@ -332,7 +430,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
     public void AddTimeBotton()
     {
-        player.timeMinute += 30;
+        player.timeMinute += 60;
 
         if (player.timeMinute >= 60)
         {
@@ -353,7 +451,8 @@ public class Gameplay_UI_Manager : MonoBehaviour
             Clear[i].SetActive(false);
             Fail[i].SetActive(false);
         }
-        gameplayManager.StartDay();
+        player.SavePlayer();
+        SceneManager.LoadScene("Gameplay");
     }
 
     void DayTextUpdate()
@@ -459,6 +558,35 @@ public class Gameplay_UI_Manager : MonoBehaviour
     public void NextEndGame()
     {
         QuitNoSave();
+    }
+
+    public void HowToPlayButton()
+    {
+        nowHTPI = 0;
+        HowToPlay.SetActive(true);
+    }
+
+    public void HowToPlayClose()
+    {
+        nowHTPI = 0;
+        HowToPlay.SetActive(false);
+    }
+
+    public void HowToPlayNext()
+    {
+        if (nowHTPI >= 7)
+        {
+            HowToPlayClose();
+        }
+        else
+        {
+            nowHTPI++;
+        }
+    }
+
+    public void HowToPlayBack()
+    {
+            nowHTPI--;
     }
 
 }

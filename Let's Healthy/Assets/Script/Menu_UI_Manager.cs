@@ -34,8 +34,8 @@ public class Menu_UI_Manager : MonoBehaviour
             player.quest1 = 1; 
             player.quest2 = 2; 
             player.quest3 = 3;
-
             player.ResetQuest();
+            player.startGame = true;
 
         }
         player.SavePlayer();

@@ -327,7 +327,7 @@ public class Kitchen_UI : MonoBehaviour
         CounterZone.SetActive(false);
         CounterBG.SetActive(false);
 
-        HideItem();
+        
 
         Knife.SetActive(false);
 
@@ -341,7 +341,9 @@ public class Kitchen_UI : MonoBehaviour
         ConclusionPanel.SetActive(false);
 
         ShelfBG.SetActive(false);
-        
+
+        HideItem();
+
     }
 
     public void HideItem()
@@ -439,14 +441,17 @@ public class Kitchen_UI : MonoBehaviour
         if (player.timeHour > 5 && player.timeHour <= 8)
         {
             player.clear1 = true;
+            player.timeHour = 1;
         }
-        else if (player.timeHour > 8 && player.timeHour <= 14)
+        else if (player.timeHour > 11 && player.timeHour <= 14)
         {
             player.clear2 = true;
+            player.timeHour = 1;
         }
-        else if (player.timeHour > 14 && player.timeHour <= 20)
+        else if (player.timeHour > 17 && player.timeHour <= 20)
         {
             player.clear3 = true;
+            player.timeHour = 1;
         }
 
     }

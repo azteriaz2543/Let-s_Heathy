@@ -810,7 +810,10 @@ public class FinishCook : MonoBehaviour
                 Cinnamon = true;
                 AddItem(new FoodStatus { itemType = FoodStatus.ItemType.Cinnamon, amount = 1 });
                 break;
-            case "Basil":
+            case "Basil1":
+            case "Basil2":
+            case "Basil3":
+            case "Basil4":
                 Sodium += 0.1f;
                 Protein += 0.1f;
                 KiloCalories += 0.6f;
