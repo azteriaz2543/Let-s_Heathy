@@ -12,7 +12,15 @@ public class NewDay : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        StartCoroutine(delay());
+        if (player.day > 7)
+        {
+            Destroy(gameObject);
+        }
+        else if (player.day <= 7)
+        {
+            StartCoroutine(delay());
+        }
+        
     }
 
     IEnumerator delay()

@@ -45,6 +45,7 @@ public class MiniHPT3 : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Peep);
         miniGameHPT3text.text = c_random.ToString();
         print("c_random");
     }

@@ -17,6 +17,9 @@ public class StartScene_UI_Manager : MonoBehaviour
     bool ShowHelp;
     int NowMode;
 
+    int random;
+    string randomName;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -31,6 +34,28 @@ public class StartScene_UI_Manager : MonoBehaviour
         ShowHelp = false;
 
         ConfirmButton.SetActive(false);
+
+        random = Random.Range(1,6);
+
+        switch (random)
+        {
+            case 1:
+                randomName = "แสงสว่างแพรวพราวว";
+                break;
+            case 2:
+                randomName = "John";
+                break;
+            case 3:
+                randomName = "Jessica";
+                break;
+            case 4:
+                randomName = "Umezeiros Oakmight";
+                break;
+            case 5:
+                randomName = "Eovira Mildflower";
+                break;
+        }
+
     }
 
     void Update()
@@ -83,7 +108,15 @@ public class StartScene_UI_Manager : MonoBehaviour
 
     public void Confirm()
     {
-        player.playerName = PlayerName.text;
+        if (player.playerName=="")
+        {
+            player.playerName = randomName;
+        }
+        else
+        {
+            player.playerName = PlayerName.text;
+        }
+        
         player.mode = NowMode;
         player.character = NowChar;
         player.GotoMenu();

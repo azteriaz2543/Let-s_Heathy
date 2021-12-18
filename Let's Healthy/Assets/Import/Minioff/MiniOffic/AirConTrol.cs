@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class AirConTrol : MonoBehaviour
 {
     int airNumber, aircouter,coutdown;
-    public Text airNumtext, aircoutext;
+    public TMP_Text airNumtext, aircoutext;
     Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     int addTimeMinute, addTimeHour;
     float addEnegry, addHappy;
@@ -42,22 +43,35 @@ public class AirConTrol : MonoBehaviour
             coutdown += 1;
             startgame();
         }
+
+        if (aircouter >= 35)
+        {
+            aircouter = 35;
+        }
+
+        if (aircouter <= 16)
+        {
+            aircouter = 16;
+        }
+
     }
 
     public void Addaircout()
     {
-        aircouter += 1;
+        aircouter += 1; 
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Peep);
     }
     public void Negetaircout()
     {
-        aircouter -= 1;
+        aircouter -= 1; 
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Peep);
     }
 
     void startgame()
     {
-        airNumber = Random.Range(16, 33);
+        airNumber = Random.Range(18, 32);
         print(airNumber);
-        aircouter = Random.Range(1, 40);
+        aircouter = Random.Range(16, 36);
         if (aircouter == airNumber)
         {
             int airRand = Random.Range(1, 3);

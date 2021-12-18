@@ -34,6 +34,10 @@ public class Cooking : MonoBehaviour
 
     public GameObject PlateGO;
 
+    public GameObject Bowl;
+    public GameObject Gas,GasUI;
+    public GameObject Mix;
+
     private void Awake()
     {
 
@@ -70,6 +74,9 @@ public class Cooking : MonoBehaviour
         finishCook = finishCook.GetComponent<FinishCook>();
 
         PlateGO.SetActive(false);
+
+        Bowl.SetActive(false);
+        Mix.SetActive(false);
     }
 
     void Update()
@@ -99,7 +106,7 @@ public class Cooking : MonoBehaviour
 
     public void SpawnCutedItem(string ItemName)
     {
-
+        int j = Random.Range(1, 4);
         switch (ItemName)
         {
             case "Carrot1":
@@ -374,6 +381,19 @@ public class Cooking : MonoBehaviour
         {
             if (targetSpawn == CutedItems[i].name)
             {
+                
+                switch (j)
+                {
+                    case 1:
+                        Sound_Manager.PlaySound(Sound_Manager.Sound.Knife1);
+                        break;
+                    case 2:
+                        Sound_Manager.PlaySound(Sound_Manager.Sound.Knife2);
+                        break;
+                    case 3:
+                        Sound_Manager.PlaySound(Sound_Manager.Sound.Knife3);
+                        break;
+                }
                 CutedItems[i].SetActive(true);
                 targetSpawn = "";
                 break;
@@ -396,6 +416,15 @@ public class Cooking : MonoBehaviour
         {
             if (ItemDrop[i].gameObject.name == ItemName)
             {
+                if (ItemName == "Water")
+                {
+                    Sound_Manager.PlaySound(Sound_Manager.Sound.Water);
+                }
+                else
+                {
+                    Sound_Manager.PlaySound(Sound_Manager.Sound.DropItemPan);
+                }
+                
                 Instantiate(ItemDrop[i], ItemSpawn.transform);
 
                 if (kitchenwere != "")
@@ -412,22 +441,45 @@ public class Cooking : MonoBehaviour
 
     public void ActivePot()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Kek);
         Pot.SetActive(true);
         Pan.SetActive(false);
+        Bowl.SetActive(false);
+        Gas.SetActive(true);
+        GasUI.SetActive(true);
+        Mix.SetActive(false);
         kitchenwere = "Pot";
     }
 
     public void ActivePan()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Kek);
         Pot.SetActive(false);
         Pan.SetActive(true);
+        Bowl.SetActive(false);
+        Gas.SetActive(true);
+        GasUI.SetActive(true);
+        Mix.SetActive(false);
         kitchenwere = "Pan";
+    }
+
+    public void ActiveBowl()
+    {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Kek);
+        Pot.SetActive(false);
+        Pan.SetActive(false);
+        Bowl.SetActive(true);
+        Gas.SetActive(false);
+        GasUI.SetActive(false);
+        Mix.SetActive(true);
+        kitchenwere = "Bowl";
     }
 
     public void SwitchButton()
     {
         if (startCook == false)
         {
+            Sound_Manager.PlaySound(Sound_Manager.Sound.Fire);
             startCook = true;
             Fire.SetActive(true);
             time = 0;
@@ -436,8 +488,16 @@ public class Cooking : MonoBehaviour
         }
         else
         {
+            Sound_Manager.PlaySound(Sound_Manager.Sound.Click);
             EndCook();
         }
+    }
+
+    public void MixButton()
+    {
+        Mix.SetActive(false);
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Kek);
+        EndCook();
     }
 
     public void EndCook()
@@ -449,6 +509,11 @@ public class Cooking : MonoBehaviour
         {
             if (FinishCook[i].gameObject.name == finishCook.DiagnoseFood(burn,kitchenwere,eatable))
             {
+                if (FinishCook[i].gameObject.name == "RainbowSoup")
+                {
+                    Sound_Manager.PlaySoundDontBye(Sound_Manager.Sound.Powerup);
+                }
+
                 FinishCook[i].SetActive(true);
                 break;
             }
@@ -480,7 +545,6 @@ public class Cooking : MonoBehaviour
             if (FinishCook[i].gameObject.name == ItemName)
             {
                 FinishCook[i].SetActive(true);
-                
                 break;
             }
         }
@@ -495,6 +559,7 @@ public class Cooking : MonoBehaviour
             {
                 if (ItemName == "Rice")
                 {
+                    Sound_Manager.PlaySound(Sound_Manager.Sound.Item);
                     finishCook.Happiness += 5;
                     finishCook.Sodium += 1;
                     finishCook.Fat += 0.3f;
@@ -504,6 +569,7 @@ public class Cooking : MonoBehaviour
                 }
                 else
                 {
+                    Sound_Manager.PlaySound(Sound_Manager.Sound.Bell);
                     kitchen_UI.ConclusionButton.SetActive(true);
                 }
                 

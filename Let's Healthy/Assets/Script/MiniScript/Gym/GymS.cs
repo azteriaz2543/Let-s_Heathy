@@ -14,10 +14,14 @@ public class GymS : MonoBehaviour
     int addTimeMinute, addTimeHour;
     float addEnegry, addHappy;
     int addMoney;
+
+    Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        animator = GameObject.Find("PlayerHand").GetComponent<Animator>();
         game1.GetComponent<Slider>();
         game1.GetComponent<Slider>().maxValue = max;
         succesText.SetActive(false);
@@ -45,10 +49,13 @@ public class GymS : MonoBehaviour
     {
         botHold = true;
         game1.GetComponent<Slider>().value = 0;
-    
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Bar);
     }
     public void Upbottom()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Punch);
+        animator.SetBool("isPunch", true);
+        StartCoroutine(delay());
         botHold = false;
         print(game1.GetComponent<Slider>().value);
         //game1.GetComponent<Slider>().value = 0;
@@ -139,4 +146,11 @@ public class GymS : MonoBehaviour
         }
 
     }
+
+    IEnumerator delay()
+    {
+        yield return new WaitForSeconds(0.01f);
+        animator.SetBool("isPunch", false);
+    }
+
 }

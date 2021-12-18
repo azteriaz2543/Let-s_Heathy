@@ -1,0 +1,23 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "rainbow_smoke3.moc3",
+		"Textures": [
+			"rainbow_smoke3.1024/texture_00.png"
+		],
+		"Physics": "rainbow_smoke3.physics3.json",
+		"DisplayInfo": "rainbow_smoke3.cdi3.json"
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		}
+	]
+}

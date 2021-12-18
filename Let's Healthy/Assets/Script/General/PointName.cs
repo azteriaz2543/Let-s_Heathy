@@ -85,6 +85,25 @@ public class PointName : MonoBehaviour
             case "ถ้วยคน":
             case "มีด":
             case "น้ำ":
+            case "ถ้วยใหญ่":
+            case "ผสม":
+            case "สวิทช์เตาแกส":
+            case "ชาม":
+            case "เมนูเนื้อไก่":
+            case "เมนูเนื้อไก่ไม่ใส่ผัก":
+            case "เมนูเนื้อหมู":
+            case "เมนูเนื้อหมูไม่ใส่ผัก":
+            case "เมนูเนื้อปลา":
+            case "เมนูเนื้อปลาไม่ใส่ผัก":
+            case "เมนูเนื้อวัว":
+            case "เมนูเนื้อวัวไม่ใส่ผัก":
+            case "เมนูผักล้วน":
+            case "แซนวิชไข่ขาว":
+            case "แซนวิชไข่ขาวแฮม":
+            case "แซนวิชทูน่า":
+            case "แซนวิชปูอัด":
+            case "แซนวิชไข่":
+            case "ถ้วยผสม":
                 InfoPanel.SetActive(false);
                 break;
         }
@@ -140,14 +159,14 @@ public class PointName : MonoBehaviour
             case "กะทิ":
                 sodium = 36;
                 fat = 57.6f;
-                protein = 5.52f;
-                kiloCalories = 813.6f;
+                protein = 5.5f;
+                kiloCalories = 51f;
                 break;
             case "แตงกวา":
-                sodium = 4;
-                fat = 0.22f;
-                protein = 1.12f;
-                kiloCalories = 36;
+                sodium = 2;
+                fat = 0.1f;
+                protein = 0.6f;
+                kiloCalories = 18;
                 break;
             case "ไข่":
                 sodium = 71;
@@ -168,22 +187,22 @@ public class PointName : MonoBehaviour
                 kiloCalories = 22f;
                 break;
             case "กระเทียม":
-                sodium = 36;
-                fat = 0.4f;
-                protein = 3.4f;
-                kiloCalories = 66f;
+                sodium = 18;
+                fat = 0.2f;
+                protein = 1.7f;
+                kiloCalories = 33f;
                 break;
             case "ขิง":
                 sodium = 1.3f;
-                fat = 0.08f;
-                protein = 0.18f;
+                fat = 0.1f;
+                protein = 0.2f;
                 kiloCalories = 7.9f;
                 break;
             case "มะนาว":
-                sodium = 8;
+                sodium = 2;
                 fat = 0;
-                protein = 4;
-                kiloCalories = 176;
+                protein = 1;
+                kiloCalories = 22;
                 break;
             case "นม":
                 sodium = 105.6f;
@@ -192,16 +211,16 @@ public class PointName : MonoBehaviour
                 kiloCalories = 100.8f;
                 break;
             case "เนื้อบด":
-                sodium = 32.3f;
-                fat = 8.2f;
-                protein = 19.3f;
-                kiloCalories = 199;
+                sodium = 37.8f;
+                fat = 6.2f;
+                protein = 19.45f;
+                kiloCalories = 99.5f;
                 break;
             case "หมูสับ":
-                sodium = 94;
-                fat = 32.9f;
-                protein = 22.8f;
-                kiloCalories = 171f;
+                sodium = 47;
+                fat = 16.45f;
+                protein = 11.4f;
+                kiloCalories = 85.5f;
                 break;
             case "หัวหอมใหญ่":
                 sodium = 4.4f;
@@ -210,10 +229,10 @@ public class PointName : MonoBehaviour
                 kiloCalories = 44f;
                 break;
             case "เนื้อหมู":
-                sodium = 188;
-                fat = 65.8f;
-                protein = 45.6f;
-                kiloCalories = 342f;
+                sodium = 94;
+                fat = 32.9f;
+                protein = 22.8f;
+                kiloCalories = 171f;
                 break;
             case "มันฝรั่ง":
                 sodium = 421;
@@ -234,10 +253,10 @@ public class PointName : MonoBehaviour
                 kiloCalories = 16f;
                 break;
             case "มะเขือเทศ":
-                sodium = 20;
+                sodium = 10;
                 fat = 0;
                 protein = 0;
-                kiloCalories = 35.4f;
+                kiloCalories = 17.7f;
                 break;
             case "น้ำมะนาว":
                 sodium = 0.1f;
@@ -282,12 +301,12 @@ public class PointName : MonoBehaviour
                 kiloCalories = 15;
                 break;
             case "น้ำปลา":
-                sodium = 490;
+                sodium = 500;
                 fat = 0;
-                protein = 0f;
-                kiloCalories = 0;
+                protein = 0.9f;
+                kiloCalories = 3;
                 break;
-            case "น้ำมันหอย":
+            case "ซอสหอยนางรม":
                 sodium = 165;
                 fat = 0;
                 protein = 0.2f;
@@ -312,8 +331,13 @@ public class PointName : MonoBehaviour
                 kiloCalories = 16.92f;
                 break;
             case "เกลือหิมาลัย":
+                sodium = 800;
+                fat = 0;
+                protein = 0;
+                kiloCalories = 0;
+                break;
             case "เกลือ":
-                sodium = 1900;
+                sodium = 950;
                 fat = 0;
                 protein = 0;
                 kiloCalories = 0;
@@ -353,6 +377,36 @@ public class PointName : MonoBehaviour
                 fat = 0f;
                 protein = 0f;
                 kiloCalories = 14.1f;
+                break;
+            case "ปูอัด":
+                sodium = 557.1f;
+                fat = 0.6f;
+                protein = 6.4f;
+                kiloCalories = 84f;
+                break;
+            case "แฮม":
+                sodium = 900f;
+                fat = 9f;
+                protein = 17f;
+                kiloCalories = 165f;
+                break;
+            case "ขนมปัง":
+                sodium = 110f;
+                fat = 1.3f;
+                protein = 2.5f;
+                kiloCalories = 65f;
+                break;
+            case "ไข่ขาว":
+                sodium = 54.8f;
+                fat = 0.1f;
+                protein = 3.6f;
+                kiloCalories = 17f;
+                break;
+            case "ทูน่ากระป๋อง":
+                sodium = 120;
+                fat = 0f;
+                protein = 19f;
+                kiloCalories = 80f;
                 break;
 
 

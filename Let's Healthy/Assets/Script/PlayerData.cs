@@ -24,6 +24,9 @@ public class PlayerData
     public int questSet;
     public int questClear;
     public bool startGame;
+    public bool passTime1, passTime2, passTime3, passNight;
+
+    public float nephropathyHealthy, healthy;
 
     public PlayerData (Player player)
     {
@@ -58,6 +61,13 @@ public class PlayerData
         questSet = player.questSet;
         questClear = player.questClear;
         startGame = player.startGame;
+        passTime1 = player.passTime1;
+        passTime2 = player.passTime2;
+        passTime3 = player.passTime3;
+        passNight = player.passNight;
+        nephropathyHealthy = player.nephropathyHealthy;
+        healthy = player.healthy;
+
     }
 
 }

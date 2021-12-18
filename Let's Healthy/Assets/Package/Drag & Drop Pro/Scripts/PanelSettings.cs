@@ -275,5 +275,22 @@ public class PanelSettings : MonoBehaviour {
         Return();
     }
 
+    public void Bowling()
+    {
+        string ObjectId = DragDropManager.GetPanelObject(Id);
+        kitchen_UI = GameObject.Find("Kitchen_UI_Manager").GetComponent<Kitchen_UI>();
+        switch (ObjectId)
+        {
+            case "Egg1":
+            case "Egg2":
+            case "Egg3":
+            case "Egg4":
+                kitchen_UI.Bowling(ObjectId);
+                break;
+        }
+
+        Return();
+    }
+
 
 }

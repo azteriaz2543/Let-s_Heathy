@@ -17,6 +17,8 @@ public class EX : MonoBehaviour
     float addEnegry, addHappy;
     int addMoney;
     int checkTrue,checkFals;
+
+    bool step1, step2, step3, step4, step5 ,step6;
     // Start is called before the first frame update
     void Start()
     {
@@ -147,23 +149,61 @@ public class EX : MonoBehaviour
           
         }
         EjectBotton();
+
+        step1 = false;
+        step2 = false;
+        step3 = false;
+        step4 = false;
+        step5 = false;
+        step6 = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            step1 = true;
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            step2 = true;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            step3 = true;
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            step4 = true;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            step5 = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            step6 = true;
+        }
+
+        if (step1 == true && step2 == true && step3 == true && step4 == true && step5 == true && step6 == true)
+        {
+            Check2();
+        }
+
     }
     public void Check2()
     {
-        print(answer[0]);
-        print(answer[1]);
-        print(answer[2]);
-        print(answer[3]);
-        print(answer[4]);
+        inputField[0].text = answer[0].ToString();
+        inputField[1].text = answer[1].ToString();
+        inputField[2].text = answer[2].ToString();
+        inputField[3].text = answer[3].ToString();
+        inputField[4].text = answer[4].ToString();
     }
     public void Check()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Write);
         if (int.Parse(inputField[0].text) == answer[0])
         {
 

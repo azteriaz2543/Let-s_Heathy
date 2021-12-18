@@ -39,17 +39,23 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
     bool endGame;
     public GameObject EndGame_Panel;
-    public Text EndL1, EndL2, EndL3, EndL4, EndL5;
+    public Text EndL1, EndL2, EndL3, EndL4, EndL5, EndL6, EndL7;
 
     int portal;
-    float timer;
-    bool inKitchen;
+    public float timer;
 
     public GameObject HowToPlay;
     public Image HowToPlayImage;
     public Sprite [] HowToPlayStep;
     int nowHTPI;
     public GameObject HowToPlayBackB;
+
+    public GameObject soundGameObject;
+    AudioSource audioSource;
+    public AudioClip kitchenBGM;
+
+    bool inKitchen;
+    
 
     void Start()
     {
@@ -97,7 +103,6 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
         Quest_Panel = GameObject.FindGameObjectWithTag("QPanel");
 
-        inKitchen = false;
 
         nowHTPI = 0;
 
@@ -111,6 +116,11 @@ public class Gameplay_UI_Manager : MonoBehaviour
             HowToPlay.SetActive(false);
         }
 
+        audioSource = soundGameObject.GetComponent<AudioSource>();
+
+        inKitchen = false;
+
+
     }
 
     // Update is called once per frame
@@ -118,13 +128,23 @@ public class Gameplay_UI_Manager : MonoBehaviour
     {
         DayTextUpdate();
 
-        if (player.questClear >= 2 || player.timeHour >= 18)
+        if (player.questClear >= 2 && player.timeHour >= 18)
         {
             NextDay.SetActive(true);
         }
         else
         {
             NextDay.SetActive(false);
+        }
+
+        if (player.timeHour == 23 && player.timeMinute == 30)
+        {
+            if (player.passNight == false)
+            {
+                player.passNight = true;
+                Sound_Manager.PlaySound(Sound_Manager.Sound.Clock);
+            }
+            
         }
 
         if (player.timeHour >= 24)
@@ -153,42 +173,56 @@ public class Gameplay_UI_Manager : MonoBehaviour
         if (inKitchen == false)
         {
             timer += Time.deltaTime;
-            if (timer > 5.0f)
+            if (timer > 0.5f)
             {
-                player.timeMinute += 10;
+                player.timeMinute += 1;
                 timer = 0;
             }
         }
-        
+            
+    
     }
 
     #region Button
     public void Menu()
     {
         AreYouSurePanel.SetActive(true);
+        Time.timeScale = 0;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
     }
 
     public void Resume()
     {
         AreYouSurePanel.SetActive(false);
+        Time.timeScale = 1;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
     }
 
     public void QuitWithSave()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         player.save = true;
         player.SavePlayer();
+        Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
     }
 
     public void QuitNoSave()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         player.ResetGameplayData();
         player.SavePlayer();
+        Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
     }
 
     public void House()
     {
+        inKitchen = true;
+        audioSource.clip = kitchenBGM;
+        audioSource.Play();
+        Time.timeScale = 1;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         HouseEvent.SetActive(true);
         Inventory.SetActive(true);
         Step = "House";
@@ -196,11 +230,12 @@ public class Gameplay_UI_Manager : MonoBehaviour
         ChooseSet.SetActive(true);
         DayPanel.SetActive(false);
         Quest_Panel.SetActive(false);
-        inKitchen = true;
     }
 
     public void Back_House()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
+        Time.timeScale = 1;
         player.SavePlayer();
         SceneManager.LoadScene("Gameplay");
 
@@ -217,6 +252,8 @@ public class Gameplay_UI_Manager : MonoBehaviour
     }
     public void Shop()
     {
+        Time.timeScale = 1;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         ShopEvent.SetActive(true);
         Step = "Shop";
         DayPanel.SetActive(false);
@@ -224,12 +261,16 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
     public void Back_Shop()
     {
+        Time.timeScale = 1;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         ShopEvent.SetActive(false);
         Step = "Map";
         DayPanel.SetActive(true);
     }
     public void Fitness()
     {
+        Time.timeScale = 1;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         /*
         FitnessEvent.SetActive(true);
         Step = "Fitness";
@@ -243,6 +284,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
             case 2:
                 if (player.clear6 == false)
                 {
+                    Sound_Manager.PlaySound(Sound_Manager.Sound.MissionClear);
                     player.clear6 = true;
                     player.questClear += 1;
                 }
@@ -250,6 +292,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
             case 3:
                 if (player.clear6 == false)
                 {
+                    Sound_Manager.PlaySound(Sound_Manager.Sound.MissionClear);
                     player.clear6 = true;
                     player.questClear += 1;
                 }
@@ -257,6 +300,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
             case 4:
                 if (player.clear6 == false)
                 {
+                    Sound_Manager.PlaySound(Sound_Manager.Sound.MissionClear);
                     player.clear6 = true;
                     player.questClear += 1;
                 }
@@ -269,6 +313,8 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
     public void Back_Fitness()
     {
+        Time.timeScale = 1;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         /*
         FitnessEvent.SetActive(false);
         Step = "Map";
@@ -277,6 +323,8 @@ public class Gameplay_UI_Manager : MonoBehaviour
     }
     public void Office()
     {
+        Time.timeScale = 1;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         /*
         OfficeEvent.SetActive(true);
         Step = "Office";
@@ -288,6 +336,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
             case 1:
                 if (player.clear6 == false)
                 {
+                    Sound_Manager.PlaySound(Sound_Manager.Sound.MissionClear);
                     player.clear6 = true;
                     player.questClear += 1;
                 }
@@ -297,6 +346,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
             case 3:
                 if (player.clear5 == false)
                 {
+                    Sound_Manager.PlaySound(Sound_Manager.Sound.MissionClear);
                     player.clear5 = true;
                     player.questClear += 1;
                 }
@@ -304,6 +354,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
             case 4:
                 if (player.clear5 == false)
                 {
+                    Sound_Manager.PlaySound(Sound_Manager.Sound.MissionClear);
                     player.clear5 = true;
                     player.questClear += 1;
                 }
@@ -317,6 +368,8 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
     public void Back_Office()
     {
+        Time.timeScale = 1;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         /*
         OfficeEvent.SetActive(false);
         Step = "Map";
@@ -325,6 +378,8 @@ public class Gameplay_UI_Manager : MonoBehaviour
     }
     public void Hospital()
     {
+        Time.timeScale = 1;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         /*
         HospitalEvent.SetActive(true);
         Step = "Hospital";
@@ -336,6 +391,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
             case 1:
                 if (player.clear4 == false)
                 {
+                    Sound_Manager.PlaySound(Sound_Manager.Sound.MissionClear);
                     player.clear4 = true;
                     player.questClear += 1;
                 }
@@ -343,6 +399,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
             case 2:
                 if (player.clear4 == false)
                 {
+                    Sound_Manager.PlaySound(Sound_Manager.Sound.MissionClear);
                     player.clear4 = true;
                     player.questClear += 1;
                 }
@@ -350,6 +407,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
             case 3:
                 if (player.clear4 == false)
                 {
+                    Sound_Manager.PlaySound(Sound_Manager.Sound.MissionClear);
                     player.clear4 = true;
                     player.questClear += 1;
                 }
@@ -373,6 +431,8 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
     public void Back_Hospital()
     {
+        Time.timeScale = 1;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         /*
         HospitalEvent.SetActive(false);
         Step = "Map";
@@ -381,6 +441,8 @@ public class Gameplay_UI_Manager : MonoBehaviour
     }
     public void School()
     {
+        Time.timeScale = 1;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         /*
         SchoolEvent.SetActive(true);
         Step = "Hospital";
@@ -392,6 +454,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
             case 1:
                 if (player.clear5 == false)
                 {
+                    Sound_Manager.PlaySound(Sound_Manager.Sound.MissionClear);
                     player.clear5 = true;
                     player.questClear += 1;
                 }
@@ -399,6 +462,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
             case 2:
                 if (player.clear5 == false)
                 {
+                    Sound_Manager.PlaySound(Sound_Manager.Sound.MissionClear);
                     player.clear5 = true;
                     player.questClear += 1;
                 }
@@ -408,6 +472,7 @@ public class Gameplay_UI_Manager : MonoBehaviour
             case 4:
                 if (player.clear4 == false)
                 {
+                    Sound_Manager.PlaySound(Sound_Manager.Sound.MissionClear);
                     player.clear4 = true;
                     player.questClear += 1;
                 }
@@ -420,6 +485,8 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
     public void Back_School()
     {
+        Time.timeScale = 1;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         /*
         SchoolEvent.SetActive(false);
         Step = "Map";
@@ -430,18 +497,47 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
     public void AddTimeBotton()
     {
+        Time.timeScale = 1;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         player.timeMinute += 60;
-
-        if (player.timeMinute >= 60)
-        {
-            player.timeHour++;
-            player.timeMinute = 0;
-        }
-
     }
 
     public void NextDayBotton()
     {
+        Time.timeScale = 1;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
+
+        if (player.clear1 == false)
+        {
+            player.healthy += 50;
+            player.nephropathyHealthy += 50;
+            player.happy-= 25;
+        }
+        if (player.clear2 == false)
+        {
+            player.healthy += 50;
+            player.nephropathyHealthy += 50;
+            player.happy -= 25;
+        }
+        if (player.clear3 == false)
+        {
+            player.healthy += 50;
+            player.nephropathyHealthy += 50;
+            player.happy -= 25;
+        }
+        if (player.clear4 == false)
+        {
+            //หักเงิน
+        }
+        if (player.clear5 == false)
+        {
+            //หักเงิน
+        }
+        if (player.clear6 == false)
+        {
+            //หักเงิน
+        }
+
         player.ResetQuest();
         player.timeHour = 6;
         player.timeMinute = 0;
@@ -451,6 +547,10 @@ public class Gameplay_UI_Manager : MonoBehaviour
             Clear[i].SetActive(false);
             Fail[i].SetActive(false);
         }
+        player.passTime1 = false;
+        player.passTime2 = false;
+        player.passTime3 = false;
+        player.passNight = false;
         player.SavePlayer();
         SceneManager.LoadScene("Gameplay");
     }
@@ -485,6 +585,13 @@ public class Gameplay_UI_Manager : MonoBehaviour
         {
             Fail[0].SetActive(true);
             Clear[0].SetActive(false);
+
+            if (player.passTime1 == false)
+            {
+                player.passTime1 = true;
+                Sound_Manager.PlaySound(Sound_Manager.Sound.MissionFail);
+            }
+
         }
         else if (player.clear1 == true)
         {
@@ -496,6 +603,12 @@ public class Gameplay_UI_Manager : MonoBehaviour
         {
             Fail[1].SetActive(true);
             Clear[1].SetActive(false);
+
+            if (player.passTime2 == false)
+            {
+                player.passTime2 = true;
+                Sound_Manager.PlaySound(Sound_Manager.Sound.MissionFail);
+            }
         }
         else if (player.clear2 == true)
         {
@@ -507,6 +620,12 @@ public class Gameplay_UI_Manager : MonoBehaviour
         {
             Fail[2].SetActive(true);
             Clear[2].SetActive(false);
+
+            if (player.passTime3 == false)
+            {
+                player.passTime3 = true;
+                Sound_Manager.PlaySound(Sound_Manager.Sound.MissionFail);
+            }
         }
         else if (player.clear3 == true)
         {
@@ -536,12 +655,17 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
     public void QuestBotton()
     {
+        Time.timeScale = 1;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         showQuest = !showQuest;
     }
 
+    float HappyTemp;
+    float HealthyTemp;
+
     void EndGameUpdate()
     {
-        if (player.day >= 7)
+        if (player.day >= 8)
         {
             endGame = true;
         }
@@ -552,7 +676,38 @@ public class Gameplay_UI_Manager : MonoBehaviour
         EndL2.text = "ปริมาณไขมัน : " + player.fat.ToString() + " กรัม";
         EndL3.text = "ปริมาณโปรตีน : " + player.protein.ToString() + " กรัม";
         EndL4.text = "ปริมาณคอลลอรี่ : " + player.kiloCaloriesl.ToString() + " กิโลแคลอรี่";
-        EndL5.text = "ค่าความสุข : " + player.happy.ToString() + " หน่วย";
+        HappyTemp = player.happy / 10;
+        EndL5.text = "ค่าความสุข : " + HappyTemp.ToString() + " หน่วย";
+        if (player.mode == 0)
+        {
+            EndL6.text = "ค่าสุขภาพ : " + player.healthy.ToString() + " หน่วย";
+            HealthyTemp = player.healthy;
+        }
+        else if (player.mode == 1)
+        {
+            EndL6.text = "ค่าสุขภาพ : " + player.nephropathyHealthy.ToString() + " หน่วย";
+            HealthyTemp = player.nephropathyHealthy;
+        }
+
+        if (HealthyTemp <= 0)
+        {
+            HealthyTemp = 0;
+            EndL7.text = "ดีมาก คุณควบควมอาหารได้ดีมาตลอดทั้งสัปดาห์เลย";
+        }
+        else if (HealthyTemp > 0 && HealthyTemp <= 50)
+        {
+            EndL7.text = "คุณต้องเพิ่มความระมัดระวังขึ้นอีก ต้องลดการปรุงบางอย่างลงบ้างแล้ว";
+        }
+        else if (HealthyTemp > 50 && HealthyTemp <= 75)
+        {
+            EndL7.text = "คุณรับประทานอาหารที่อันตรายไปมากแล้ว ต้องปรับปรุงตัวโดยด่วน";
+        }
+        else if (HealthyTemp > 75)
+        {
+            EndL7.text = "คุณควรเข้ารับคำปรึกษาจากแพทย์โดยด่วน";
+        }
+
+
     }
 
     public void NextEndGame()
@@ -562,12 +717,16 @@ public class Gameplay_UI_Manager : MonoBehaviour
 
     public void HowToPlayButton()
     {
+        Time.timeScale = 0;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         nowHTPI = 0;
         HowToPlay.SetActive(true);
     }
 
     public void HowToPlayClose()
     {
+        Time.timeScale = 1;
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         nowHTPI = 0;
         HowToPlay.SetActive(false);
     }
@@ -576,10 +735,12 @@ public class Gameplay_UI_Manager : MonoBehaviour
     {
         if (nowHTPI >= 7)
         {
+            Time.timeScale = 1;
             HowToPlayClose();
         }
         else
         {
+            Time.timeScale = 0;
             nowHTPI++;
         }
     }

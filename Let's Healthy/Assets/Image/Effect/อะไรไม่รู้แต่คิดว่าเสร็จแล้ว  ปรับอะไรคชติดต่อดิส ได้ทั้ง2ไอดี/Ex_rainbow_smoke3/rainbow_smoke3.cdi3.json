@@ -1,0 +1,120 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamX1",
+			"GroupId": "",
+			"Name": "x1"
+		},
+		{
+			"Id": "ParamX2",
+			"GroupId": "",
+			"Name": "x2"
+		},
+		{
+			"Id": "ParamX3",
+			"GroupId": "",
+			"Name": "x3"
+		},
+		{
+			"Id": "ParamX4",
+			"GroupId": "",
+			"Name": "x4"
+		},
+		{
+			"Id": "ParamX5",
+			"GroupId": "",
+			"Name": "x5"
+		},
+		{
+			"Id": "ParamAngleX",
+			"GroupId": "",
+			"Name": "Angle X"
+		}
+	],
+	"ParameterGroups": [],
+	"Parts": [
+		{
+			"Id": "Part3",
+			"Name": "rainbow_smoke.png"
+		},
+		{
+			"Id": "Part2",
+			"Name": "smoke.png"
+		},
+		{
+			"Id": "Part",
+			"Name": "normal_smoke.png"
+		},
+		{
+			"Id": "PartRough",
+			"Name": "Rough Design"
+		},
+		{
+			"Id": "PartFace",
+			"Name": "Face"
+		},
+		{
+			"Id": "PartEye",
+			"Name": "Eye"
+		},
+		{
+			"Id": "PartEyeBall",
+			"Name": "Eyeball"
+		},
+		{
+			"Id": "PartBrow",
+			"Name": "Brows"
+		},
+		{
+			"Id": "PartMouth",
+			"Name": "Mouth"
+		},
+		{
+			"Id": "PartNose",
+			"Name": "Nose"
+		},
+		{
+			"Id": "PartEar",
+			"Name": "Ear"
+		},
+		{
+			"Id": "PartHairFront",
+			"Name": "Bangs"
+		},
+		{
+			"Id": "PartHairSide",
+			"Name": "Hair Side"
+		},
+		{
+			"Id": "PartHairBack",
+			"Name": "Hair Back"
+		},
+		{
+			"Id": "PartNeck",
+			"Name": "Neck"
+		},
+		{
+			"Id": "PartBody",
+			"Name": "Body"
+		},
+		{
+			"Id": "PartBackground",
+			"Name": "Background"
+		},
+		{
+			"Id": "PartSketch",
+			"Name": "[ Guide Image]"
+		}
+	],
+	"CombinedParameters": [
+		[
+			"ParamX1",
+			"ParamX2"
+		],
+		[
+			"ParamX3",
+			"ParamX4"
+		]
+	]
+}

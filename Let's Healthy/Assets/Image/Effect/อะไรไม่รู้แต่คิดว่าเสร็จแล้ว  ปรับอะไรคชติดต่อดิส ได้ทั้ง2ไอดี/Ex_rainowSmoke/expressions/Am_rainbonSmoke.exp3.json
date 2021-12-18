@@ -1,0 +1,102 @@
+{
+	"Type": "Live2D Expression",
+	"FadeInTime": 1,
+	"FadeOutTime": 1,
+	"Parameters": [
+		{
+			"Id": "ParamLayer2",
+			"Value": 10,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamLayer3",
+			"Value": 6,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamLayer4",
+			"Value": -2,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamLayer5",
+			"Value": -3,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamLayer6",
+			"Value": -6,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamLayer7",
+			"Value": -2,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamLayer8",
+			"Value": -3,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamAngleX",
+			"Value": -30,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamSmokeUp",
+			"Value": 0,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamSmoke3X",
+			"Value": -30,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamSmoke3Y",
+			"Value": -30,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamSmoke2X",
+			"Value": -30,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamSmokeY2",
+			"Value": -30,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamSmokeX4",
+			"Value": -30,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamSmokeY4",
+			"Value": -30,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamSmokeX5",
+			"Value": -30,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamSmokeY5",
+			"Value": -30,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamSmokeX6",
+			"Value": 30,
+			"Blend": "Add"
+		},
+		{
+			"Id": "ParamSmokeY6",
+			"Value": -30,
+			"Blend": "Add"
+		}
+	]
+}

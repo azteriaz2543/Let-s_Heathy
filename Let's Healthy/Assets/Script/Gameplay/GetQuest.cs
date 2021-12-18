@@ -27,13 +27,13 @@ public class GetQuest : MonoBehaviour
                 QuestText = "";
                 break;
             case 1:
-                QuestText = "รับประทานอาหารเช้า 5.00 - 8.00 น.";
+                QuestText = "รับประทานอาหารเช้า 6.00 - 8.00 น.";
                 break;
             case 2:
-                QuestText = "รับประทานอาหารกลางวัน 11.00 - 14.00 น.";
+                QuestText = "รับประทานอาหารกลางวัน 12.00 - 14.00 น.";
                 break;
             case 3:
-                QuestText = "รับประทานอาหารเย็น 17.00 - 20.00 น.";
+                QuestText = "รับประทานอาหารเย็น 18.00 - 20.00 น.";
                 break;
             case 4:
                 QuestText = "เล่นมินิเกมที่ โรงพยาบาล";

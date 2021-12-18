@@ -77,6 +77,12 @@ public class FoodStatus
         Cinnamon, //67
         Basil,
         CPepper,
+        Vegetable, 
+        Ham,
+        Crabsticks,
+        Bread,
+        WhiteEgg,
+        Tuna,
     }
 
     public ItemType itemType;

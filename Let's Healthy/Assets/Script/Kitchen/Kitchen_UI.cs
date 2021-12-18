@@ -52,7 +52,7 @@ public class Kitchen_UI : MonoBehaviour
     public GameObject ConclusionPanel;
 
     public FinishCook finishCook;
-    public Text CText2, CText3, CText4, CText5, CText6, CText7;
+    public Text CText1, CText2, CText3, CText4, CText5, CText6, CText7;
 
     public GameObject[] Condiment;
     public GameObject ShelfBG;
@@ -63,34 +63,34 @@ public class Kitchen_UI : MonoBehaviour
 
     Player player;
 
+    public GameObject[] BowlItems;
+
+    float healthyTemp;
+
     void Start()
     {
+        finishCook = finishCook.GetComponent<FinishCook>();
+        dropHere = GameObject.FindGameObjectWithTag("Drop").GetComponent<DropHere>();
+        doingZoneControl = doingZoneControl.GetComponent<DoingZoneControl>();
+        cooking = cooking.GetComponent<Cooking>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
         Inventory = new List<GameObject>();
 
         ShowInv = true;
 
-        SetAllFalse();
-
         RemoveZone.SetActive(false);
-
-        dropHere = GameObject.FindGameObjectWithTag("Drop").GetComponent<DropHere>();
-
-        cooking = cooking.GetComponent<Cooking>();
 
         MenuList.SetActive(false);
 
         MenuWay.SetActive(false);
-
-        doingZoneControl = doingZoneControl.GetComponent<DoingZoneControl>();
-
-        finishCook = finishCook.GetComponent<FinishCook>();
 
         for (int i = 0; i < MaterialList.Length; i++)
         {
             MaterialList[i].SetActive(false);
         }
 
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        SetAllFalse();
 
     }
 
@@ -101,25 +101,54 @@ public class Kitchen_UI : MonoBehaviour
 
         MenuList.SetActive(showMenu);
 
-        CText2.text = "ปริมาณโซเดียม : " + finishCook.Sodium.ToString() + " กรัม";
-        CText3.text = "ปริมาณไขมัน : " + finishCook.Fat.ToString() + " กรัม";
-        CText4.text = "ปริมาณโปรตีน : " + finishCook.Protein.ToString() + " กรัม";
-        CText5.text = "ปริมาณคอลลอรี่ : " + finishCook.KiloCalories.ToString() + " กิโลแคลอรี่";
-        CText6.text = "ค่าความสุข : " + finishCook.Happiness.ToString() + " หน่วย";
-        //CText7.text = "พลังงาน : XXX";
+        CText1.text = "ปริมาณโซเดียม : " + finishCook.Sodium.ToString() + " กรัม";
+        CText2.text = "ปริมาณไขมัน : " + finishCook.Fat.ToString() + " กรัม";
+        CText3.text = "ปริมาณโปรตีน : " + finishCook.Protein.ToString() + " กรัม";
+        CText4.text = "ปริมาณคอลลอรี่ : " + finishCook.KiloCalories.ToString() + " กิโลแคลอรี่";
+        CText5.text = "ค่าความสุข : " + finishCook.Happiness.ToString() + " หน่วย";
 
-        CText7.text = "";
-
-        if (finishCook.Happiness <= 12)
+        if (player.mode == 0)
         {
-            CText7.text = "ดูเหมือนจะขาดรสชาติอะไรไปหน่อยนะ";
+            CText6.text = "ค่าสุขภาพ : " + finishCook.Healthy.ToString() + " หน่วย";
+            healthyTemp = finishCook.Healthy;
         }
-        else if (finishCook.Happiness >= 24)
+        else if(player.mode == 1)
         {
-            CText7.text = "มื้อนี้อร่อยมาก ^^";
+            CText6.text = "ค่าสุขภาพ : " + finishCook.NephropathyHealthy.ToString() + " หน่วย";
+            healthyTemp = finishCook.NephropathyHealthy;
         }
 
-        if(Input.GetMouseButtonUp(0))
+        if (healthyTemp <= 0)
+        {
+            healthyTemp = 0;
+        }
+
+        if (healthyTemp == 0)
+        {
+            CText7.text = "อาหารมื้อนี้ดีต่อสุขภาพจริงๆ ทำให้ดีแบบนี้ต่อไปนะ ^^";
+        }
+        else if (healthyTemp > 0 && healthyTemp <= 25)
+        {
+            CText7.text = "กำลังดูดีเลย ลองลดส่วนผสมอีกนิดหน่อยนะ";
+        }
+        else if (healthyTemp > 25 && healthyTemp <= 50)
+        {
+            CText7.text = "ปริมาณโซเดี่ยมเริ่มจะไม่ดีแล้ว ลองลดลงให้มากกว่านี้หน่อยนะ";
+        }
+        else if (healthyTemp > 50 && healthyTemp <= 60)
+        {
+            CText7.text = "ปริมาณโซเดี่ยมมากเกินไปแล้ว ไม่ควรกินอาหารแบบนี้เท่าไหร่นะ";
+        }
+        else if (healthyTemp > 60 && healthyTemp <= 75)
+        {
+            CText7.text = "ถ้าหากทานอาหารแบบนี้ต่อไปจะไม่ดีต่อสุขภาพนะ";
+        }
+        else if (healthyTemp > 75)
+        {
+            CText7.text = "อาหารจานนี้แย่มาก ควรไปปรึกษาแพทย์";
+        }
+
+        if (Input.GetMouseButtonUp(0))
         {
             RemoveZone.SetActive(false);
         }
@@ -217,16 +246,19 @@ public class Kitchen_UI : MonoBehaviour
     public void OnItemDrag()
     {
         RemoveZone.SetActive(true);
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Item);
     }
 
     public void OnItemDrop()
     {
         RemoveZone.SetActive(false);
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Item);
     }
 
     #region Button
     public void Fridge()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         for (int i = 0; i < FridgeItem.Length; i++)
         {
             FridgeItem[i].SetActive(true);
@@ -242,6 +274,7 @@ public class Kitchen_UI : MonoBehaviour
 
     public void CuttingBoard()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         CuttingBoardPanel.SetActive(true);
         CloseButton.SetActive(true);
         CutBoardZone.SetActive(true);
@@ -253,6 +286,7 @@ public class Kitchen_UI : MonoBehaviour
 
     public void Incubator()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         IncubatorPanel.SetActive(true);
         CloseButton.SetActive(true);
         HouseBackButton.SetActive(false);
@@ -260,6 +294,7 @@ public class Kitchen_UI : MonoBehaviour
 
     public void Main()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         MainPanel.SetActive(true);
         CloseButton.SetActive(true);
         CounterZone.SetActive(true);
@@ -271,6 +306,7 @@ public class Kitchen_UI : MonoBehaviour
 
     public void Stove()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         StovePanel.SetActive(true);
         CloseButton.SetActive(true);
         StoveBG.SetActive(true);
@@ -283,6 +319,7 @@ public class Kitchen_UI : MonoBehaviour
 
     public void Shelf()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         for (int i = 0; i < Condiment.Length; i++)
         {
             Condiment[i].SetActive(true);
@@ -300,6 +337,7 @@ public class Kitchen_UI : MonoBehaviour
 
     public void Microwave()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         MicrowavePanel.SetActive(true);
         CloseButton.SetActive(true);
         HouseBackButton.SetActive(false);
@@ -307,6 +345,11 @@ public class Kitchen_UI : MonoBehaviour
 
     public void SetAllFalse()
     {
+        cooking.Pan.SetActive(false);
+        cooking.Pot.SetActive(false);
+        cooking.Bowl.SetActive(false);
+        cooking.Gas.SetActive(true);
+
         HouseBackButton.SetActive(true);
         CuttingBoardPanel.SetActive(false);
         IncubatorPanel.SetActive(false);
@@ -384,17 +427,21 @@ public class Kitchen_UI : MonoBehaviour
             }
         }
 
+        for (int i = 0; i < BowlItems.Length; i++)
+        {
+            BowlItems[i].SetActive(false);
+        }
+
         for (int i = 0; i < Inventory.Count; i++)
         {
             Inventory[i].SetActive(true);
         }
 
-
-
     }
 
     public void InventoryButton()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         ShowInv = !ShowInv;
 
         for (int i = 0; i < Inventory.Count; i++)
@@ -406,6 +453,7 @@ public class Kitchen_UI : MonoBehaviour
 
     public void Custom()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         ChooseWay.SetActive(false);
         HideMenu.SetActive(false);
         BlockImage.SetActive(false);
@@ -413,6 +461,7 @@ public class Kitchen_UI : MonoBehaviour
 
     public void Menu()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         ChooseWay.SetActive(false);
         MenuWay.SetActive(true);
         HideMenu.SetActive(true);
@@ -421,17 +470,20 @@ public class Kitchen_UI : MonoBehaviour
 
     public void HideMenuButton()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         showMenu = !showMenu;
         MaterialList[menuNo].SetActive(true);
     }
 
     public void Conclusion()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.MissionClear);
         ConclusionPanel.SetActive(true);
     }
 
     public void Next()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         player.sodium += finishCook.Sodium;
         player.fat += finishCook.Fat;
         player.protein += finishCook.Protein;
@@ -441,17 +493,17 @@ public class Kitchen_UI : MonoBehaviour
         if (player.timeHour > 5 && player.timeHour <= 8)
         {
             player.clear1 = true;
-            player.timeHour = 1;
+            player.timeHour += 1;
         }
         else if (player.timeHour > 11 && player.timeHour <= 14)
         {
             player.clear2 = true;
-            player.timeHour = 1;
+            player.timeHour += 1;
         }
         else if (player.timeHour > 17 && player.timeHour <= 20)
         {
             player.clear3 = true;
-            player.timeHour = 1;
+            player.timeHour += 1;
         }
 
     }
@@ -491,6 +543,7 @@ public class Kitchen_UI : MonoBehaviour
 
     public void Omelet()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         Title.text = "Omelet";
         Title_TH.text = "ไข่เจียว";
         for (int i = 0; i < MaterialList.Length; i++)
@@ -502,6 +555,7 @@ public class Kitchen_UI : MonoBehaviour
     }
     public void BoiledRice()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         Title.text = "BoiledRice";
         Title_TH.text = "ข้าวต้ม";
         for (int i = 0; i < MaterialList.Length; i++)
@@ -513,6 +567,7 @@ public class Kitchen_UI : MonoBehaviour
     }
     public void ChickenbreastLemonSause()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         Title.text = "Chickenbreast";
         Title_TH.text = "อกไก่ซอสมะนาว"; 
         for (int i = 0; i < MaterialList.Length; i++)
@@ -524,6 +579,7 @@ public class Kitchen_UI : MonoBehaviour
     }
     public void FriedbasilMincedpork()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         Title.text = "FriedbasilMincedPork";
         Title_TH.text = "ผัดกระเพราหมูสับ";
         for (int i = 0; i < MaterialList.Length; i++)
@@ -535,6 +591,7 @@ public class Kitchen_UI : MonoBehaviour
     }
     public void FriedriceGinger()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         Title.text = "Friedrice Ginger";
         Title_TH.text = "ข้าวผัดขิง";
         for (int i = 0; i < MaterialList.Length; i++)
@@ -546,6 +603,7 @@ public class Kitchen_UI : MonoBehaviour
     }
     public void FriedricePork()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         Title.text = "Friedrice Pork";
         Title_TH.text = "ข้าวผัดหมู";
         for (int i = 0; i < MaterialList.Length; i++)
@@ -557,6 +615,7 @@ public class Kitchen_UI : MonoBehaviour
     }
     public void HainaneseChickenRice()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         Title.text = "HainaneseChicken";
         Title_TH.text = "ข้าวมันไก่";
         for (int i = 0; i < MaterialList.Length; i++)
@@ -568,6 +627,7 @@ public class Kitchen_UI : MonoBehaviour
     }
     public void Massaman()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         Title.text = "Massaman";
         Title_TH.text = "มัสมั่น";
         for (int i = 0; i < MaterialList.Length; i++)
@@ -579,6 +639,7 @@ public class Kitchen_UI : MonoBehaviour
     }
     public void PoachedEggs()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         Title.text = "PoachedEggs";
         Title_TH.text = "ไข่ดาวน้ำ";
         for (int i = 0; i < MaterialList.Length; i++)
@@ -590,14 +651,28 @@ public class Kitchen_UI : MonoBehaviour
     }
     public void RainbowSoup()
     {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
         Title.text = "RainbowSoup";
-        Title_TH.text = "";
+        Title_TH.text = "ซุปมหัศจรรย์";
         for (int i = 0; i < MaterialList.Length; i++)
         {
             MaterialList[i].SetActive(false);
         }
         MaterialList[9].SetActive(true);
         menuNo = 9;
+    }
+
+    public void Sandwich()
+    {
+        Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
+        Title.text = "Sandwich";
+        Title_TH.text = "แซนวิช";
+        for (int i = 0; i < MaterialList.Length; i++)
+        {
+            MaterialList[i].SetActive(false);
+        }
+        MaterialList[10].SetActive(true);
+        menuNo = 10;
     }
 
     #endregion
@@ -638,15 +713,46 @@ public class Kitchen_UI : MonoBehaviour
         {
             if (BeatItems[i].name == targetBeat)
             {
+                doingZoneControl.isBeat = false;
+                Sound_Manager.PlaySound(Sound_Manager.Sound.BeatEgg);
                 RemoveInventory(ObjectId);
                 BeatItems[i].SetActive(true);
                 targetBeat = "";
             }
-            
+        }
+    }
+
+    string targetBowl;
+
+    public void Bowling(string ObjectId)
+    {
+        switch (ObjectId)
+        {
+            case "Egg1":
+                targetBowl = "WhiteEgg1";
+                break;
+            case "Egg2":
+                targetBowl = "WhiteEgg2";
+                break;
+            case "Egg3":
+                targetBowl = "WhiteEgg3";
+                break;
+            case "Egg4":
+                targetBowl = "WhiteEgg4";
+                break;
         }
 
-        
-
+        for (int i = 0; i < BowlItems.Length; i++)
+        {
+            if (BowlItems[i].name == targetBowl)
+            {
+                doingZoneControl.isBowl = false;
+                Sound_Manager.PlaySound(Sound_Manager.Sound.Button);
+                RemoveInventory(ObjectId);
+                BowlItems[i].SetActive(true);
+                targetBowl = "";
+            }
+        }
     }
 
 }

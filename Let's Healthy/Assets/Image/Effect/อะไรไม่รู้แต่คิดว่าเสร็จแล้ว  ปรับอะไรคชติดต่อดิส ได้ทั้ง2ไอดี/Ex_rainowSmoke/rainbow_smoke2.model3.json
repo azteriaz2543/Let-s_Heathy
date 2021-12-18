@@ -1,0 +1,30 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "rainbow_smoke2.moc3",
+		"Textures": [
+			"rainbow_smoke2.1024/texture_00.png"
+		],
+		"Physics": "rainbow_smoke2.physics3.json",
+		"DisplayInfo": "rainbow_smoke2.cdi3.json",
+		"Expressions": [
+			{
+				"Name": "Am_rainbonSmoke",
+				"File": "expressions/Am_rainbonSmoke.exp3.json"
+			}
+		]
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		}
+	],
+	"HitAreas": []
+}

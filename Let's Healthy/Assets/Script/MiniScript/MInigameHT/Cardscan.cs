@@ -37,7 +37,7 @@ public class Cardscan : MonoBehaviour
         {
             text.SetActive(true);
             panal.SetActive(true);
-
+            Sound_Manager.PlaySound(Sound_Manager.Sound.Peep);
             player.enegry += addEnegry;
             player.happy += addHappy;
             player.money += addMoney;

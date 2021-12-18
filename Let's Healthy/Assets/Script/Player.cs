@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     public int timeHour,timeMinute;
     public int money;
     public bool save;
+    public float nephropathyHealthy, healthy;
     #endregion
 
     #region Quest
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
     public int questSet;
     int questRandom;
     public int questClear;
+    public bool passTime1, passTime2, passTime3, passNight;
     #endregion
 
     public void SavePlayer()
@@ -87,6 +89,12 @@ public class Player : MonoBehaviour
             questSet = data.questSet;
             questClear = data.questClear;
             startGame = data.startGame;
+            passTime1 = data.passTime1;
+            passTime2 = data.passTime2;
+            passTime3 = data.passTime3;
+            passNight = data.passNight;
+            nephropathyHealthy = data.nephropathyHealthy;
+            healthy = data.healthy;
         }
         else
         {
