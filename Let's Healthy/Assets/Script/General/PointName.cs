@@ -222,7 +222,7 @@ public class PointName : MonoBehaviour
                 protein = 11.4f;
                 kiloCalories = 85.5f;
                 break;
-            case "หัวหอมใหญ่":
+            case "หอมหัวใหญ่":
                 sodium = 4.4f;
                 fat = 0.1f;
                 protein = 1.2f;
@@ -407,6 +407,12 @@ public class PointName : MonoBehaviour
                 fat = 0f;
                 protein = 19f;
                 kiloCalories = 80f;
+                break;
+            case "น้ำมันพืช":
+                sodium = 0f;
+                fat = 13.5f;
+                protein = 0f;
+                kiloCalories = 120f;
                 break;
 
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Kitchen_UI : MonoBehaviour
 {
@@ -35,7 +36,9 @@ public class Kitchen_UI : MonoBehaviour
     public Cooking cooking;
 
     public GameObject ChooseWay, MenuWay ,MenuList ,HideMenu;
-    public Text Title, Title_TH;
+    public Text Title;
+    public TMP_Text Title_TH;
+
     public GameObject[] MaterialList;
     public GameObject BlockImage;
 

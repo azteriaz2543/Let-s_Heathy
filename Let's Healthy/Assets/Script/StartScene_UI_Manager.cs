@@ -40,7 +40,7 @@ public class StartScene_UI_Manager : MonoBehaviour
         switch (random)
         {
             case 1:
-                randomName = "แสงสว่างแพรวพราวว";
+                randomName = "แสงสว่าง แพรวพราวว";
                 break;
             case 2:
                 randomName = "John";
@@ -108,7 +108,7 @@ public class StartScene_UI_Manager : MonoBehaviour
 
     public void Confirm()
     {
-        if (player.playerName=="")
+        if (PlayerName.text == "")
         {
             player.playerName = randomName;
         }

@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MiniHPT3 : MonoBehaviour
 {
-    [SerializeField] Text miniGameHPT3text,bB;
+    public TMP_Text miniGameHPT3text,bB;
     int c_random;
     [SerializeField]InputField inputField;
     string a;
     public GameObject panal;
-    Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    Player player;
 
     int addTimeMinute, addTimeHour;
     float addEnegry, addHappy;
@@ -23,6 +24,7 @@ public class MiniHPT3 : MonoBehaviour
         c_random = Random.Range(32, 40);
         panal.SetActive(false);
         EjectBotton();
+        inputField.text = "0";
     }
 
     // Update is called once per frame
@@ -30,7 +32,7 @@ public class MiniHPT3 : MonoBehaviour
     {
         a=inputField.text;
         print(a);
-        if (int.Parse(a) ==c_random)
+        if (int.Parse(a) == c_random)
         {
             bB.text = "Succeed";
             panal.SetActive(true);

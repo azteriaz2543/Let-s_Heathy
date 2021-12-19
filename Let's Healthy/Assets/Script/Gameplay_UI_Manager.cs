@@ -694,15 +694,15 @@ public class Gameplay_UI_Manager : MonoBehaviour
             HealthyTemp = 0;
             EndL7.text = "ดีมาก คุณควบควมอาหารได้ดีมาตลอดทั้งสัปดาห์เลย";
         }
-        else if (HealthyTemp > 0 && HealthyTemp <= 50)
+        else if (HealthyTemp > 0 && HealthyTemp <= 525)
         {
             EndL7.text = "คุณต้องเพิ่มความระมัดระวังขึ้นอีก ต้องลดการปรุงบางอย่างลงบ้างแล้ว";
         }
-        else if (HealthyTemp > 50 && HealthyTemp <= 75)
+        else if (HealthyTemp > 525 && HealthyTemp <= 1575)
         {
             EndL7.text = "คุณรับประทานอาหารที่อันตรายไปมากแล้ว ต้องปรับปรุงตัวโดยด่วน";
         }
-        else if (HealthyTemp > 75)
+        else if (HealthyTemp > 1575)
         {
             EndL7.text = "คุณควรเข้ารับคำปรึกษาจากแพทย์โดยด่วน";
         }

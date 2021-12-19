@@ -1470,7 +1470,7 @@ public class FinishCook : MonoBehaviour
                 }
             }
 
-            if (a > b && a > c && a > d)
+            if(a >= b && a >= c && a >= d)
             {
                 if (Ham == true)
                 {
@@ -1545,7 +1545,7 @@ public class FinishCook : MonoBehaviour
                 c = 0;
                 d = 0;
             }
-            else if (b > a && b > c && b > d)
+            else if (b >= a && b >= c && b >= d)
             {
                 CurrentFood = "SandwichTuna";
                 #region SetFoodStatus
@@ -1583,7 +1583,7 @@ public class FinishCook : MonoBehaviour
                 c = 0;
                 d = 0;
             }
-            else if (c > a && c > b && c > d)
+            else if (c >= a && c >= b && c >= d)
             {
                 CurrentFood = "SandwichEgg";
                 #region SetFoodStatus
@@ -1621,7 +1621,7 @@ public class FinishCook : MonoBehaviour
                 c = 0;
                 d = 0;
             }
-            else if (d > a && d > c && d > b)
+            else if (d >= a && d >= c && d >= b)
             {
                 CurrentFood = "SandwichCrabsticks";
                 #region SetFoodStatus

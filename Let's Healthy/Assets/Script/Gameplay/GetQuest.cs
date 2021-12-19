@@ -42,10 +42,10 @@ public class GetQuest : MonoBehaviour
                 QuestText = "เล่นมินิเกมที่ โรงเรียน";
                 break;
             case 6:
-                QuestText = "เล่นมินิเกมที่ ออฟฟิช";
+                QuestText = "เล่นมินิเกมที่ ออฟฟิศ";
                 break;
             case 7:
-                QuestText = "เล่นมินิเกมที่ ฟิตเนต";
+                QuestText = "เล่นมินิเกมที่ ฟิตเนส";
                 break;
         }
 
